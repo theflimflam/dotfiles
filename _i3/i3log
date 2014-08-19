@@ -1,0 +1,210 @@
+12/04/13 14:12:54 - ERROR: Using Xinerama instead of RandR. This option should be avoided at all cost because it does not refresh the list of screens, so you cannot configure displays at runtime. Please check if your driver really does not support RandR and disable this option as soon as you can.
+12/04/13 14:12:54 - i3 4.5.1 (2013-03-18, branch "tags/4.5.1") starting
+12/04/13 14:12:54 - Parsing configfile /home/mbgray/.i3/config
+deciding for version 4 due to this line: # i3 config file (v4)
+12/04/13 14:12:54 - [libi3] libi3/font.c Using X font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+12/04/13 14:12:54 - Used number 1 for workspace with name 1
+12/04/13 14:12:54 - Starting bar process: i3bar --bar_id=bar-wtwmyq --socket="/tmp/i3-mbgray.AzyJTI/ipc-socket.16269"
+12/04/13 14:12:54 - executing: i3bar --bar_id=bar-wtwmyq --socket="/tmp/i3-mbgray.AzyJTI/ipc-socket.16269"
+12/04/13 14:12:54 - IPC: looking for config for bar ID "bar-wtwmyq"
+12/04/13 14:12:54 - workspace visible? fs = 0x1c38aa0, ws = 0x1c38aa0
+12/04/13 14:12:54 - WM_CLASS changed to i3bar (instance), i3bar (class)
+12/04/13 14:12:54 - WM_NAME changed to "i3bar for output xinerama-0"
+12/04/13 14:12:54 - Using legacy window title. Note that in order to get Unicode window titles in i3, the application has to set _NET_WM_NAME (UTF-8)
+12/04/13 14:12:54 - This window is of type dock
+12/04/13 14:12:54 - Checking window 0x00c00007 (class i3bar)
+12/04/13 14:12:54 - dock status does not match
+12/04/13 14:12:54 - Checking window 0x00c00007 (class i3bar)
+12/04/13 14:12:54 - dock status matches
+12/04/13 14:12:54 - ClientMessage for window 0x0000014f
+i3status: trying to auto-detect output_format setting
+i3status: auto-detected "none"
+Cannot read temperature
+Cannot read temperature
+12/04/13 14:13:00 - startup id = i3/|home|mbgray|bin|run-menu/16269-0-spud_TIME2557360
+12/04/13 14:13:00 - executing: /home/mbgray/bin/run-menu
+12/04/13 14:13:00 - Not a managed window, ignoring UnmapNotify event
+dmenu: warning: cannot load font '-*-helvetica-medium-r-normal-*-17-*-*-*-*-*-*-*'
+12/04/13 14:13:02 - ClientMessage for window 0x00e00003
+12/04/13 14:13:02 - WM_CLASS changed to gnome-control-center (instance), Gnome-control-center (class)
+12/04/13 14:13:02 - WM_NAME changed to "System Settings"
+12/04/13 14:13:02 - Using legacy window title. Note that in order to get Unicode window titles in i3, the application has to set _NET_WM_NAME (UTF-8)
+12/04/13 14:13:02 - _NET_WM_NAME changed to "System Settings"
+12/04/13 14:13:02 - WM_HINTS.input changed to "1"
+12/04/13 14:13:02 - Checking window 0x00e00003 (class Gnome-control-center)
+12/04/13 14:13:02 - dock status does not match
+12/04/13 14:13:02 - Checking window 0x00e00003 (class Gnome-control-center)
+12/04/13 14:13:02 - dock status does not match
+12/04/13 14:13:02 - workspace visible? fs = 0x1c38aa0, ws = 0x1c38aa0
+12/04/13 14:13:02 - workspace visible? fs = 0x1c38aa0, ws = 0x1c38aa0
+Cannot read temperature
+
+(gnome-control-center:16279): Gtk-WARNING **: GtkTable does not have a property called expand
+
+(gnome-control-center:16279): Gtk-WARNING **: GtkTable does not have a property called fill
+
+(gnome-control-center:16279): Gtk-WARNING **: GtkTable does not have a property called position
+12/04/13 14:13:04 - ClientMessage for window 0x00e0025e
+12/04/13 14:13:04 - WM_WINDOW_ROLE changed to "display"
+12/04/13 14:13:04 - _NET_WM_NAME changed to "Displays"
+12/04/13 14:13:04 - WM_HINTS.input changed to "1"
+12/04/13 14:13:04 - ClientMessage for window 0x00e002f3
+12/04/13 14:13:05 - Not a managed window, ignoring UnmapNotify event
+Cannot read temperature
+12/04/13 14:13:09 - ClientMessage for window 0x00e008b7
+12/04/13 14:13:09 - WM_CLASS changed to gnome-control-center (instance), Gnome-control-center (class)
+12/04/13 14:13:09 - WM_HINTS.input changed to "1"
+12/04/13 14:13:09 - Checking window 0x00e008b7 (class Gnome-control-center)
+12/04/13 14:13:09 - dock status does not match
+12/04/13 14:13:09 - Checking window 0x00e008b7 (class Gnome-control-center)
+12/04/13 14:13:09 - dock status does not match
+12/04/13 14:13:09 - workspace visible? fs = 0x1c38aa0, ws = 0x1c38aa0
+12/04/13 14:13:09 - This window is a dialog window, setting floating
+12/04/13 14:13:09 - This window is transient for another window, setting floating
+12/04/13 14:13:09 - workspace visible? fs = 0x1c38aa0, ws = 0x1c38aa0
+12/04/13 14:13:09 - Not a managed window, ignoring UnmapNotify event
+12/04/13 14:13:10 - Not a managed window, ignoring UnmapNotify event
+12/04/13 14:13:10 - expose event for unknown window, ignoring
+12/04/13 14:13:10 - Not a managed window, ignoring UnmapNotify event
+12/04/13 14:13:10 - Not a managed window, ignoring UnmapNotify event
+12/04/13 14:13:10 - Not a managed window, ignoring UnmapNotify event
+12/04/13 14:13:10 - Not a managed window, ignoring UnmapNotify event
+12/04/13 14:13:10 - Not a managed window, ignoring UnmapNotify event
+12/04/13 14:13:10 - Not a managed window, ignoring UnmapNotify event
+12/04/13 14:13:10 - ClientMessage for window 0x00e00a53
+12/04/13 14:13:10 - ClientMessage for window 0x00e00a56
+Cannot read temperature
+Cannot read temperature
+Cannot read temperature
+Cannot read temperature
+12/04/13 14:13:31 - startup id = i3/|home|mbgray|bin|run-menu/16269-1-spud_TIME2589328
+12/04/13 14:13:31 - executing: /home/mbgray/bin/run-menu
+12/04/13 14:13:31 - Not a managed window, ignoring UnmapNotify event
+12/04/13 14:13:31 - Not a managed window, ignoring UnmapNotify event
+12/04/13 14:13:31 - Not a managed window, ignoring UnmapNotify event
+dmenu: warning: cannot load font '-*-helvetica-medium-r-normal-*-17-*-*-*-*-*-*-*'
+12/04/13 14:13:32 - ClientMessage for window 0x00e00bdc
+12/04/13 14:13:32 - ClientMessage for window 0x00e00bdf
+12/04/13 14:13:32 - Not a managed window, ignoring UnmapNotify event
+12/04/13 14:13:32 - Not a managed window, ignoring UnmapNotify event
+Cannot read temperature
+12/04/13 14:13:34 - ClientMessage for window 0x00e00c02
+12/04/13 14:13:34 - ClientMessage for window 0x00e00c05
+[16307:16331:0412/141335:ERROR:object_proxy.cc(624)] Failed to get name owner. Got org.freedesktop.DBus.Error.NameHasNoOwner: Could not get owner of name 'org.chromium.Mtpd': no such name
+[16307:16331:0412/141335:ERROR:object_proxy.cc(624)] Failed to get name owner. Got org.freedesktop.DBus.Error.NameHasNoOwner: Could not get owner of name 'org.chromium.Mtpd': no such name
+[16307:16307:0412/141335:ERROR:object_proxy.cc(529)] Failed to call method: org.chromium.Mtpd.EnumerateStorages: object_path= /org/chromium/Mtpd: org.freedesktop.DBus.Error.ServiceUnknown: The name org.chromium.Mtpd was not provided by any .service files
+12/04/13 14:13:35 - WM_CLASS changed to chromium-browser (instance), Chromium-browser (class)
+12/04/13 14:13:35 - WM_NAME changed to "i3: The multi-monitor situation - Chromium"
+12/04/13 14:13:35 - Using legacy window title. Note that in order to get Unicode window titles in i3, the application has to set _NET_WM_NAME (UTF-8)
+12/04/13 14:13:35 - _NET_WM_NAME changed to "i3: The multi-monitor situation - Chromium"
+12/04/13 14:13:35 - WM_WINDOW_ROLE changed to "browser"
+12/04/13 14:13:35 - WM_HINTS.input changed to "1"
+12/04/13 14:13:35 - Checking window 0x012000b8 (class Chromium-browser)
+12/04/13 14:13:35 - dock status does not match
+12/04/13 14:13:35 - Checking window 0x012000b8 (class Chromium-browser)
+12/04/13 14:13:35 - dock status does not match
+12/04/13 14:13:35 - workspace visible? fs = 0x1c38aa0, ws = 0x1c38aa0
+12/04/13 14:13:35 - workspace visible? fs = 0x1c38aa0, ws = 0x1c38aa0
+12/04/13 14:13:35 - Not a managed window, ignoring UnmapNotify event
+12/04/13 14:13:35 - Not a managed window, ignoring UnmapNotify event
+12/04/13 14:13:35 - ClientMessage for window 0x012000b8
+12/04/13 14:13:35 - workspace visible? fs = 0x1c38aa0, ws = 0x1c38aa0
+12/04/13 14:13:35 - ClientMessage for window 0x012000b8
+12/04/13 14:13:35 - workspace visible? fs = 0x1c38aa0, ws = 0x1c38aa0
+12/04/13 14:13:35 - _NET_WM_NAME changed to "i3: The multi-monitor situation - Chromium"
+12/04/13 14:13:35 - _NET_WM_NAME changed to "i3: The multi-monitor situation - Chromium"
+12/04/13 14:13:35 - _NET_WM_NAME changed to "i3: The multi-monitor situation - Chromium"
+12/04/13 14:13:36 - _NET_WM_NAME changed to "i3: The multi-monitor situation - Chromium"
+12/04/13 14:13:36 - _NET_WM_NAME changed to "i3: The multi-monitor situation - Chromium"
+12/04/13 14:13:36 - _NET_WM_NAME changed to "i3: The multi-monitor situation - Chromium"
+12/04/13 14:13:36 - _NET_WM_NAME changed to "i3: The multi-monitor situation - Chromium"
+12/04/13 14:13:36 - _NET_WM_NAME changed to "i3: The multi-monitor situation - Chromium"
+12/04/13 14:13:36 - _NET_WM_NAME changed to "i3: The multi-monitor situation - Chromium"
+12/04/13 14:13:36 - _NET_WM_NAME changed to "i3: The multi-monitor situation - Chromium"
+12/04/13 14:13:37 - _NET_WM_NAME changed to "i3: The multi-monitor situation - Chromium"
+12/04/13 14:13:37 - _NET_WM_NAME changed to "i3: The multi-monitor situation - Chromium"
+12/04/13 14:13:37 - _NET_WM_NAME changed to "i3: The multi-monitor situation - Chromium"
+12/04/13 14:13:37 - _NET_WM_NAME changed to "i3: The multi-monitor situation - Chromium"
+12/04/13 14:13:37 - _NET_WM_NAME changed to "i3: The multi-monitor situation - Chromium"
+12/04/13 14:13:37 - _NET_WM_NAME changed to "i3: The multi-monitor situation - Chromium"
+12/04/13 14:13:38 - _NET_WM_NAME changed to "i3: The multi-monitor situation - Chromium"
+12/04/13 14:13:38 - _NET_WM_NAME changed to "i3: The multi-monitor situation - Chromium"
+12/04/13 14:13:38 - _NET_WM_NAME changed to "i3: The multi-monitor situation - Chromium"
+12/04/13 14:13:38 - _NET_WM_NAME changed to "i3: The multi-monitor situation - Chromium"
+12/04/13 14:13:38 - _NET_WM_NAME changed to "i3: The multi-monitor situation - Chromium"
+12/04/13 14:13:38 - _NET_WM_NAME changed to "i3: The multi-monitor situation - Chromium"
+12/04/13 14:13:38 - _NET_WM_NAME changed to "i3: The multi-monitor situation - Chromium"
+12/04/13 14:13:38 - _NET_WM_NAME changed to "i3: The multi-monitor situation - Chromium"
+12/04/13 14:13:38 - _NET_WM_NAME changed to "i3: The multi-monitor situation - Chromium"
+12/04/13 14:13:38 - _NET_WM_NAME changed to "i3: The multi-monitor situation - Chromium"
+Cannot read temperature
+12/04/13 14:13:39 - _NET_WM_NAME changed to "i3: The multi-monitor situation - Chromium"
+12/04/13 14:13:39 - _NET_WM_NAME changed to "i3: The multi-monitor situation - Chromium"
+12/04/13 14:13:39 - _NET_WM_NAME changed to "i3: The multi-monitor situation - Chromium"
+Cannot read temperature
+Cannot read temperature
+12/04/13 14:13:53 - _NET_WM_NAME changed to "i3: The multi-monitor situation - Chromium"
+[16307:16307:0412/141353:ERROR:omnibox_view_gtk.cc(431)] Not implemented reached in virtual void OmniboxViewGtk::ApplyCaretVisibility()
+12/04/13 14:13:53 - _NET_WM_NAME changed to "New Tab - Chromium"
+12/04/13 14:13:53 - _NET_WM_NAME changed to "New Tab - Chromium"
+12/04/13 14:13:53 - _NET_WM_NAME changed to "New Tab - Chromium"
+Cannot read temperature
+Cannot read temperature
+12/04/13 14:13:59 - Not a managed window, ignoring UnmapNotify event
+12/04/13 14:13:59 - _NET_WM_NAME changed to "New Tab - Chromium"
+12/04/13 14:13:59 - _NET_WM_NAME changed to "New Tab - Chromium"
+12/04/13 14:13:59 - _NET_WM_NAME changed to "New Tab - Chromium"
+12/04/13 14:13:59 - _NET_WM_NAME changed to "New Tab - Chromium"
+[16307:16307:0412/141400:ERROR:omnibox_view_gtk.cc(431)] Not implemented reached in virtual void OmniboxViewGtk::ApplyCaretVisibility()
+12/04/13 14:14:00 - _NET_WM_NAME changed to "New Tab - Chromium"
+12/04/13 14:14:00 - _NET_WM_NAME changed to "New Tab - Chromium"
+12/04/13 14:14:00 - _NET_WM_NAME changed to "New Tab - Chromium"
+12/04/13 14:14:00 - Not a managed window, ignoring UnmapNotify event
+12/04/13 14:14:01 - _NET_WM_NAME changed to "New Tab - Chromium"
+12/04/13 14:14:01 - _NET_WM_NAME changed to "New Tab - Chromium"
+12/04/13 14:14:01 - _NET_WM_NAME changed to "New Tab - Chromium"
+12/04/13 14:14:01 - _NET_WM_NAME changed to "New Tab - Chromium"
+12/04/13 14:14:02 - _NET_WM_NAME changed to "New Tab - Chromium"
+12/04/13 14:14:02 - _NET_WM_NAME changed to "New Tab - Chromium"
+12/04/13 14:14:02 - _NET_WM_NAME changed to "New Tab - Chromium"
+12/04/13 14:14:03 - _NET_WM_NAME changed to "New Tab - Chromium"
+12/04/13 14:14:03 - _NET_WM_NAME changed to "New Tab - Chromium"
+12/04/13 14:14:03 - _NET_WM_NAME changed to "New Tab - Chromium"
+12/04/13 14:14:03 - _NET_WM_NAME changed to "Task #2820: UX 4.0 ConJud: The 40x error for attempting to access a abandoned otj now works - implement the dialog box to handle it - MoE PaCT v1 - Catalyst Redmine - Chromium"
+Cannot read temperature
+12/04/13 14:14:04 - _NET_WM_NAME changed to "Task #2820: UX 4.0 ConJud: The 40x error for attempting to access a abandoned otj now works - implement the dialog box to handle it - MoE PaCT v1 - Catalyst Redmine - Chromium"
+12/04/13 14:14:04 - _NET_WM_NAME changed to "Task #2820: UX 4.0 ConJud: The 40x error for attempting to access a abandoned otj now works - implement the dialog box to handle it - MoE PaCT v1 - Catalyst Redmine - Chromium"
+12/04/13 14:14:04 - _NET_WM_NAME changed to "Task #2820: UX 4.0 ConJud: The 40x error for attempting to access a abandoned otj now works - implement the dialog box to handle it - MoE PaCT v1 - Catalyst Redmine - Chromium"
+12/04/13 14:14:04 - _NET_WM_NAME changed to "Task #2820: UX 4.0 ConJud: The 40x error for attempting to access a abandoned otj now works - implement the dialog box to handle it - MoE PaCT v1 - Catalyst Redmine - Chromium"
+Cannot read temperature
+Cannot read temperature
+Cannot read temperature
+Cannot read temperature
+Cannot read temperature
+12/04/13 14:14:30 - startup id = i3/|home|mbgray|bin|run-menu/16269-2-spud_TIME2647416
+12/04/13 14:14:30 - executing: /home/mbgray/bin/run-menu
+12/04/13 14:14:30 - Not a managed window, ignoring UnmapNotify event
+dmenu: warning: cannot load font '-*-helvetica-medium-r-normal-*-17-*-*-*-*-*-*-*'
+12/04/13 14:14:31 - Not a managed window, ignoring UnmapNotify event
+Cannot read temperature
+Cannot read temperature
+12/04/13 14:14:43 - [i3bar/src/xcb.c:473] ERROR: Error getting _XEMBED_INFO property: error_code 3
+Not a managed window, ignoring UnmapNotify event
+12/04/13 14:14:43 - Not a managed window, ignoring UnmapNotify event
+[i3bar/src/xcb.c:473] ERROR: Error getting _XEMBED_INFO property: error_code 3
+12/04/13 14:14:43 - ClientMessage for window 0x00e00cf8
+12/04/13 14:14:43 - ClientMessage for window 0x0000014f
+
+** (process:16650): WARNING **: GDBus.Error:org.freedesktop.DBus.Error.ServiceUnknown: The name org.gnome.SessionManager was not provided by any .service files
+Cannot read temperature
+
+** (gnome-settings-daemon:16641): WARNING **: Unable to register client: GDBus.Error:org.freedesktop.DBus.Error.ServiceUnknown: The name org.gnome.SessionManager was not provided by any .service files
+
+** (gnome-settings-daemon:16641): WARNING **: Name taken or bus went away - shutting down
+Cannot read temperature
+12/04/13 14:14:53 - Exiting due to user command.
+[libi3] libi3/font.c Using X font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+g_dbus_connection_real_closed: Remote peer vanished with error: Underlying GIOStream returned 0 bytes on an async read (g-io-error-quark, 0). Exiting.
+[16307:16307:0412/141453:ERROR:chrome_browser_main_x11.cc(62)] X IO error received (X server probably went away)
+g_dbus_connection_real_closed: Remote peer vanished with error: Underlying GIOStream returned 0 bytes on an async read (g-io-error-quark, 0). Exiting.
+Terminated
