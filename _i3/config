@@ -9,11 +9,10 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
+# capslock to mod4 ==> http://unix.stackexchange.com/a/151046/10329
 set $win Mod4
 set $alt Mod1
-
-# To use capslock - https://faq.i3wm.org/question/490
-set $capslock Hyper_L
+set $capslock Mod3
 
 # font for window titles. ISO 10646 = Unicode
 font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -217,8 +216,7 @@ bindsym XF86AudioMute exec amixer -c 0 toggle Master mute
 #workspace 9 output $rightScreen
 #workspace 0 output $rightScreen
 
-#bindsym $win+semicolon container focus parent
-bindsym $capslock+h workspace back_and_forth
-bindsym $capslock+l workspace back_and_forth
-bindsym $capslock+shift+H move container to output left
-bindsym $capslock+shift+L move container to output right
+bindsym $capslock+semicolon focus output left
+bindsym $capslock+shift+colon move output left
+bindsym $capslock+j workspace next_on_output
+bindsym $capslock+k workspace prev_on_output
