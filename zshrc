@@ -3286,7 +3286,6 @@ fi # end of check whether we have the 'hg'-executable
 # sources if it is there).
 
 if (( GRMLSMALL_SPECIFIC > 0 )) && isgrmlsmall ; then
-
     unset abk[V]
     unalias    'V'      &> /dev/null
     unfunction vman     &> /dev/null
@@ -3360,17 +3359,5 @@ function tenant {
   fi
 }
 
-kelp_prod=$(echo kelp-prod-{ingress{1,2},filter{1,2,3},search{1,2,3},index{1,2,3},queue{1,2,3,4},mgmt1,apps{1,2}})
-
-kelp_prod_ingress=$(echo kelp-prod-ingress{1,2})
-kelp_prod_filter=$(echo kelp-prod-filter{1,2,3})
-kelp_prod_search=$(echo kelp-prod-search{1,2,3})
-kelp_prod_index=$(echo kelp-prod-index{1,2,3})
-kelp_prod_queue=$(echo kelp-prod-queue{1,2,3,4})
-kelp_prod_apps=$(echo kelp-prod-apps{1,2})
-
-kelp_prod_mgmt="kelp-prod-mgmt1" # ...for consistency
-
-stuff_akl=$(echo {joust,ironman,vendetta,bluehawk}.akl.stuff.co.nz)
-stuff_wlg=$(echo {zool,tetris,vanguard,llamatron,galaga,asteroids}.wlg.stuff.co.nz)
-stuff_all="${stuff_wlg} ${stuff_akl}"
+# This is required for golang
+export GOPATH="$HOME/go"
