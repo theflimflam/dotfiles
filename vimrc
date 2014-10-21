@@ -12,9 +12,24 @@ syntax enable       " enable syntax highlighting
 set nocompatible    " be iMproved, required for vundle
 filetype off        " required for vundle
 
+"----------------------------------------
+" Setting up Vundle, vim plugin manager
+let iCanHazVundle=0
+let vundle_readme=expand('~/.vim/bundle/Vundle.vim/README.md')
+if !filereadable(vundle_readme)
+    echo "Installing Vundle..."
+    echo ""
+    silent !mkdir -p ~/.vim/bundle
+    silent !git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+    let iCanHazVundle=1
+endif
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
 
 " General
 Plugin 'jsflimflam/vim-unclutter'
@@ -105,4 +120,10 @@ endif
 " For vim stuff local to the host you're on
 if filereadable("/etc/vim/vimrc.local")
     source /etc/vim/vimrc.local
+endif
+
+if iCanHazVundle == 1
+    echo "Install plugins, reload vim"
+    :BundleInstall
+    :source $HOME/.vimrc
 endif
