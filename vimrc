@@ -12,6 +12,10 @@ syntax enable       " enable syntax highlighting
 set nocompatible    " be iMproved, required for vundle
 filetype off        " required for vundle
 
+autocmd Filetype html setlocal ts=2 sts=2 sw=2
+autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
+autocmd Filetype javascript setlocal ts=2 sts=2 sw=2
+
 "----------------------------------------
 " Setting up Vundle, vim plugin manager
 let iCanHazVundle=0
