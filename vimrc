@@ -61,10 +61,6 @@ let g:syntastic_javascript_checkers = ['jshint']
 Plugin 'fatih/vim-go'
 
 Plugin 'altercation/vim-colors-solarized'
-if ( has('gui_running'))
-    colorscheme solarized
-    set background=dark
-endif
 Plugin 'claco/jasmine.vim'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'elzr/vim-json'
@@ -110,6 +106,11 @@ let g:ctrlp_custom_ignore = {
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+" Assumes solarized is ready after vundle#end()
+if ( has('gui_running'))
+    colorscheme solarized
+    set background=light
+endif
 
 " load my registers
 if filereadable($HOME . '/.vimregisters')
