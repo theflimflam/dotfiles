@@ -100,13 +100,24 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\.pyc$\|\.pyo$|\.class$|\.min\..*\.js',
   \ }
 
+" Writing prose can be done with vim pencil
+Plugin 'tpope/vim-markdown'
+Plugin 'reedes/vim-pencil'
+augroup pencil
+  autocmd!
+  autocmd FileType markdown,mkd call pencil#init({'wrap': 'soft'})
+  autocmd FileType text         call pencil#init({'wrap': 'soft'})
+augroup END
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 
+" Setup solarized dark
 " Assumes solarized is ready after vundle#end()
-if ( has('gui_running'))
-    colorscheme solarized
-    set background=light
+colorscheme solarized
+set background=dark
+if ( !has('gui_running'))
+    let g:solarized_termcolors=256
 endif
 
 " load my registers
