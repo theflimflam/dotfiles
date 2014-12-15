@@ -77,6 +77,7 @@ endif
 if filereadable("/usr/bin/git")
   Plugin 'tpope/vim-fugitive'
   Plugin 'mattn/gist-vim'
+  Plugin 'jaxbot/github-issues.vim'
 endif
 
 if filereadable("/usr/bin/npm")
