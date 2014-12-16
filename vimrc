@@ -32,9 +32,9 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " General
-Plugin 'jsflimflam/vim-unclutter'
-Plugin 'jsflimflam/vim-common'
-Plugin 'jsflimflam/vim-visible-whitespace'
+Plugin 'theflimflam/vim-unclutter'
+Plugin 'theflimflam/vim-common'
+Plugin 'theflimflam/vim-visible-whitespace'
 
 " Productivity
 Plugin 'matchit.zip'
