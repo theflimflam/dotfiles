@@ -62,7 +62,11 @@ Plugin 'scrooloose/syntastic'
 let g:syntastic_javascript_checkers = ['jshint']
 Plugin 'fatih/vim-go'
 
-Plugin 'altercation/vim-colors-solarized'
+" Set solarized, but only if gui is running (else it looks a bit messed up)
+if ( has('gui_running'))
+    Plugin 'altercation/vim-colors-solarized'
+endif
+
 Plugin 'claco/jasmine.vim'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'elzr/vim-json'
@@ -118,12 +122,11 @@ augroup END
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-" Setup solarized dark
-" Assumes solarized is ready after vundle#end()
-colorscheme solarized
-set background=dark
-if ( !has('gui_running'))
-    let g:solarized_termcolors=256
+" solarized is only ready after vundle#end()
+" Set color scheme if gui is there
+if ( has('gui_running'))
+    colorscheme solarized
+    set background=dark
 endif
 
 " load my registers
