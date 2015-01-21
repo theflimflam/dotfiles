@@ -1447,7 +1447,7 @@ bind2maps emacs viins       -- -s '^x1' jump_after_first_word
 bind2maps emacs viins       -- -s "^x^x" hist-complete
 
 # insert unicode character
-# usage example: 'ctrl-x i' 00A7 'ctrl-x i' will give you an ง
+# usage example: 'ctrl-x i' 00A7 'ctrl-x i' will give you an ยง
 # See for example http://unicode.org/charts/ for unicode characters code
 #k# Insert Unicode character
 bind2maps emacs viins       -- -s '^xi' insert-unicode-char
@@ -3320,44 +3320,6 @@ if [ -e ${HOME}/.pindir ]; then
   cd $(cat ${HOME}/.pindir)
 fi
 alias pin="pwd > ${HOME}/.pindir"
-
-# Openstack cloud fu
-# Taken from https://wiki.wgtn.cat-it.co.nz/wiki/OpenStack/Operations/API_Access
-function openstack {
-  export OS_IDENTITY_API_VERSION=2.0
-  export OS_VOLUME_API_VERSION=1
-  echo "Please enter your OpenStack Password: "
-  read -sr OS_PASSWORD
-  export OS_PASSWORD
-  export OS_AUTH_URL=https://api.cloud.catalyst.net.nz:5000/v2.0
-  export OS_USERNAME=matthew.gray@catalyst.net.nz
-  export OS_TENANT_NAME=openstack
-  echo "OS_TENANT_NAME=$OS_TENANT_NAME"
-  #export OS_NO_CACHE=1
-}
-
-function tenant {
-  declare -A aa
-  # get tenant list
-  while read uuid tenant
-  do
-    [[ -z "$1" ]] && echo "${tenant}"
-    aa[$tenant]="$uuid"
-  done < <( keystone tenant-list | grep True | awk -F\| '{print $2,$3}' )
-  # set tenant if requested
-  if [[ ! -z "$1" ]]
-  then
-    uuid="${aa[$1]}"
-    if [[ -z "$uuid" ]]
-    then
-      echo "Tenant not found."
-    else
-      echo "OS_TENANT_NAME=$1 ($uuid)"
-      export OS_TENANT_NAME="$1"
-      export OS_TENANT_ID="$uuid"
-    fi
-  fi
-}
 
 # This is required for golang
 export GOPATH="$HOME/go"
