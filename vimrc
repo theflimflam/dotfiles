@@ -50,6 +50,10 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'mattn/emmet-vim'
 Plugin 'YankRing.vim'
 
+" Writing tools for prose
+Plugin 'reedes/vim-pencil'
+Plugin 'reedes/vim-colors-pencil' " Good contrast for writing
+
 " Code
 Plugin 'vim-scripts/jshint.vim'
 Plugin 'scrooloose/syntastic'
