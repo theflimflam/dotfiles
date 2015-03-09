@@ -1,106 +1,18 @@
-# Filename:      /etc/zsh/zshrc
-# Purpose:       config file for zsh (z shell)
-# Authors:       grml-team (grml.org), (c) Michael Prokop <mika@grml.org>
-# Bug-Reports:   see http://grml.org/bugs/
-# License:       This file is licensed under the GPL v2.
-################################################################################
-# This file is sourced only for interactive shells. It
-# should contain commands to set up aliases, functions,
-# options, key bindings, etc.
+# .zshrc configuration file
+# Copyright (C) 2015 Matthew B. Gray
 #
-# Global Order: zshenv, zprofile, zshrc, zlogin
-################################################################################
-
-# USAGE
-# If you are using this file as your ~/.zshrc file, please use ~/.zshrc.pre
-# and ~/.zshrc.local for your own customisations. The former file is read
-# before ~/.zshrc, the latter is read after it. Also, consider reading the
-# refcard and the reference manual for this setup, both available from:
-#     <http://grml.org/zsh/>
-
-# Contributing:
-# If you want to help to improve grml's zsh setup, clone the grml-etc-core
-# repository from git.grml.org:
-#   git clone git://git.grml.org/grml-etc-core.git
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
 #
-# Make your changes, commit them; use 'git format-patch' to create a series
-# of patches and send those to the following address via 'git send-email':
-#   grml-etc-core@grml.org
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
 #
-# Doing so makes sure the right people get your patches for review and
-# possibly inclusion.
-
-# zsh-refcard-tag documentation:
-#   You may notice strange looking comments in this file.
-#   These are there for a purpose. grml's zsh-refcard can now be
-#   automatically generated from the contents of the actual configuration
-#   file. However, we need a little extra information on which comments
-#   and what lines of code to take into account (and for what purpose).
-#
-# Here is what they mean:
-#
-# List of tags (comment types) used:
-#   #a#     Next line contains an important alias, that should
-#           be included in the grml-zsh-refcard.
-#           (placement tag: @@INSERT-aliases@@)
-#   #f#     Next line contains the beginning of an important function.
-#           (placement tag: @@INSERT-functions@@)
-#   #v#     Next line contains an important variable.
-#           (placement tag: @@INSERT-variables@@)
-#   #k#     Next line contains an important keybinding.
-#           (placement tag: @@INSERT-keybindings@@)
-#   #d#     Hashed directories list generation:
-#               start   denotes the start of a list of 'hash -d'
-#                       definitions.
-#               end     denotes its end.
-#           (placement tag: @@INSERT-hasheddirs@@)
-#   #A#     Abbreviation expansion list generation:
-#               start   denotes the beginning of abbreviations.
-#               end     denotes their end.
-#           Lines within this section that end in '#d .*' provide
-#           extra documentation to be included in the refcard.
-#           (placement tag: @@INSERT-abbrev@@)
-#   #m#     This tag allows you to manually generate refcard entries
-#           for code lines that are hard/impossible to parse.
-#               Example:
-#                   #m# k ESC-h Call the run-help function
-#               That would add a refcard entry in the keybindings table
-#               for 'ESC-h' with the given comment.
-#           So the syntax is: #m# <section> <argument> <comment>
-#   #o#     This tag lets you insert entries to the 'other' hash.
-#           Generally, this should not be used. It is there for
-#           things that cannot be done easily in another way.
-#           (placement tag: @@INSERT-other-foobar@@)
-#
-#   All of these tags (except for m and o) take two arguments, the first
-#   within the tag, the other after the tag:
-#
-#   #<tag><section># <comment>
-#
-#   Where <section> is really just a number, which are defined by the
-#   @secmap array on top of 'genrefcard.pl'. The reason for numbers
-#   instead of names is, that for the reader, the tag should not differ
-#   much from a regular comment. For zsh, it is a regular comment indeed.
-#   The numbers have got the following meanings:
-#         0 -> "default"
-#         1 -> "system"
-#         2 -> "user"
-#         3 -> "debian"
-#         4 -> "search"
-#         5 -> "shortcuts"
-#         6 -> "services"
-#
-#   So, the following will add an entry to the 'functions' table in the
-#   'system' section, with a (hopefully) descriptive comment:
-#       #f1# Edit an alias via zle
-#       edalias() {
-#
-#   It will then show up in the @@INSERT-aliases-system@@ replacement tag
-#   that can be found in 'grml-zsh-refcard.tex.in'.
-#   If the section number is omitted, the 'default' section is assumed.
-#   Furthermore, in 'grml-zsh-refcard.tex.in' @@INSERT-aliases@@ is
-#   exactly the same as @@INSERT-aliases-default@@. If you want a list of
-#   *all* aliases, for example, use @@INSERT-aliases-all@@.
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 # zsh profiling
 # just execute 'ZSH_PROFILE_RC=1 zsh' and run 'zprof' to get the details
