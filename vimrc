@@ -56,10 +56,6 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'mattn/emmet-vim'
 Plugin 'YankRing.vim'
 
-" Writing tools for prose
-Plugin 'reedes/vim-pencil'
-Plugin 'reedes/vim-colors-pencil' " Good contrast for writing
-
 " Code
 Plugin 'vim-scripts/jshint.vim'
 Plugin 'scrooloose/syntastic'
@@ -110,7 +106,7 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\.pyc$\|\.pyo$|\.class$|\.min\..*\.js',
   \ }
 
-" Writing prose can be done with vim pencil
+" Writing prose
 Plugin 'tpope/vim-markdown'
 Plugin 'reedes/vim-pencil'
 augroup pencil
