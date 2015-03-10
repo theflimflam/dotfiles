@@ -24,6 +24,7 @@ get_path() {
   pwd -P
 }
 
+# 1. Copy over checkout dir
 CHECKOUT_REL=$( dirname $0 )
 CHECKOUT=$( get_path $CHECKOUT_REL )
 
@@ -34,3 +35,7 @@ cd $HOME
 for file in $FILES; do
   ln -sf "${CHECKOUT}/etc/${file}" ".$file"
 done
+
+# 2. Add dotfiles scripts to path
+echo "export PATH=\"\${PATH}:${CHECKOUT}\"" \
+  > "${HOME}/.dotfilesrc"

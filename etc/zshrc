@@ -3235,3 +3235,11 @@ alias pin="pwd > ${HOME}/.pindir"
 
 # This is required for golang
 export GOPATH="$HOME/go"
+
+if [ -e ${HOME}/.dotfilesrc ]; then
+  source ${HOME}/.dotfilesrc
+fi
+
+if [ -e ${HOME}/.zshrc.local ]; then
+  source ${HOME}/.zshrc.local
+fi
