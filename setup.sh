@@ -27,10 +27,10 @@ get_path() {
 CHECKOUT_REL=$( dirname $0 )
 CHECKOUT=$( get_path $CHECKOUT_REL )
 
-cd $CHECKOUT
+cd $CHECKOUT/etc
 FILES=$( ls | grep -v copy )
 
 cd $HOME
 for file in $FILES; do
-  ln -sf "${CHECKOUT}/${file}" ".$file"
+  ln -sf "${CHECKOUT}/etc/${file}" ".$file"
 done
