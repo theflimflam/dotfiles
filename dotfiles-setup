@@ -33,6 +33,7 @@ FILES=$( ls | grep -v copy )
 
 cd $HOME
 for file in $FILES; do
+  echo "Linking .$file"
   ln -sf "${CHECKOUT}/etc/${file}" ".$file"
 done
 
