@@ -41,6 +41,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'theflimflam/vim-unclutter'
 Plugin 'theflimflam/vim-common'
 Plugin 'theflimflam/vim-visible-whitespace'
+Plugin 'theflimflam/vim-execute-in-split'
 
 " Productivity
 Plugin 'matchit.zip'
