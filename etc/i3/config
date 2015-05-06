@@ -1,5 +1,63 @@
-# capslock to mod4
-#  ==> http://unix.stackexchange.com/a/151046/10329
+# i3 config to avoid chorded keystrokes
+# Copyright (C) 2015  Matthew B. Gray
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+################################################################################
+#
+# This config has been optimised to remove chorded keystrokes. I can't stop old
+# habbits, so play controls and lockscreens are going to stay chorded for now.
+#
+# Overview
+# Left screen gets workspace 1-5, right 6-10
+# Focus mode (ctrl+escape from default mode) will:
+#   1. let you run programs from dmenu with :
+#   2. ssh to hosts with s
+#   3. search for open applications using /
+#   4. change stack|tile|tabbed modes with F1,F2,F3
+#   5. change focus to a workspace with 1-10
+#   6. focus on a window relative to another window using vimish h,j,k,l
+#   7. select groups of windows with u, or fewer windows with d
+#
+# Default mode (i from focus mode, think insert in vim) will:
+#   1. have very few interactions so you can mess with the focused window
+#   2. still let you use chorded paste bot mode
+#   3. still allow play controls and lock screen stuff
+#
+# Focus-Workspace mode (w from focus mode) will:
+#   1. Go to the left|right monitor
+#   2. Cycle down windows
+#
+# Move mode (m from focus mode) will:
+#   1. Move the current windows around using vimish h,j,k,l
+#
+# Move-Workspace mode (mw from focus mode) will:
+#   1. Take focused window[s] and move them to desired workspace 1-10
+#   2. Take focused window[s] and move them to left|right with vimish h,l
+#
+# i3-meta mode ([Enter] from focus mode) will:
+#   1. reload i3 with r
+#   2. log out with \
+#   3. kill focused window[s] with x
+#
+# Resize mode (r from focus mode) will:
+#   1. Shrink windows in using vimish directional keys h,j,k,l
+#   2. Grow windows out using Shift and vimish directional keys H,J,K,L
+################################################################################
+
+# capslock disabled and remapped to mod3 with xmodmap
+#  ==> see http://unix.stackexchange.com/a/151046/10329
 set $win Mod4
 set $alt Mod1
 set $capslock Mod3
@@ -10,134 +68,232 @@ font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # Use Mouse+$win to drag floating windows to their wanted position
 floating_modifier $win
 
-# start a terminal
-bindsym $win+Return exec i3-sensible-terminal
-bindsym $capslock+Return exec /home/mbgray/bin/nautilus -w
+# Left gets workspace 1-5, right gets 6-10
+exec xrandr --output HDMI1 --left-of HDMI2
 
-# kill focused window
-bindsym $win+Shift+Q kill
+workspace 1  output HDMI1
+workspace 2  output HDMI1
+workspace 3  output HDMI1
+workspace 4  output HDMI1
+workspace 5  output HDMI1
+workspace 6  output HDMI2
+workspace 7  output HDMI2
+workspace 8  output HDMI2
+workspace 9  output HDMI2
+workspace 10 output HDMI2
 
-# change focus
-bindsym $win+h focus left
-bindsym $win+j focus down
-bindsym $win+k focus up
-bindsym $win+l focus right
-bindsym $win+Left focus left
-bindsym $win+Down focus down
-bindsym $win+Up focus up
-bindsym $win+Right focus right
+# Copy highlighted text to paste.wgtn.cat-it.co.nz
+bindsym $win+c exec ~/bin/paste-bot
 
-# move focused window
-bindsym $win+Shift+H move left
-bindsym $win+Shift+J move down
-bindsym $win+Shift+K move up
-bindsym $win+Shift+L move right
-bindsym $win+Shift+Left move left
-bindsym $win+Shift+Down move down
-bindsym $win+Shift+Up move up
-bindsym $win+Shift+Right move right
+# FIXME Screenshot to screenshots dir on webserver
+bindsym $win+Shift+C exec ~/bin/screen-rip
 
-# split in horizontal orientation
-bindsym $win+x split h
+# play controls, mykeys
+bindsym Ctrl+Shift+X exec ~/.i3/spotify-controls.sh PlayPause
+bindsym Ctrl+Shift+Z exec ~/.i3/spotify-controls.sh Next
+bindsym Ctrl+Shift+A exec ~/.i3/spotify-controls.sh Previous
 
-# split in vertical orientation
-bindsym $win+y split v
+# play controls, media keys
+bindsym XF86AudioPlay exec ~/.i3/spotify-controls.sh PlayPause
+bindsym XF86AudioNext exec ~/.i3/spotify-controls.sh Next
+bindsym XF86AudioPrev exec ~/.i3/spotify-controls.sh Previous
 
-# enter fullscreen mode for the focused container
-bindsym $win+f fullscreen
+# Volume controls
+bindsym $win+minus           exec amixer -c 1 set Master 2dB-
+bindsym $win+plus            exec amixer -c 1 set Master 2dB+
+bindsym XF86AudioLowerVolume exec amixer -c 1 set Master 1dB-
+bindsym XF86AudioRaiseVolume exec amixer -c 1 set Master 1dB+
+bindsym XF86AudioMute        exec amixer -c 1 toggle Master mute
 
-# change container layout (stacked, tabbed, default)
-bindsym $win+q layout stacking
-bindsym $win+w layout tabbed
-bindsym $win+e layout default
+bindsym Ctrl+$alt+L mode "focus"; exec ~/.i3/lock-screen.sh
 
-# toggle tiling / floating
-bindsym $win+Shift+space floating toggle
+bindsym $win+Escape mode "focus"
+mode "focus" {
+  bindsym Ctrl+$alt+L mode "focus"; exec ~/.i3/lock-screen.sh
 
-# change focus between tiling / floating windows
-bindsym $win+space focus mode_toggle
+  # dmenu run prog
+  bindsym Shift+colon exec ~/bin/run-menu
 
-# focus the parent container
-bindsym $win+semicolon focus parent
+  # dmenu ssh to host
+  bindsym s exec ~/bin/ssh-menu
 
-workspace 1  output DVI-I-1
-workspace 2  output DVI-I-1
-workspace 3  output DVI-I-1
-workspace 4  output DVI-I-1
-workspace 5  output DVI-I-1
-workspace 6  output HDMI-1
-workspace 7  output HDMI-1
-workspace 8  output HDMI-1
-workspace 9  output HDMI-1
-workspace 10 output HDMI-1
+  # dmenu search window titles (e.g. /irssi[enter] will focus irssi)
+  bindsym slash exec ~/bin/winmenu.py
 
-# switch to workspace
-bindsym $win+1 workspace "1"
-bindsym $win+2 workspace "2"
-bindsym $win+3 workspace "3"
-bindsym $win+4 workspace "4"
-bindsym $win+5 workspace "5"
-bindsym $win+6 workspace "6"
-bindsym $win+7 workspace "7"
-bindsym $win+8 workspace "8"
-bindsym $win+9 workspace "9"
-bindsym $win+0 workspace "10"
+  bindsym $win+c       exec ~/bin/paste-bot
+  bindsym $win+Shift+C exec ~/bin/screen-rip
 
-# move focused container to workspace
-bindsym $win+Shift+exclam       move workspace "1"
-bindsym $win+Shift+at           move workspace "2"
-bindsym $win+Shift+numbersign   move workspace "3"
-bindsym $win+Shift+dollar       move workspace "4"
-bindsym $win+Shift+percent      move workspace "5"
-bindsym $win+Shift+asciicircum  move workspace "6"
-bindsym $win+Shift+ampersand    move workspace "7"
-bindsym $win+Shift+asterisk     move workspace "8"
-bindsym $win+Shift+parenleft    move workspace "9"
-bindsym $win+Shift+parenright   move workspace "10"
+  bindsym i mode "default"
+  bindsym m mode "move"
+  bindsym w mode "focus-workspace"
+  bindsym r mode "resize"
+  bindsym Return mode "i3-meta"
 
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $win+Shift+R restart
+  bindsym t exec i3-sensible-terminal
+  bindsym $win+Return      exec i3-sensible-terminal
+  bindsym $capslock+Return exec ~/bin/nautilus -w
 
-# exit i3 (logs you out of your X session)
-bindsym $win+Shift+E exit
+  bindsym f          fullscreen
+  bindsym space      floating toggle
+  bindsym $win+space focus mode_toggle
+
+  # change container layout (stacked, tabbed, default)
+  bindsym F1 layout stacking
+  bindsym F2 layout tabbed
+  bindsym F3 layout default
+
+  bindsym 1 workspace 1
+  bindsym 2 workspace 2
+  bindsym 3 workspace 3
+  bindsym 4 workspace 4
+  bindsym 5 workspace 5
+  bindsym 6 workspace 6
+  bindsym 7 workspace 7
+  bindsym 8 workspace 8
+  bindsym 9 workspace 9
+  bindsym 0 workspace 10
+
+  # Split container
+  # x is mnemonic -> x axis -> horizontal
+  # y is mnemonic -> y axis -> vertical
+  bindsym x split h
+  bindsym y split v
+
+  # change focus
+  bindsym h     focus left
+  bindsym j     focus down
+  bindsym k     focus up
+  bindsym l     focus right
+  bindsym Left  focus left
+  bindsym Down  focus down
+  bindsym Up    focus up
+  bindsym Right focus right
+
+  # Focus parent/child - Think pageup/pagedown in vim, up grabs more, down grabs less
+  bindsym U focus parent
+  bindsym D focus child
+
+  # Volume controls
+  #bindsym $win+minus exec amixer -c 1 set Master 2dB-
+  #bindsym $win+plus exec amixer -c 1 set Master 2dB+
+  bindsym XF86AudioLowerVolume exec amixer -c 1 set Master 1dB-
+  bindsym XF86AudioRaiseVolume exec amixer -c 1 set Master 1dB+
+  bindsym XF86AudioMute        exec amixer -c 1 toggle Master mute
+
+  # play controls, mykeys
+  bindsym Ctrl+Shift+X exec ~/.i3/spotify-controls.sh PlayPause
+  bindsym Ctrl+Shift+Z exec ~/.i3/spotify-controls.sh Next
+  bindsym Ctrl+Shift+A exec ~/.i3/spotify-controls.sh Previous
+
+  # play controls, media keys
+  bindsym XF86AudioPlay exec ~/.i3/spotify-controls.sh PlayPause
+  bindsym XF86AudioNext exec ~/.i3/spotify-controls.sh Next
+  bindsym XF86AudioPrev exec ~/.i3/spotify-controls.sh Previous
+}
+
+# So you can get here with $win+t, w
+mode "focus-workspace" {
+  bindsym Ctrl+$alt+L mode "focus"; exec ~/.i3/lock-screen.sh
+  bindsym Escape mode "focus"
+
+  bindsym J workspace next_on_output
+  bindsym K workspace prev_on_output
+  bindsym H focus output left
+  bindsym L focus output right
+}
+
+# So you can get here with $win+t, m
+mode "move" {
+  bindsym Ctrl+$alt+L mode "focus"; exec ~/.i3/lock-screen.sh
+  bindsym Escape mode "focus"
+  bindsym w mode "move-workspace"
+
+  # move focused window
+  bindsym H     move left;  mode "focus"
+  bindsym J     move down;  mode "focus"
+  bindsym K     move up;    mode "focus"
+  bindsym L     move right; mode "focus"
+  bindsym Left  move left;  mode "focus"
+  bindsym Down  move down;  mode "focus"
+  bindsym Up    move up;    mode "focus"
+  bindsym Right move right; mode "focus"
+}
+
+# So you can get here with $win+t, mw
+mode "move-workspace" {
+  bindsym Ctrl+$alt+L exec ~/.i3/lock-screen.sh
+  bindsym Escape mode "focus"
+
+  bindsym H move output left;  focus output left;  mode "focus"
+  bindsym L move output right; focus output right; mode "focus"
+
+  # Focus follows move, similar to move focused window
+  # You'll end up looking at the same window/set on the new workspace
+  bindsym 1 move workspace 1;  workspace 1;  mode "focus"
+  bindsym 2 move workspace 2;  workspace 2;  mode "focus"
+  bindsym 3 move workspace 3;  workspace 3;  mode "focus"
+  bindsym 4 move workspace 4;  workspace 4;  mode "focus"
+  bindsym 5 move workspace 5;  workspace 5;  mode "focus"
+  bindsym 6 move workspace 6;  workspace 6;  mode "focus"
+  bindsym 7 move workspace 7;  workspace 7;  mode "focus"
+  bindsym 8 move workspace 8;  workspace 8;  mode "focus"
+  bindsym 9 move workspace 9;  workspace 9;  mode "focus"
+  bindsym 0 move workspace 10; workspace 10; mode "focus"
+
+  ## originally something like...
+  #bindsym $win+Shift+exclam       move workspace "1"
+  #bindsym $win+Shift+at           move workspace "2"
+  #bindsym $win+Shift+numbersign   move workspace "3"
+  #bindsym $win+Shift+dollar       move workspace "4"
+  #bindsym $win+Shift+percent      move workspace "5"
+  #bindsym $win+Shift+asciicircum  move workspace "6"
+  #bindsym $win+Shift+ampersand    move workspace "7"
+  #bindsym $win+Shift+asterisk     move workspace "8"
+  #bindsym $win+Shift+parenleft    move workspace "9"
+  #bindsym $win+Shift+parenright   move workspace "10"
+}
+
+mode "i3-meta" {
+  bindsym Escape mode "focus"
+
+  # log out
+  bindsym backslash exit
+
+  # restart i3 in place (pretty much a reload)
+  bindsym r restart
+
+  # kill focused window(s)
+  bindsym x kill; mode "focus"
+}
 
 # resize window (you can also use the mouse for that)
 bindsym $win+r mode "resize"
 mode "resize" {
-    # These bindings trigger as soon as you enter the resize mode
+    bindsym Escape mode "focus"
 
-    # They resize the border in the direction you pressed, e.g.
-    # when pressing left, the window is resized so that it has
-    # more space on its left
+    # Resize the border in the direction you pressed, e.g. when pressing left,
+    # the window is resized so that it has more space on its left
 
-    bindsym h resize shrink left 10 px or 10 ppt
-    bindsym Shift+H resize grow   left 10 px or 10 ppt
-
-    bindsym j resize shrink down 10 px or 10 ppt
-    bindsym Shift+J resize grow   down 10 px or 10 ppt
-
-    bindsym k resize shrink up 10 px or 10 ppt
-    bindsym Shift+K resize grow   up 10 px or 10 ppt
-
+    bindsym h resize shrink left  10 px or 10 ppt
+    bindsym j resize shrink down  10 px or 10 ppt
+    bindsym k resize shrink up    10 px or 10 ppt
     bindsym l resize shrink right 10 px or 10 ppt
-    bindsym Shift+L resize grow   right 10 px or 10 ppt
+
+    bindsym Shift+H resize grow left  10 px or 10 ppt
+    bindsym Shift+J resize grow down  10 px or 10 ppt
+    bindsym Shift+K resize grow up    10 px or 10 ppt
+    bindsym Shift+L resize grow right 10 px or 10 ppt
 
     # same bindings, but for the arrow keys
-    bindsym Left resize shrink left 10 px or 10 ppt
-    bindsym Shift+Left resize grow   left 10 px or 10 ppt
-
-    bindsym Down resize shrink down 10 px or 10 ppt
-    bindsym Shift+Down resize grow   down 10 px or 10 ppt
-
-    bindsym Up resize shrink up 10 px or 10 ppt
-    bindsym Shift+Up resize grow   up 10 px or 10 ppt
-
+    bindsym Down  resize shrink down  10 px or 10 ppt
+    bindsym Left  resize shrink left  10 px or 10 ppt
     bindsym Right resize shrink right 10 px or 10 ppt
-    bindsym Shift+Right resize grow   right 10 px or 10 ppt
+    bindsym Up    resize shrink up    10 px or 10 ppt
 
-    # back to normal: Enter or Escape
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
+    bindsym Shift+Down  resize grow down  10 px or 10 ppt
+    bindsym Shift+Left  resize grow left  10 px or 10 ppt
+    bindsym Shift+Right resize grow right 10 px or 10 ppt
+    bindsym Shift+Up    resize grow up    10 px or 10 ppt
 }
 
 # Start i3bar to display a workspace bar (plus the system information i3status
@@ -145,62 +301,3 @@ mode "resize" {
 bar {
     status_command i3status --config ~/.i3/status.conf
 }
-
-bindsym $win+p mode "fancy"
-mode "fancy" {
-  bindsym Return mode "default"
-  bindsym Escape mode "default"
-}
-
-#bindsym $win+d exec dmenu_run # dmenu (a program launcher)
-#bindsym $win+v exec /home/mbgray/bin/run-menu
-bindsym $win+v exec rofi -rnow -font "snap 10" -fg "#505050" -bg "#000000" -hlfg "#ffb964" -hlbg "#000000" -o 85
-# FIXME bindsym $win+s exec rofi -snow -font "snap 10" -fg "#505050" -bg "#000000" -hlfg "#ffb964" -hlbg "#000000" -o 85
-bindsym $win+s exec /home/mbgray/bin/ssh-menu
-bindsym $alt+Tab exec rofi -now -font "snap 10" -fg "#505050" -bg "#000000" -hlfg "#ffb964" -hlbg "#000000" -o 85
-
-bindsym $win+c exec /home/mbgray/bin/paste-bot
-bindsym $win+shift+C exec /home/mbgray/bin/screen-rip
-
-# play controls, mykeys
-bindsym Ctrl+Shift+X exec dbus-send --print-reply --session --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
-bindsym Ctrl+Shift+Z exec dbus-send --print-reply --session --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
-bindsym Ctrl+Shift+A exec dbus-send --print-reply --session --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
-
-# play controls, media keys
-bindsym XF86AudioPlay exec dbus-send --print-reply --session --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
-bindsym XF86AudioNext exec dbus-send --print-reply --session --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next
-bindsym XF86AudioPrev exec dbus-send --print-reply --session --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
-
-# Lock screen
-bindsym Ctrl+$alt+L exec i3lock -c 222222 && dbus-send --print-reply --session --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Pause
-#bindsym Ctrl+$alt+L exec i3lock -c 222222 -i $(find $HOME/Pictures -name '*.png' | shuf | head -1)
-
-# Volume controls
-bindsym $win+minus exec amixer -c 0 set Master 2dB-
-bindsym $win+plus exec amixer -c 0 set Master 2dB+
-bindsym XF86AudioLowerVolume exec amixer -c 0 set Master 1dB-
-bindsym XF86AudioRaiseVolume exec amixer -c 0 set Master 1dB+
-
-bindsym XF86AudioMute exec amixer -c 0 toggle Master mute
-
-#exec /usr/bin/gnome-settings-daemon
-#exec --no-startup-id nitrogen --restore
-
-#set $leftScreen DVI-I-1
-#set $rightScreen HDMI-0
-#workspace 1 output $leftScreen
-#workspace 2 output $leftScreen
-#workspace 3 output $rightScreen
-#workspace 4 output $rightScreen
-#workspace 5 output $leftScreen
-#workspace 6 output $rightScreen
-#workspace 7 output $leftScreen
-#workspace 8 output $leftScreen
-#workspace 9 output $rightScreen
-#workspace 0 output $rightScreen
-
-bindsym $capslock+semicolon focus output left
-bindsym $capslock+shift+colon exec i3-msg 'move output left' && i3-msg 'focus output left'
-bindsym $capslock+j workspace next_on_output
-bindsym $capslock+k workspace prev_on_output
