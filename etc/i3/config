@@ -15,12 +15,11 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 ################################################################################
-#
 # This config has been optimised to remove chorded keystrokes. I can't stop old
 # habbits, so play controls and lockscreens are going to stay chorded for now.
 #
-# Overview
 # Left screen gets workspace 1-5, right 6-10
+#
 # Focus mode (ctrl+escape from default mode) will:
 #   1. let you run programs from dmenu with :
 #   2. ssh to hosts with s
@@ -60,7 +59,7 @@
 #  ==> see http://unix.stackexchange.com/a/151046/10329
 set $win Mod4
 set $alt Mod1
-set $capslock Mod3
+#set $capslock Mod3
 
 # Font for window titles. ISO 10646 = Unicode
 font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -105,25 +104,31 @@ bindsym XF86AudioLowerVolume exec amixer -c 1 set Master 1dB-
 bindsym XF86AudioRaiseVolume exec amixer -c 1 set Master 1dB+
 bindsym XF86AudioMute        exec amixer -c 1 toggle Master mute
 
+# change container layout (stacked, tabbed, default)
+bindsym F1 layout stacking
+bindsym F2 layout tabbed
+bindsym F3 layout default
+
 bindsym Ctrl+$alt+L mode "focus"; exec ~/.i3/lock-screen.sh
 
 bindsym $win+Escape mode "focus"
+bindsym Mod3 mode "focus"
 mode "focus" {
   bindsym Ctrl+$alt+L mode "focus"; exec ~/.i3/lock-screen.sh
 
   # dmenu run prog
-  bindsym Shift+colon exec ~/bin/run-menu
+  bindsym Shift+colon exec ~/bin/run-menu && i3-msg 'mode default'
 
   # dmenu ssh to host
   bindsym s exec ~/bin/ssh-menu
 
   # dmenu search window titles (e.g. /irssi[enter] will focus irssi)
-  bindsym slash exec ~/bin/winmenu.py
+  bindsym slash exec ~/bin/winmenu.py && i3-msg 'mode default'
 
   bindsym $win+c       exec ~/bin/paste-bot
   bindsym $win+Shift+C exec ~/bin/screen-rip
 
-  bindsym i mode "default"
+  bindsym Escape mode "default"
   bindsym m mode "move"
   bindsym w mode "focus-workspace"
   bindsym r mode "resize"
@@ -131,11 +136,12 @@ mode "focus" {
 
   bindsym t exec i3-sensible-terminal
   bindsym $win+Return      exec i3-sensible-terminal
-  bindsym $capslock+Return exec ~/bin/nautilus -w
+  #bindsym $capslock+Return exec ~/bin/nautilus -w
 
-  bindsym f          fullscreen
-  bindsym space      floating toggle
-  bindsym $win+space focus mode_toggle
+  bindsym f     fullscreen
+
+  # focus on floating window
+  bindsym space focus mode_toggle
 
   # change container layout (stacked, tabbed, default)
   bindsym F1 layout stacking
@@ -200,6 +206,17 @@ mode "focus-workspace" {
   bindsym K workspace prev_on_output
   bindsym H focus output left
   bindsym L focus output right
+
+  bindsym 1 workspace 1
+  bindsym 2 workspace 2
+  bindsym 3 workspace 3
+  bindsym 4 workspace 4
+  bindsym 5 workspace 5
+  bindsym 6 workspace 6
+  bindsym 7 workspace 7
+  bindsym 8 workspace 8
+  bindsym 9 workspace 9
+  bindsym 0 workspace 10
 }
 
 # So you can get here with $win+t, m
@@ -208,15 +225,18 @@ mode "move" {
   bindsym Escape mode "focus"
   bindsym w mode "move-workspace"
 
+  # make window a floating window
+  bindsym space floating toggle
+
   # move focused window
-  bindsym H     move left;  mode "focus"
-  bindsym J     move down;  mode "focus"
-  bindsym K     move up;    mode "focus"
-  bindsym L     move right; mode "focus"
-  bindsym Left  move left;  mode "focus"
-  bindsym Down  move down;  mode "focus"
-  bindsym Up    move up;    mode "focus"
-  bindsym Right move right; mode "focus"
+  bindsym H     move left
+  bindsym J     move down
+  bindsym K     move up
+  bindsym L     move right
+  bindsym Left  move left
+  bindsym Down  move down
+  bindsym Up    move up
+  bindsym Right move right
 }
 
 # So you can get here with $win+t, mw
@@ -224,21 +244,21 @@ mode "move-workspace" {
   bindsym Ctrl+$alt+L exec ~/.i3/lock-screen.sh
   bindsym Escape mode "focus"
 
-  bindsym H move output left;  focus output left;  mode "focus"
-  bindsym L move output right; focus output right; mode "focus"
+  bindsym H move output left;  focus output left;  mode "move"
+  bindsym L move output right; focus output right; mode "move"
 
   # Focus follows move, similar to move focused window
   # You'll end up looking at the same window/set on the new workspace
-  bindsym 1 move workspace 1;  workspace 1;  mode "focus"
-  bindsym 2 move workspace 2;  workspace 2;  mode "focus"
-  bindsym 3 move workspace 3;  workspace 3;  mode "focus"
-  bindsym 4 move workspace 4;  workspace 4;  mode "focus"
-  bindsym 5 move workspace 5;  workspace 5;  mode "focus"
-  bindsym 6 move workspace 6;  workspace 6;  mode "focus"
-  bindsym 7 move workspace 7;  workspace 7;  mode "focus"
-  bindsym 8 move workspace 8;  workspace 8;  mode "focus"
-  bindsym 9 move workspace 9;  workspace 9;  mode "focus"
-  bindsym 0 move workspace 10; workspace 10; mode "focus"
+  bindsym 1 move workspace 1;  workspace 1;  mode "move"
+  bindsym 2 move workspace 2;  workspace 2;  mode "move"
+  bindsym 3 move workspace 3;  workspace 3;  mode "move"
+  bindsym 4 move workspace 4;  workspace 4;  mode "move"
+  bindsym 5 move workspace 5;  workspace 5;  mode "move"
+  bindsym 6 move workspace 6;  workspace 6;  mode "move"
+  bindsym 7 move workspace 7;  workspace 7;  mode "move"
+  bindsym 8 move workspace 8;  workspace 8;  mode "move"
+  bindsym 9 move workspace 9;  workspace 9;  mode "move"
+  bindsym 0 move workspace 10; workspace 10; mode "move"
 
   ## originally something like...
   #bindsym $win+Shift+exclam       move workspace "1"
@@ -301,3 +321,6 @@ mode "resize" {
 bar {
     status_command i3status --config ~/.i3/status.conf
 }
+
+# Set focus mode on log in
+exec i3-msg 'mode "focus"'
