@@ -68,18 +68,18 @@ font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 floating_modifier $win
 
 # Left gets workspace 1-5, right gets 6-10
-exec xrandr --output HDMI1 --left-of HDMI2
+exec xrandr --output HDMI1 --right-of HDMI2
 
-workspace 1  output HDMI1
-workspace 2  output HDMI1
-workspace 3  output HDMI1
-workspace 4  output HDMI1
-workspace 5  output HDMI1
-workspace 6  output HDMI2
-workspace 7  output HDMI2
-workspace 8  output HDMI2
-workspace 9  output HDMI2
-workspace 10 output HDMI2
+workspace 1  output HDMI2
+workspace 2  output HDMI2
+workspace 3  output HDMI2
+workspace 4  output HDMI2
+workspace 5  output HDMI2
+workspace 6  output HDMI1
+workspace 7  output HDMI1
+workspace 8  output HDMI1
+workspace 9  output HDMI1
+workspace 10 output HDMI1
 
 # Copy highlighted text to paste.wgtn.cat-it.co.nz
 bindsym $win+c exec ~/bin/paste-bot
@@ -117,13 +117,13 @@ mode "focus" {
   bindsym Ctrl+$alt+L mode "focus"; exec ~/.i3/lock-screen.sh
 
   # dmenu run prog
-  bindsym Shift+colon exec ~/bin/run-menu && i3-msg 'mode default'
+  bindsym Shift+colon exec ~/bin/run-menu; mode default
 
   # dmenu ssh to host
-  bindsym s exec ~/bin/ssh-menu
+  bindsym s exec ~/bin/ssh-menu; mode default
 
   # dmenu search window titles (e.g. /irssi[enter] will focus irssi)
-  bindsym slash exec ~/bin/winmenu.py && i3-msg 'mode default'
+  bindsym slash exec ~/bin/winmenu.py; mode default
 
   bindsym $win+c       exec ~/bin/paste-bot
   bindsym $win+Shift+C exec ~/bin/screen-rip
@@ -321,6 +321,3 @@ mode "resize" {
 bar {
     status_command i3status --config ~/.i3/status.conf
 }
-
-# Set focus mode on log in
-exec i3-msg 'mode "focus"'
