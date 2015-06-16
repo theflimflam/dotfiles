@@ -62,11 +62,11 @@ Plugin 'vim-scripts/jshint.vim'
 Plugin 'scrooloose/syntastic'
 let g:syntastic_javascript_checkers = ['jshint']
 Plugin 'fatih/vim-go'
+Plugin 'altercation/vim-colors-solarized'
 
-" Set solarized, but only if gui is running (else it looks a bit messed up)
-if ( has('gui_running'))
-    Plugin 'altercation/vim-colors-solarized'
-endif
+" Ruby block objects
+Plugin 'kana/vim-textobj-user'
+Plugin 'nelstrom/vim-textobj-rubyblock'
 
 Plugin 'claco/jasmine.vim'
 Plugin 'kchmck/vim-coffee-script'
@@ -125,11 +125,8 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 " solarized is only ready after vundle#end()
-" Set color scheme if gui is there
-if ( has('gui_running'))
-    colorscheme solarized
-    set background=dark
-endif
+colorscheme solarized
+set background=dark
 
 " load my registers
 if filereadable($HOME . '/.vimregisters')
