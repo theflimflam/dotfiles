@@ -143,6 +143,16 @@ if filereadable("/etc/vim/vimrc.local")
     source /etc/vim/vimrc.local
 endif
 
+" If we're in a fresh vim, under $HOME
+" AND there is a pinned directory present
+"   THEN Change to this directory
+if filereadable($HOME . "/.pindir") && getcwd() == $HOME
+    let pindir_lines = readfile($HOME . "/.pindir")
+    if len(pindir_lines) > 0
+      exe "chdir " . pindir_lines[0]
+    endif
+endif
+
 if iCanHazVundle == 1
     echo "Install plugins, reload vim"
     :BundleInstall
