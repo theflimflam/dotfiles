@@ -73,7 +73,8 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'elzr/vim-json'
 let g:vim_json_syntax_conceal = 0 " Don't hide quotes in json files
 
-if filereadable("/usr/bin/ctags-exuberant")
+" FIXME ctags is installed, but not here
+"if filereadable("/usr/bin/ctags-exuberant")
   " exuberant ctags fu
   Plugin 'xolox/vim-misc'
   Plugin 'xolox/vim-easytags'
@@ -83,14 +84,21 @@ if filereadable("/usr/bin/ctags-exuberant")
   map <F4> :TagbarToggle<CR>
   " autofocus on Tagbar open
   let g:tagbar_autofocus = 1
-endif
+"endif
 
-if filereadable("/usr/bin/git")
+" Even better...
+" FIXME better way to figure out if you're running git much?
+"let output = system(":!hash git 2>/dev/null")
+"if !v:shell_error
+"if filereadable("/usr/bin/git")
   Plugin 'tpope/vim-fugitive'
   Plugin 'mattn/gist-vim'
   " Cool plugin, but slows down too much
   "Plugin 'jaxbot/github-issues.vim'
-endif
+"endif
+
+" Terminal in a split
+Plugin 'vim-scripts/Conque-Shell'
 
 if filereadable("/usr/bin/npm")
   " If we've got npm, I'm going to assume there's node
@@ -151,6 +159,10 @@ if filereadable($HOME . "/.pindir") && getcwd() == $HOME
     if len(pindir_lines) > 0
       exe "chdir " . pindir_lines[0]
     endif
+
+    " If you've got a buffer open
+    " chdir to this buffer
+    " It might be more interesting to do this only if
 endif
 
 if iCanHazVundle == 1
@@ -158,3 +170,7 @@ if iCanHazVundle == 1
     :BundleInstall
     :source $HOME/.vimrc
 endif
+
+" TODO find a way to do this generically
+" Plugin?
+:set dictionary=/usr/share/dict/words
