@@ -73,38 +73,26 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'elzr/vim-json'
 let g:vim_json_syntax_conceal = 0 " Don't hide quotes in json files
 
-" FIXME ctags is installed, but not here
-"if filereadable("/usr/bin/ctags-exuberant")
-  " exuberant ctags fu
-  Plugin 'xolox/vim-misc'
-  Plugin 'xolox/vim-easytags'
-  Plugin 'majutsushi/tagbar'
+" exuberant ctags fu
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-easytags'
+Plugin 'majutsushi/tagbar'
 
-  " toggle Tagbar display
-  map <F4> :TagbarToggle<CR>
-  " autofocus on Tagbar open
-  let g:tagbar_autofocus = 1
-"endif
+" toggle tagbar, focus on open
+map <F4> :TagbarToggle<CR>
+let g:tagbar_autofocus = 1
 
-" Even better...
-" FIXME better way to figure out if you're running git much?
-"let output = system(":!hash git 2>/dev/null")
-"if !v:shell_error
-"if filereadable("/usr/bin/git")
-  Plugin 'tpope/vim-fugitive'
-  Plugin 'mattn/gist-vim'
-  " Cool plugin, but slows down too much
-  "Plugin 'jaxbot/github-issues.vim'
-"endif
+Plugin 'tpope/vim-fugitive'
+Plugin 'mattn/gist-vim'
 
-" Terminal in a split
-Plugin 'vim-scripts/Conque-Shell'
-
-if filereadable("/usr/bin/npm")
-  " If we've got npm, I'm going to assume there's node
-  " node means fuzzy completion in node
-  echom system('cd $HOME/.vim/bundle/tern_for_vim && npm install')
-  Plugin 'marijnh/tern_for_vim'
+" Javascript parsing engine
+Plugin 'marijnh/tern_for_vim'
+if executable("npm")
+  let tern_path = $HOME . "/.vim/bundle/tern_for_vim"
+  if isdirectory(tern_path)
+    echom "Updating tern npm modules"
+    echom system("cd ".tern_path." && npm install")
+  endif
 endif
 
 " Fuzzy finder
@@ -173,4 +161,4 @@ endif
 
 " TODO find a way to do this generically
 " Plugin?
-:set dictionary=/usr/share/dict/words
+set dictionary=/usr/share/dict/words
