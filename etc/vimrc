@@ -90,8 +90,7 @@ Plugin 'marijnh/tern_for_vim'
 if executable("npm")
   let tern_path = $HOME . "/.vim/bundle/tern_for_vim"
   if isdirectory(tern_path)
-    echom "Updating tern npm modules"
-    echom system("cd ".tern_path." && npm install")
+    silent !("cd ".tern_path." && npm install")
   endif
 endif
 
