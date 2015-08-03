@@ -3229,9 +3229,12 @@ zrclocal
 
 # Pin, save a dir for later
 if [ -e ${HOME}/.pindir ]; then
-  cd $(cat ${HOME}/.pindir)
+  export pind=$(cat ${HOME}/.pindir)
+  cd "$pind"
 fi
+
 alias pin="pwd > ${HOME}/.pindir"
+alias cdd="cd $pind"
 
 # This is required for golang
 export GOPATH="$HOME/go"

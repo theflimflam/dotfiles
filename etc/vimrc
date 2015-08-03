@@ -39,7 +39,7 @@ Plugin 'gmarik/Vundle.vim'
 
 " General
 Plugin 'theflimflam/vim-unclutter'
-Plugin 'theflimflam/vim-common'
+"Plugin 'theflimflam/vim-common'
 Plugin 'theflimflam/vim-visible-whitespace'
 Plugin 'theflimflam/vim-execute-in-split'
 
@@ -63,6 +63,8 @@ Plugin 'scrooloose/syntastic'
 let g:syntastic_javascript_checkers = ['jshint']
 Plugin 'fatih/vim-go'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'tpope/vim-rails'
+"Plugin 'thoughtbot/vim-rspec' TODO
 
 " Ruby block objects
 Plugin 'kana/vim-textobj-user'
@@ -161,3 +163,53 @@ endif
 " TODO find a way to do this generically
 " Plugin?
 set dictionary=/usr/share/dict/words
+
+" Filetype switcher
+"use ,t to change filetype
+map ,tt :set filetype=text<CR>
+map ,tm :set filetype=markdown<CR>
+map ,tp :set filetype=perl<CR>
+map ,th :set filetype=eruby<CR>
+map ,tr :set filetype=ruby<CR>
+map ,ts :set filetype=sql<CR>
+map ,tx :set filetype=xml<CR>
+map ,tj :set filetype=javascript<CR>
+map ,ts :set filetype=sass<CR>
+map ,tl :set filetype=less<CR>
+map ,tv :set filetype=vim<CR>
+
+" bind ,s to spellcheck
+map ,s <Esc>:!aspell -c --dont-backup "%"<CR>:e! "%"<CR><CR>
+
+" Search mappings: These will make it so that going to the next one in a
+" search will center on the line it's found in.
+map N Nzz
+map n nzz
+
+" Treat long lines as break lines (useful when moving around in them)
+map j gj
+map k gk
+
+" turn off EX mode (it annoys me, I don't use it)
+":map Q <Nop>
+" Shuffle paragraphs, don't use Q for ex mode (it's annoying to trigger)
+" - http://alols.github.io/2012/11/07/writing-prose-with-vim/
+map Q gqap
+
+" save as sudo
+ca w!! w !sudo tee "%"
+
+" Spellcheck with ,s
+map ,s <Esc>:!aspell -c --dont-backup "%"<CR>:e! "%"<CR><CR>
+
+" Non chorded splits
+set wmh=0               " <-- don't show contents of windows, just stack em
+map <C-J> <C-W>j<C-W>-  " <-- golden ratio
+map <C-K> <C-W>k<C-W>-
+map <C-L> <C-W>l<C-W>-
+map <C-H> <C-W>h<C-W>-
+
+" Control C is copy (like copy paste-a)
+map <C-c> "+y<CR>
+
+set relativenumber
