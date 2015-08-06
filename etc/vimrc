@@ -14,6 +14,8 @@
 " You should have received a copy of the GNU General Public License
 " along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+let mapleader = ","
+
 syntax enable       " enable syntax highlighting
 set nocompatible    " be iMproved, required for vundle
 filetype off        " required for vundle
@@ -39,13 +41,9 @@ Plugin 'gmarik/Vundle.vim'
 
 " General
 Plugin 'theflimflam/vim-unclutter'
-"Plugin 'theflimflam/vim-common'
 Plugin 'theflimflam/vim-visible-whitespace'
-Plugin 'theflimflam/vim-execute-in-split'
 
 " Productivity
-Plugin 'matchit.zip'
-Plugin 'fisadev/FixedTaskList.vim'
 Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'tpope/vim-surround'
 Plugin 'roman/golden-ratio'
@@ -58,43 +56,25 @@ Plugin 'mattn/emmet-vim'
 Plugin 'YankRing.vim'
 
 " Code
-Plugin 'vim-scripts/jshint.vim'
 Plugin 'scrooloose/syntastic'
-let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_javascript_checkers = ['eslint']
 Plugin 'fatih/vim-go'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tpope/vim-rails'
-"Plugin 'thoughtbot/vim-rspec' TODO
 
 " Ruby block objects
 Plugin 'kana/vim-textobj-user'
 Plugin 'nelstrom/vim-textobj-rubyblock'
 
-Plugin 'claco/jasmine.vim'
-Plugin 'kchmck/vim-coffee-script'
 Plugin 'elzr/vim-json'
 let g:vim_json_syntax_conceal = 0 " Don't hide quotes in json files
 
 " exuberant ctags fu
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-easytags'
-Plugin 'majutsushi/tagbar'
-
-" toggle tagbar, focus on open
-map <F4> :TagbarToggle<CR>
-let g:tagbar_autofocus = 1
 
 Plugin 'tpope/vim-fugitive'
 Plugin 'mattn/gist-vim'
-
-" Javascript parsing engine
-Plugin 'marijnh/tern_for_vim'
-if executable("npm")
-  let tern_path = $HOME . "/.vim/bundle/tern_for_vim"
-  if isdirectory(tern_path)
-    silent !("cd ".tern_path." && npm install")
-  endif
-endif
 
 " Fuzzy finder
 Plugin 'kien/ctrlp.vim'
@@ -120,6 +100,12 @@ augroup END
 
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+if iCanHazVundle == 1
+    echo "Install plugins, reload vim"
+    :BundleInstall
+    :source $HOME/.vimrc
+endif
 
 " solarized is only ready after vundle#end()
 colorscheme solarized
@@ -154,62 +140,101 @@ if filereadable($HOME . "/.pindir") && getcwd() == $HOME
     " It might be more interesting to do this only if
 endif
 
-if iCanHazVundle == 1
-    echo "Install plugins, reload vim"
-    :BundleInstall
-    :source $HOME/.vimrc
-endif
-
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " TODO find a way to do this generically
-" Plugin?
 set dictionary=/usr/share/dict/words
+" TODO merge these two?
+map ,s <Esc>:!aspell -c --dont-backup "%"<CR>:e! "%"<CR><CR>
 
 " Filetype switcher
 "use ,t to change filetype
-map ,tt :set filetype=text<CR>
-map ,tm :set filetype=markdown<CR>
-map ,tp :set filetype=perl<CR>
-map ,th :set filetype=eruby<CR>
-map ,tr :set filetype=ruby<CR>
-map ,ts :set filetype=sql<CR>
-map ,tx :set filetype=xml<CR>
-map ,tj :set filetype=javascript<CR>
-map ,ts :set filetype=sass<CR>
-map ,tl :set filetype=less<CR>
-map ,tv :set filetype=vim<CR>
+nmap <leader>tt :set filetype=text<CR>
+nmap <leader>tm :set filetype=markdown<CR>
+nmap <leader>tp :set filetype=perl<CR>
+nmap <leader>th :set filetype=eruby<CR>
+nmap <leader>tr :set filetype=ruby<CR>
+nmap <leader>ts :set filetype=sql<CR>
+nmap <leader>tx :set filetype=xml<CR>
+nmap <leader>tj :set filetype=javascript<CR>
+nmap <leader>ts :set filetype=sass<CR>
+nmap <leader>tl :set filetype=less<CR>
+nmap <leader>tv :set filetype=vim<CR>
 
-" bind ,s to spellcheck
-map ,s <Esc>:!aspell -c --dont-backup "%"<CR>:e! "%"<CR><CR>
+set wildmode=list:longest,full " Cool tab completion stuff, but ctrl+n that shit
+set backspace=2                " Backspace rolls up new lines and removes tabs
+set nohidden                   " CLOSE THE BUFFER when you close the tab.
+set autoread                   " When someone modifies a file externally, autoread it back in
+set pastetoggle=<F9>           " Paste Mode! Dang!
+
+set scrolloff=3                " when scrolling, keep cursor 3 lines away from screen border
+set foldmethod=manual          " Easier to manage this myself imho
+set scrolloff=3                " when scrolling, keep cursor 3 lines away from screen border
+set spl=en spell               " Use english for spellchecking,
+set nospell                    " ...don't spellcheck by default
+
+set showmatch                  " Show matching brackets.
+set mat=2                      " ...but only blink the match for 200 ms
+
+set hlsearch                   " Highlight my searches :)
+set ignorecase                 " Do case insensitive matching.
+set smartcase                  " Do smart case matching.
+set incsearch                  " Incremental search.
+set magic                      " Allows pattern matching with special characters
+
+set expandtab                  " Pressing tab inserts spaces
+set autoindent                 " indent on newlines
+set smartindent                " recognise syntax of files
+set tabstop=2                  " 2 spaces per tab
+set softtabstop=2              " 2 spaces per tab
+set shiftwidth=2               " 2 spaces per tab
+
+autocmd Filetype perl setlocal ts=4 sts=4 sw=4
+
+" Quickfix window when shelling out to grep
+" Also works for Git grep
+"   e.g. :Ggrep FIXME
+"   see https://github.com/tpope/vim-fugitive
+autocmd QuickFixCmdPost *grep* cwindow
+
+" Autojump to last position VIM was at when opening a file.
+" See --> http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
+"
+" Tell vim to remember certain things when we exit
+" '10  :  marks will be remembered for up to 10 previously edited files
+" "100 :  will save up to 100 lines for each register
+" :20  :  up to 20 lines of command-line history will be remembered
+" %    :  saves and restores the buffer list
+" n... :  where to save the viminfo files
+set viminfo='10,\"100,:20,%,n~/.vim/info
+
+" On git commit, position cursor at the top
+autocmd BufReadPost COMMIT_EDITMSG exe "normal! gg"
 
 " Search mappings: These will make it so that going to the next one in a
 " search will center on the line it's found in.
-map N Nzz
-map n nzz
-
-" Treat long lines as break lines (useful when moving around in them)
-map j gj
-map k gk
+nmap N Nzz
+nmap n nzz
 
 " turn off EX mode (it annoys me, I don't use it)
 ":map Q <Nop>
-" Shuffle paragraphs, don't use Q for ex mode (it's annoying to trigger)
+" More usefully, reformat paragraphs with vim rules
 " - http://alols.github.io/2012/11/07/writing-prose-with-vim/
 map Q gqap
 
-" save as sudo
+" save with sudo
 ca w!! w !sudo tee "%"
-
-" Spellcheck with ,s
-map ,s <Esc>:!aspell -c --dont-backup "%"<CR>:e! "%"<CR><CR>
 
 " Non chorded splits
 set wmh=0               " <-- don't show contents of windows, just stack em
-map <C-J> <C-W>j<C-W>-  " <-- golden ratio
-map <C-K> <C-W>k<C-W>-
-map <C-L> <C-W>l<C-W>-
-map <C-H> <C-W>h<C-W>-
+nmap <C-J> <C-W>j<C-W>-  " <-- golden ratio after movement
+nmap <C-K> <C-W>k<C-W>-
+nmap <C-L> <C-W>l<C-W>-
+nmap <C-H> <C-W>h<C-W>-
 
 " Control C is copy (like copy paste-a)
-map <C-c> "+y<CR>
+"nmap <C-c> "+y<CR>
 
 set relativenumber
+
+" For code reviews, human readability etc.
+nmap <F8> :set nolist<CR> :set number<CR> :set nu<CR>
