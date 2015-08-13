@@ -32,12 +32,9 @@ endif
 set rtp+=~/.vim/bundle/Vundle.vim
 call plug#begin()
 
-" let Vundle manage Vundle, required
-Plug 'gmarik/Vundle.vim'
-
 " General
-Plug 'theflimflam/vim-unclutter'
-Plug 'theflimflam/vim-visible-whitespace'
+Plug 'git@github.com:theflimflam/vim-unclutter.git'
+Plug 'git@github.com:theflimflam/vim-visible-whitespace.git'
 
 " Productivity
 Plug 'michaeljsmith/vim-indent-object'
@@ -56,7 +53,9 @@ Plug 'YankRing.vim'
 Plug 'scrooloose/syntastic'
 let g:syntastic_javascript_checkers = ['eslint']
 Plug 'fatih/vim-go'
-Plug 'altercation/vim-colors-solarized'
+"Plug 'altercation/vim-colors-solarized'
+" TODO
+Plug 'sickill/vim-monokai'
 Plug 'tpope/vim-rails'
 Plug 'nelstrom/vim-textobj-rubyblock' | Plug 'kana/vim-textobj-user'
 
@@ -103,8 +102,10 @@ if !isdirectory(plugins_dir)
 endif
 
 " solarized is only ready after vundle#end()
-colorscheme solarized
-set background=dark
+"colorscheme solarized
+"set background=dark
+colorscheme monokai
+set guifont=Source\ Code\ Pro:h11
 
 " load my registers
 if filereadable($HOME . '/.vimregisters')
@@ -233,3 +234,9 @@ set relativenumber
 
 " For code reviews, human readability etc.
 nmap <F8> :set nolist<CR> :set number<CR> :set nu<CR>
+
+" Show trailing whitespace and spaces before a tab:
+highlight ExtraWhitespace ctermbg=red guibg=red
+:match ExtraWhitespace /\s\+$\| \+\ze\t/
+
+imap jj <Esc>
