@@ -53,11 +53,18 @@ Plug 'YankRing.vim'
 Plug 'scrooloose/syntastic'
 let g:syntastic_javascript_checkers = ['eslint']
 Plug 'fatih/vim-go'
-"Plug 'altercation/vim-colors-solarized'
-" TODO
-Plug 'sickill/vim-monokai'
+
 Plug 'tpope/vim-rails'
 Plug 'nelstrom/vim-textobj-rubyblock' | Plug 'kana/vim-textobj-user'
+
+""""""""""""""""""""""""""""""""""""""""
+"Color schemes
+"Plug 'altercation/vim-colors-solarized'
+"colorscheme solarized
+"set background=dark
+
+Plug 'sickill/vim-monokai'
+"Plug 'ronny/birds-of-paradise.vim'
 
 Plug 'elzr/vim-json'
 let g:vim_json_syntax_conceal = 0 " Don't hide quotes in json files
@@ -101,11 +108,10 @@ if !isdirectory(plugins_dir)
     silent source $HOME/.vimrc
 endif
 
-" solarized is only ready after vundle#end()
-"colorscheme solarized
-"set background=dark
+" Colors
 colorscheme monokai
 set guifont=Source\ Code\ Pro:h11
+
 
 " load my registers
 if filereadable($HOME . '/.vimregisters')
@@ -240,3 +246,8 @@ highlight ExtraWhitespace ctermbg=red guibg=red
 :match ExtraWhitespace /\s\+$\| \+\ze\t/
 
 imap jj <Esc>
+
+iabbrev waht what
+iabbrev tehn then
+iabbrev teh the
+iabbrev functino function
