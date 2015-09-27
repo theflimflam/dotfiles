@@ -3228,13 +3228,18 @@ zrclocal
 #
 
 # Pin, save a dir for later
-if [ -e ${HOME}/.pindir ]; then
-  export pind=$(cat ${HOME}/.pindir)
-  cd "$pind"
-fi
-
 alias pin="pwd > ${HOME}/.pindir"
-alias cdd="cd $pind"
+
+# Quick nav to pin dir with cdd
+function cdd() {
+  if [ -e ${HOME}/.pindir ]; then
+    export pind=$(cat ${HOME}/.pindir)
+    cd "$pind"
+  fi
+}
+
+# Start terminal in that dir :)
+cdd
 
 # This is required for golang
 export GOPATH="$HOME/go"
@@ -3246,3 +3251,28 @@ fi
 if [ -e ${HOME}/.zshrc.local ]; then
   source ${HOME}/.zshrc.local
 fi
+
+##############################################################################
+## Prompt
+##############################################################################
+
+cur_git_branch() {
+ git branch --no-color 2>/dev/null|awk '/^\* (.*)/ {b=$2} END {if (b) {print "[" b "]"}}'
+}
+
+setopt PROMPT_SUBST
+case $TERM in
+   xterm*|rxvt*|screen|Apple_Terminal)
+       PROMPT=$(echo '%{\e]0;%n@%m: %~\a\e[%(?.32.31)m%}%# %{\e[m%}')
+       RPROMPT=$(echo '$(cur_git_branch) %{\e[32m%}%3~ %{\e[m%}%U%T%u')
+
+       # Echo current process name in the xterm title bar
+       preexec () {
+         #set_proxies
+         print -Pn "\e]0;$1\a"
+       }
+       ;;
+   *)
+       PROMPT="[%n@%m] %# "
+       ;;
+esac

@@ -45,9 +45,10 @@ nmap <silent> <C-w>- :GoldenRatioResize<CR>
 "Plug 'vim-scripts/Align'
 Plug 'junegunn/vim-easy-align'
 Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/nerdcommenter'
+" Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-commentary'
 Plug 'mattn/emmet-vim'
-Plug 'YankRing.vim'
+" Plug 'YankRing.vim' Something is fucked up about this plugin :(
 
 " Code
 Plug 'scrooloose/syntastic'
@@ -55,7 +56,8 @@ let g:syntastic_javascript_checkers = ['eslint']
 Plug 'fatih/vim-go'
 
 Plug 'tpope/vim-rails'
-Plug 'nelstrom/vim-textobj-rubyblock' | Plug 'kana/vim-textobj-user'
+" Plug 'nelstrom/vim-textobj-rubyblock' | Plug 'kana/vim-textobj-user'
+Plug 'rhysd/vim-textobj-ruby' | Plug 'kana/vim-textobj-user'
 
 """"""""""""""""""""""""""""""""""""""""
 "Color schemes
@@ -111,6 +113,7 @@ endif
 " Colors
 colorscheme monokai
 set guifont=Source\ Code\ Pro:h11
+"set guifont=hack:h11
 
 
 " load my registers
@@ -190,6 +193,8 @@ set tabstop=2                  " 2 spaces per tab
 set softtabstop=2              " 2 spaces per tab
 set shiftwidth=2               " 2 spaces per tab
 
+set colorcolumn=100            " Show 100th char visually
+
 autocmd Filetype perl setlocal ts=4 sts=4 sw=4
 
 " Quickfix window when shelling out to grep
@@ -237,6 +242,7 @@ nmap <C-H> <C-W>h<C-W>-
 "nmap <C-c> "+y<CR>
 
 set relativenumber
+set number
 
 " For code reviews, human readability etc.
 nmap <F8> :set nolist<CR> :set number<CR> :set nu<CR>
@@ -250,4 +256,19 @@ imap jj <Esc>
 iabbrev waht what
 iabbrev tehn then
 iabbrev teh the
+iabbrev hte the
 iabbrev functino function
+iabbrev iamge image
+
+" In visual mode, // searches for highlighted text
+vnoremap // y/<C-R>"<CR>
+
+" relative number when browsing folders
+" From http://stackoverflow.com/questions/8730702
+" let g:netrw_bufsettings = 'noma nomod nu nobl nowrap ro'
+
+" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+vmap <Enter> <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
