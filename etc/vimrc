@@ -34,7 +34,7 @@ call plug#begin()
 
 " General
 Plug 'git@github.com:theflimflam/vim-unclutter.git'
-Plug 'git@github.com:theflimflam/vim-visible-whitespace.git'
+" Plug 'git@github.com:theflimflam/vim-visible-whitespace.git'
 
 " Productivity
 Plug 'michaeljsmith/vim-indent-object'
@@ -72,15 +72,18 @@ Plug 'elzr/vim-json'
 let g:vim_json_syntax_conceal = 0 " Don't hide quotes in json files
 
 " exuberant ctags fu
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-easytags'
+" Plug 'xolox/vim-misc'
+" Plug 'xolox/vim-easytags'
+" Plug 'majutsushi/tagbar'
 
 Plug 'tpope/vim-fugitive'
 Plug 'mattn/gist-vim'
 
-" Fuzzy finder
+" Fuzzy finders
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Ctrl-P
 Plug 'kien/ctrlp.vim'
-let g:ctrlp_map = ',e'
+" let g:ctrlp_map = ',e'
 nmap ,g :CtrlPBufTag<CR>
 nmap ,G :CtrlPBufTagAll<CR>
 nmap ,f :CtrlPLine<CR>
@@ -90,6 +93,14 @@ let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/](\.git|\.hg|\.svn|tmp)$',
   \ 'file': '\.pyc$\|\.pyo$|\.class$|\.min\..*\.js',
   \ }
+" Unite...
+" Plug 'Shougo/unite.vim'
+" nmap ,e :Unite file buffer<CR>
+" FZF, Go finder
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+nmap ,e :FZF<CR>
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 
 " Writing prose
 Plug 'tpope/vim-markdown'
@@ -193,7 +204,7 @@ set tabstop=2                  " 2 spaces per tab
 set softtabstop=2              " 2 spaces per tab
 set shiftwidth=2               " 2 spaces per tab
 
-set colorcolumn=100            " Show 100th char visually
+set colorcolumn=120            " Show 100th char visually
 
 autocmd Filetype perl setlocal ts=4 sts=4 sw=4
 
@@ -248,10 +259,10 @@ set number
 nmap <F8> :set nolist<CR> :set number<CR> :set nu<CR>
 
 " Show trailing whitespace and spaces before a tab:
-highlight ExtraWhitespace ctermbg=red guibg=red
-:match ExtraWhitespace /\s\+$\| \+\ze\t/
+" highlight ExtraWhitespace ctermbg=red guibg=red
+" :match ExtraWhitespace /\s\+$\| \+\ze\t/
 
-imap jj <Esc>
+" imap jj <Esc>
 
 iabbrev waht what
 iabbrev tehn then
@@ -272,3 +283,10 @@ vmap <Enter> <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
+" Let people use the mouse
+set mouse=a
+
+" Clipboard fu
+vnoremap <C-c> "*y
+nnoremap <C-c> "*y

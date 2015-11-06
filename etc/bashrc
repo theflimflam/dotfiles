@@ -269,3 +269,5 @@ if [ -e ${HOME}/.pindir ]; then
 fi
 alias pin="pwd > ${HOME}/.pindir"
 
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
