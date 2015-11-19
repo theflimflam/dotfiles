@@ -290,3 +290,8 @@ set mouse=a
 " Clipboard fu
 vnoremap <C-c> "*y
 nnoremap <C-c> "*y
+
+" Math while in insert mode
+ino <C-A> <C-O>yiW<End>=<C-R>=<C-R>0<CR>
+nnoremap <leader>sv :source $MYVIMRC<CR>
+nnoremap <leader>se :e $MYVIMRC<CR>
