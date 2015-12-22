@@ -250,10 +250,14 @@ ca w!! w !sudo tee "%"
 
 " Non chorded splits
 set wmh=0               " <-- don't show contents of windows, just stack em
-nmap <C-J> <C-W>j<C-W>-  " <-- golden ratio after movement
-nmap <C-K> <C-W>k<C-W>-
-nmap <C-L> <C-W>l<C-W>-
-nmap <C-H> <C-W>h<C-W>-
+" nmap <C-J> <C-W>j<C-W>-  " <-- golden ratio after movement
+" nmap <C-K> <C-W>k<C-W>-
+" nmap <C-L> <C-W>l<C-W>-
+" nmap <C-H> <C-W>h<C-W>-
+nmap <C-J> <C-W>j
+nmap <C-K> <C-W>k
+nmap <C-L> <C-W>l
+nmap <C-H> <C-W>h
 
 " Control C is copy (like copy paste-a)
 "nmap <C-c> "+y<CR>
