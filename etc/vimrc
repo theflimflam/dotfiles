@@ -322,5 +322,18 @@ nnoremap <C-c> "*y
 
 " Math while in insert mode
 ino <C-A> <C-O>yiW<End>=<C-R>=<C-R>0<CR>
-nnoremap <leader>sv :source $MYVIMRC<CR>
-nnoremap <leader>se :e $MYVIMRC<CR>
+nnoremap <leader>vv :PlugUpdate<CR>:source $MYVIMRC<CR>
+nnoremap <leader>ve :e $MYVIMRC<CR>
+
+" Strong H and L, goes to the start and end of lines
+nnoremap H ^
+nnoremap L $
+
+inoremap jk <Esc>
+" inoremap <esc> <nop>
+
+" gg=G will format your html(?) files :)
+" This will format just before save...
+" autocmd BufWritePre *.html :normal gg=G
+"
+autocmd FileType markdown,eruby,html iabbrev --- &mdash;
