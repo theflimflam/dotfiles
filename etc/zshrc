@@ -225,4 +225,17 @@ fi
 bindkey "^[[3~"  delete-char
 bindkey "^[3;5~" delete-char
 
+tellme () {
+  "$@"
+
+  local result=$?
+  if [ $result -ne 0 ]; then
+    say "Failure"
+  else
+    say "Success"
+  fi
+
+  return $result
+}
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
