@@ -262,8 +262,27 @@ nmap <C-H> <C-W>h
 " Control C is copy (like copy paste-a)
 "nmap <C-c> "+y<CR>
 
-set relativenumber
-set number
+set number relativenumber
+
+" Code review
+function! RogerToggle()
+  if &relativenumber
+    set number norelativenumber
+  else
+    set number relativenumber
+  endif
+endfunction
+command! RogerToggle call RogerToggle()
+
+" Remove fancy stuff to allow to paste stuff in
+function! PasteMode()
+  if &paste
+    set nopaste number relativenumber
+  else
+    set paste nonumber norelativenumber
+  endif
+endfunction
+command! PasteMode call PasteMode()
 
 " For code reviews, human readability etc.
 nmap <F8> :set nolist<CR> :set number<CR> :set nu<CR>
