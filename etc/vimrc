@@ -165,8 +165,8 @@ endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " TODO find a way to do this generically
 set dictionary=/usr/share/dict/words
-" TODO merge these two?
-map ,s <Esc>:!aspell -c --dont-backup "%"<CR>:e! "%"<CR><CR>
+nnoremap <leader>sp :set spell!<CR>
+autocmd FileType markdown,text :set spell
 
 " Filetype switcher
 "use ,t to change filetype
@@ -191,7 +191,7 @@ set pastetoggle=<F9>           " Paste Mode! Dang!
 set scrolloff=3                " when scrolling, keep cursor 3 lines away from screen border
 set foldmethod=manual          " Easier to manage this myself imho
 set scrolloff=3                " when scrolling, keep cursor 3 lines away from screen border
-set spl=en spell               " Use english for spellchecking,
+set spl=en spell               " Use English for spellchecking,
 set nospell                    " ...don't spellcheck by default
 
 set showmatch                  " Show matching brackets.
