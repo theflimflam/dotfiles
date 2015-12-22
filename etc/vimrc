@@ -45,6 +45,11 @@ nmap <silent> <C-w>- :GoldenRatioResize<CR>
 "Plug 'vim-scripts/Align'
 Plug 'junegunn/vim-easy-align'
 Plug 'scrooloose/nerdtree'
+" enable line numbers
+let NERDTreeShowLineNumbers=1
+" make sure relative line numbers are used
+autocmd FileType nerdtree setlocal relativenumber
+
 " Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-commentary'
 Plug 'mattn/emmet-vim'
