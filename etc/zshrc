@@ -244,4 +244,7 @@ tellme () {
   return $result
 }
 
-#[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# bindkey -v # Terminal vim mode
+# bindkey '^R' history-incremental-search-backward
