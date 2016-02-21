@@ -66,12 +66,7 @@ Plug 'rhysd/vim-textobj-ruby' | Plug 'kana/vim-textobj-user'
 
 """"""""""""""""""""""""""""""""""""""""
 "Color schemes
-"Plug 'altercation/vim-colors-solarized'
-"colorscheme solarized
-"set background=dark
-
-Plug 'sickill/vim-monokai'
-"Plug 'ronny/birds-of-paradise.vim'
+Plug 'altercation/vim-colors-solarized'
 
 Plug 'elzr/vim-json'
 let g:vim_json_syntax_conceal = 0 " Don't hide quotes in json files
@@ -128,9 +123,10 @@ if !isdirectory(plugins_dir)
 endif
 
 " Colors
-colorscheme monokai
-set guifont=Source\ Code\ Pro:h11
-"set guifont=hack:h11
+colorscheme solarized
+set background=dark
+set guifont=hack:h11
+" set guifont=Source\ Code\ Pro:h11
 
 
 " load my registers
