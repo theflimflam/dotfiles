@@ -188,8 +188,6 @@ function rehash() {
   source ${HOME}/.zshrc
 }
 
-export ZSH_MTIME=$(stat -f "%m" ~/.zshrc)
-
 # If rbenv exists, init shims autocompletion
 if which rbenv > /dev/null; then
   eval "$(rbenv init -)";
