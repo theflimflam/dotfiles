@@ -194,7 +194,7 @@ function randommac() {
 
 alias no_wireless_disconnect_on_logout='cd /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources && sudo ./airport en0 prefs DisconnectOnLogout=NO'
 
-alias commitlog='git log --format="[`git branch|grep \*|cut -c3-` %h] %s"'
+alias codereview='git log --format="[`git branch|grep \*|cut -c3-` %h] %s" origin/master...'
 alias be="bundle exec"
 
 # Pin, save a dir for later
@@ -207,22 +207,16 @@ function cdd() {
     cd "$pind"
   fi
 }
+#
+# Start terminal in pinned directory
+cdd
 
-# This is required for golang
-export GOPATH="$HOME/go"
-
-if [ -e ${HOME}/.dotfilesrc ]; then
-  source ${HOME}/.dotfilesrc
-fi
-
+# zsh settings local to current box
 if [ -e ${HOME}/.zshrc.local ]; then
   source ${HOME}/.zshrc.local
 fi
 
-# Start terminal in pinned directory
-cdd
-
-# From brew install rbenv, shims autocompletion
+# If rbenv exists, init shims autocompletion
 if which rbenv > /dev/null; then
   eval "$(rbenv init -)";
 fi
@@ -231,20 +225,8 @@ fi
 bindkey "^[[3~"  delete-char
 bindkey "^[3;5~" delete-char
 
-tellme () {
-  "$@"
-
-  local result=$?
-  if [ $result -ne 0 ]; then
-    say "Failure"
-  else
-    say "Success"
-  fi
-
-  return $result
-}
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# Sometimes I do this, but it's _not_ the best for an interactive shell
 # bindkey -v # Terminal vim mode
 # bindkey '^R' history-incremental-search-backward
