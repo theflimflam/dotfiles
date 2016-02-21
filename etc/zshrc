@@ -14,14 +14,11 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-## Locale
-##############################################################################
+# Locale
 export LANG=en_US
 export LC_CTYPE=$LANG.UTF-8
 
-##############################################################################
-## General shell options
-##############################################################################
+# General shell options
 fpath=(/usr/local/share/zsh/site-functions $fpath)
 
 cdpath=(~/Projects ~ ~/Desktop ~/Projects/External)
@@ -33,38 +30,22 @@ export HISTFILE=~/.zsh_history
 export HISTCONTROL=ignoredups:erasedups  # no duplicate entries
 export HISTSIZE=50000                    # big big history
 export HISTFILESIZE=50000                # big big history
-setopt INC_APPEND_HISTORY                # append to history, don't overwrite it
 
-# Save and reload the history after each command finishes
-setopt SHARE_HISTORY
+setopt inc_append_history
+setopt share_history
 
-##############################################################################
 ## Completion
-##############################################################################
-
 setopt NO_BEEP AUTO_LIST AUTO_MENU
 autoload -U compinit
 compinit
 
-set_proxies() {
-  export http_proxy=`proxy-config -h`
-  export https_proxy=`proxy-config -s`
-  export ftp_proxy=`proxy-config -f`
-  [ -z $http_proxy ] && unset http_proxy
-  [ -z $https_proxy ] && unset http_proxy
-  [ -z $ftp_proxy ] && unset http_proxy
-}
-
-##############################################################################
-# Bash-like navigation (http://stackoverflow.com/questions/10847255/how-to-make-zsh-forward-word-behaviour-same-as-in-bash-emacs)
+# Bash-like navigation, http://stackoverflow.com/questions/10847255
 autoload -U select-word-style
 select-word-style bash
-
 
 ##############################################################################
 # Misc tricks from
 # http://chneukirchen.org/blog/archive/2013/03/10-fresh-zsh-tricks-you-may-not-know.html
-##############################################################################
 autoload -Uz copy-earlier-word
 zle -N copy-earlier-word
 bindkey "^[m" copy-earlier-word
@@ -85,10 +66,10 @@ function _zle_line_finish() {
 }
 zle -N zle-line-finish _zle_line_finish
 
+# End tricks
+##############################################################################
 
-##############################################################################
 ## Prompt
-##############################################################################
 cur_git_branch() {
   git branch --no-color 2>/dev/null|awk '/^\* ([^ ]*)/ {b=$2} END {if (b) {print "[" b "]"}}'
 }
@@ -110,26 +91,13 @@ case $TERM in
     ;;
 esac
 
-
 set ignoreeof off
-
-
-##############################################################################
-## Environment for shell commands
-##############################################################################
-export RSYNC_RSH=ssh
-export PYTHONSTARTUP=~/.pythonrc
-export CVS_RSH=ssh
-
-export DARCS_DONT_ESCAPE_8BIT=1
 
 export LS_COLORS="exfxcxdxbxegedabagacad"
 ZLS_COLORS=$LS_COLORS
 
 
-##############################################################################
-## Aliases
-##############################################################################
+# Aliases
 alias psg='ps ax|grep'
 alias :q=exit
 alias e='emacsclient -n'   #'open -b org.gnu.Emacs'
@@ -215,6 +183,12 @@ cdd
 if [ -e ${HOME}/.zshrc.local ]; then
   source ${HOME}/.zshrc.local
 fi
+
+function rehash() {
+  source ${HOME}/.zshrc
+}
+
+export ZSH_MTIME=$(stat -f "%m" ~/.zshrc)
 
 # If rbenv exists, init shims autocompletion
 if which rbenv > /dev/null; then
