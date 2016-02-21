@@ -27,10 +27,10 @@ cdpath=(~/Projects ~ ~/Desktop ~/Projects/External)
 setopt CORRECT MULTIOS NO_HUP NO_CHECK_JOBS EXTENDED_GLOB
 
 export HISTFILE=~/.zsh_history
-export HISTCONTROL=ignoredups:erasedups  # no duplicate entries
 export HISTSIZE=50000                    # big big history
 export HISTFILESIZE=50000                # big big history
 
+setopt HIST_IGNORE_DUPS
 setopt inc_append_history
 setopt share_history
 
