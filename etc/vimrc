@@ -99,7 +99,7 @@ let g:ctrlp_custom_ignore = {
 " FZF, Go finder
 " Ctrl P alterantive
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
-"nmap <leader>e :FZF<CR>
+nmap <leader>e :FZF<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
@@ -124,7 +124,7 @@ endif
 
 " Colors
 colorscheme solarized
-set background=dark
+set background=light
 set guifont=hack:h11
 " set guifont=Source\ Code\ Pro:h11
 
@@ -318,8 +318,9 @@ nnoremap <C-c> "*y
 
 " Math while in insert mode
 ino <C-A> <C-O>yiW<End>=<C-R>=<C-R>0<CR>
-nnoremap <leader>vv :PlugUpdate<CR>:source $MYVIMRC<CR>
-nnoremap <leader>ve :e $MYVIMRC<CR>
+nnoremap <leader>vr :PlugUpdate<CR>:source $MYVIMRC<CR>
+nnoremap <leader>vv :e $MYVIMRC<CR>
+nnoremap <leader>zz :e $HOME/.zshrc<CR>
 
 " Strong H and L, goes to the start and end of lines
 nnoremap H ^
