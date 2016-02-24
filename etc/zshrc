@@ -199,11 +199,12 @@ if which rbenv > /dev/null; then
   eval "$(rbenv init -)";
 fi
 
+# FZF is awesome
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 # Make the delete key do the right thing
 bindkey "^[[3~"  delete-char
 bindkey "^[3;5~" delete-char
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Sometimes I do this, but it's _not_ the best for an interactive shell
 # bindkey -v # Terminal vim mode
