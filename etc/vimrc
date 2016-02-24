@@ -322,8 +322,8 @@ nnoremap <C-c> "*y
 " Math while in insert mode
 ino <C-A> <C-O>yiW<End>=<C-R>=<C-R>0<CR>
 nnoremap <leader>vr :PlugUpdate<CR>:source $MYVIMRC<CR>
-nnoremap <leader>vv :e $MYVIMRC<CR>
-nnoremap <leader>zz :e $HOME/.zshrc<CR>
+nnoremap <leader>vv :vsplit $MYVIMRC<CR>
+nnoremap <leader>zz :vsplit $HOME/.zshrc<CR>
 
 nnoremap H <C-o> " Browse code with back button
 nnoremap L <C-i> " Browse code with forward button
