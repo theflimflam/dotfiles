@@ -22,17 +22,23 @@ export LC_CTYPE=$LANG.UTF-8
 fpath=(/usr/local/share/zsh/site-functions $fpath)
 
 cdpath=(~/Projects ~ ~/Desktop ~/Projects/External)
-#setopt autocd
 
 setopt CORRECT MULTIOS NO_HUP NO_CHECK_JOBS EXTENDED_GLOB
 
-export HISTFILE=~/.zsh_history
-export HISTSIZE=50000                    # big big history
-export HISTFILESIZE=50000                # big big history
+export HISTSIZE=2000
+export HISTFILE="$HOME/.zsh_history"
+export SAVEHIST=$HISTSIZE
 
-setopt HIST_IGNORE_DUPS
-setopt inc_append_history
-setopt share_history
+setopt hist_ignore_all_dups # when running a command again, removes previous refs to it
+setopt hist_save_no_dups    # kill duplicates on save
+setopt hist_ignore_space    # prefixed with space doesn't store command
+
+setopt hist_no_store      # don't store the command history in history
+setopt hist_verify        # when using history expansion, reload history
+setopt inc_append_history # write after exec rather than waiting till shell exit
+setopt no_hist_beep       # no terminal bell please
+setopt share_history      # all open shells see history
+
 
 ## Completion
 setopt NO_BEEP AUTO_LIST AUTO_MENU
