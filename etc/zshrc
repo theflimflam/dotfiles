@@ -18,13 +18,11 @@
 export LANG=en_US
 export LC_CTYPE=$LANG.UTF-8
 
-# General shell options
-fpath=(/usr/local/share/zsh/site-functions $fpath)
-
-cdpath=(~/Projects ~ ~/Desktop ~/Projects/External)
+cdpath=(~ ~/Projects ~/Desktop) # Can cd into these dirs from anywhere
 
 setopt CORRECT MULTIOS NO_HUP NO_CHECK_JOBS EXTENDED_GLOB
 
+# History
 export HISTSIZE=2000
 export HISTFILE="$HOME/.zsh_history"
 export SAVEHIST=$HISTSIZE
@@ -88,7 +86,6 @@ case $TERM in
 
     # Echo current process name in the xterm title bar
     preexec () {
-	  #set_proxies
       print -Pn "\e]0;$1\a"
     }
     ;;
@@ -97,80 +94,30 @@ case $TERM in
     ;;
 esac
 
-set ignoreeof off
-
 export LS_COLORS="exfxcxdxbxegedabagacad"
 ZLS_COLORS=$LS_COLORS
 
-
 # Aliases
-alias psg='ps ax|grep'
-alias :q=exit
-alias e='emacsclient -n'   #'open -b org.gnu.Emacs'
-alias et='emacsclient -t'
-alias ls='ls -G'
-alias gzip=pigz
-alias gunzip=unpigz
-
-range() { for (( i = $1; $i < $2; i = $i + 1 )); do echo $i; done; unset i; }
-
-add() {
-  j=0
-  while [ "$1" ]; do
-    j=$(( $j + $1 ))
-    shift
-  done
-  echo $j
-  unset i
-}
-
-wff() { while test \! -f $1; do sleep 1; done; }
-
-alias tailf="tail -f"
+alias :q=exit                               # habbits ;-)
+alias ls='ls -G'                            # technicolour list
+alias cdg='cd $(git rev-parse --show-cdup)' # cd to root of repo
 
 export LESS='-R'
 
 export GREP_OPTIONS="--colour=auto --directories=skip"
 export GREP_COLOR='1;33'
 
-alias ocaml="rlwrap ocaml"
-
-pgwatch() {
-  watch -n 30 "echo 'select * from pg_stat_activity;'|psql -U postgres"
-}
-
-#set_proxies
-
-netlocation() {
-  scselect 2>&1|gawk 'match($0,"^ \\*.*\\((.*)\\)",a) { print a[1]; }'
-}
-
-# chflags nohidden ~/Library
-alias cdg='cd $(git rev-parse --show-cdup)'
 
 # https://gist.github.com/piscisaureus/3342247
 function pullify() {
   git config --add remote.origin.fetch '+refs/pull/*/head:refs/remotes/origin/pr/*'
 }
 
-function grabfork () {
-  repo=$1
-  upstream=$2
-  cd ~/Projects/External
-  git clone git@github.com:purcell/$repo.git
-  cd $repo
-  git remote add $upstream git://github.com/$upstream/$repo.git
-}
-
 function randommac() {
   ruby -e 'puts ("%02x"%((rand 64)*4|2))+(0..4).inject(""){|s,x|s+":%02x"%(rand 256)}'
 }
 
-alias no_wireless_disconnect_on_logout='cd /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources && sudo ./airport en0 prefs DisconnectOnLogout=NO'
-
-alias codereview='git log --format="[`git branch|grep \*|cut -c3-` %h] %s" origin/master...'
-alias be="bundle exec"
-
+# TODO move this out into a condiontally loaded folder
 # Pin, save a dir for later
 alias pin="pwd > ${HOME}/.pindir"
 
@@ -181,14 +128,14 @@ function cdd() {
     cd "$pind"
   fi
 }
-#
+
 # Start terminal in pinned directory
 cdd
 
-# zsh settings local to current box
-if [ -e ${HOME}/.zshrc.local ]; then
-  source ${HOME}/.zshrc.local
-fi
+# Conditionally load files
+[ -e ${HOME}/.zshrc.local ] && source ${HOME}/.zshrc.local
+[ -f ~/.fzf.zsh ]           && source ~/.fzf.zsh
+
 
 function rehash() {
   source ${HOME}/.zshrc
@@ -198,9 +145,6 @@ function rehash() {
 if which rbenv > /dev/null; then
   eval "$(rbenv init -)";
 fi
-
-# FZF is awesome
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Make the delete key do the right thing
 bindkey "^[[3~"  delete-char
