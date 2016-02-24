@@ -146,6 +146,9 @@ if which rbenv > /dev/null; then
   eval "$(rbenv init -)";
 fi
 
+# Ruby environment overrides system ruby
+export PATH="$HOME/.rbenv/bin:$PATH"
+
 # Make the delete key do the right thing
 bindkey "^[[3~"  delete-char
 bindkey "^[3;5~" delete-char
