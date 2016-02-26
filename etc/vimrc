@@ -83,7 +83,7 @@ Plug 'mattn/gist-vim'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ctrl-P
 Plug 'kien/ctrlp.vim'
- let g:ctrlp_map = ',e'
+ " let g:ctrlp_map = ',e'
 nmap ,g :CtrlPBufTag<CR>
 nmap ,G :CtrlPBufTagAll<CR>
 nmap ,f :CtrlPLine<CR>
@@ -246,14 +246,14 @@ ca w!! w !sudo tee "%"
 
 " Non chorded splits
 set wmh=0               " <-- don't show contents of windows, just stack em
-" nmap <C-J> <C-W>j<C-W>-  " <-- golden ratio after movement
-" nmap <C-K> <C-W>k<C-W>-
-" nmap <C-L> <C-W>l<C-W>-
-" nmap <C-H> <C-W>h<C-W>-
-nmap <C-J> <C-W>j
-nmap <C-K> <C-W>k
-nmap <C-L> <C-W>l
-nmap <C-H> <C-W>h
+nmap <C-J> <C-W>j<C-W>-  " <-- golden ratio after movement
+nmap <C-K> <C-W>k<C-W>-
+nmap <C-L> <C-W>l<C-W>-
+nmap <C-H> <C-W>h<C-W>-
+" nmap <C-J> <C-W>j
+" nmap <C-K> <C-W>k
+" nmap <C-L> <C-W>l
+" nmap <C-H> <C-W>h
 
 " Control C is copy (like copy paste-a)
 "nmap <C-c> "+y<CR>
@@ -322,9 +322,8 @@ nnoremap <leader>vr :PlugUpdate<CR>:source $MYVIMRC<CR>
 nnoremap <leader>vv :e $MYVIMRC<CR>
 nnoremap <leader>zz :e $HOME/.zshrc<CR>
 
-" Strong H and L, goes to the start and end of lines
-nnoremap H ^
-nnoremap L $
+nnoremap H <C-o> " Browse code with back button
+nnoremap L <C-i> " Browse code with forward button
 
 inoremap jk <Esc>
 " inoremap <esc> <nop>
