@@ -125,7 +125,7 @@ endif
 " Colors
 colorscheme solarized
 set background=light
-set guifont=hack:h11
+set guifont=hack:h12
 " set guifont=Source\ Code\ Pro:h11
 
 
