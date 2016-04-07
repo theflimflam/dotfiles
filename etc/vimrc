@@ -14,7 +14,8 @@
 " You should have received a copy of the GNU General Public License
 " along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-let mapleader = ","
+" let mapleader = ","
+let mapleader = "\<tab>"
 
 syntax enable       " enable syntax highlighting
 set nocompatible    " be iMproved, required for vundle
@@ -163,6 +164,8 @@ endif
 set dictionary=/usr/share/dict/words
 nnoremap <leader>sp :set spell!<CR>
 autocmd FileType markdown,text :set spell
+
+nnoremap <leader>w <C-w>
 
 " Filetype switcher
 "use ,t to change filetype
