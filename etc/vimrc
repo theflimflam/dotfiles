@@ -85,10 +85,10 @@ Plug 'mattn/gist-vim'
 " Ctrl-P
 Plug 'kien/ctrlp.vim'
  " let g:ctrlp_map = ',e'
-nmap ,g :CtrlPBufTag<CR>
-nmap ,G :CtrlPBufTagAll<CR>
-nmap ,f :CtrlPLine<CR>
-nmap ,m :CtrlPMRUFiles<CR>
+nmap <leader>eg :CtrlPBufTag<CR>
+nma  <leader>eG :CtrlPBufTagAll<CR>
+nmap <leader>ef :CtrlPLine<CR>
+nmap <leader>er :CtrlPMRUFiles<CR>
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/](\.git|\.hg|\.svn|tmp)$',
@@ -100,7 +100,7 @@ let g:ctrlp_custom_ignore = {
 " FZF, Go finder
 " Ctrl P alterantive
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
-nmap <leader>e :FZF<CR>
+nmap <leader>ee :FZF<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 
