@@ -313,7 +313,7 @@ vmap <Enter> <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 
 " Let people use the mouse
-set mouse=a
+" set mouse=a
 
 " Clipboard fu
 vnoremap <C-c> "*y
