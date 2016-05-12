@@ -40,7 +40,8 @@ data.location=~/.task
 #include /usr/share/task/dark-violets-256.theme
 #include /usr/share/task/dark-yellow-green.theme
 #include /usr/share/task/dark-gray-256.theme
-include /usr/share/task/solarized-dark-256.theme
+#include /usr/share/task/solarized-dark-256.theme
+include ~/dotfiles/var/task/solarized-dark-256.theme
 #include /usr/share/task/solarized-light-256.theme
 
 urgency.user.project.george.coefficient=-1.0
