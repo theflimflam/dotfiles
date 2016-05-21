@@ -340,5 +340,3 @@ inoremap jk <Esc>
 " autocmd BufWritePre *.html :normal gg=G
 "
 autocmd FileType markdown,eruby,html iabbrev --- &mdash;
-
-call Headspace()
