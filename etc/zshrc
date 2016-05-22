@@ -18,7 +18,7 @@
 export LANG=en_US
 export LC_CTYPE=$LANG.UTF-8
 
-cdpath=(~ ~/Projects ~/Desktop) # Can cd into these dirs from anywhere
+cdpath=(~ ~/code ~/Desktop) # Can cd into these dirs from anywhere
 
 setopt CORRECT MULTIOS NO_HUP NO_CHECK_JOBS EXTENDED_GLOB
 
