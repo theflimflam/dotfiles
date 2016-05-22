@@ -61,8 +61,10 @@ Plug 'theflimflam/headspace'
 Plug 'scrooloose/syntastic'
 let g:syntastic_javascript_checkers = ['eslint']
 Plug 'fatih/vim-go'
-Plug 'bkad/CamelCaseMotion'
-call camelcasemotion#CreateMotionMappings('<leader>')
+" TODO investigate this, it's a common thing
+" Plug 'bkad/CamelCaseMotion'
+" call camelcasemotion#CreateMotionMappings('<leader>')
+Plug 'airblade/vim-gitgutter'
 
 Plug 'tpope/vim-rails'
 " Plug 'nelstrom/vim-textobj-rubyblock' | Plug 'kana/vim-textobj-user'
