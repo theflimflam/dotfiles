@@ -344,3 +344,4 @@ inoremap jk <Esc>
 " autocmd BufWritePre *.html :normal gg=G
 "
 autocmd FileType markdown,eruby,html iabbrev --- &mdash;
+autocmd FileType gitcommit nnoremap @@ <ESC>!!beetle<CR>A<SPACE>
