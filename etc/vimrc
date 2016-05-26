@@ -35,7 +35,7 @@ call plug#begin()
 
 " General
 Plug 'git@github.com:theflimflam/vim-unclutter.git'
-" Plug 'git@github.com:theflimflam/vim-visible-whitespace.git'
+Plug 'git@github.com:theflimflam/vim-visible-whitespace.git'
 
 " Productivity
 Plug 'michaeljsmith/vim-indent-object'
