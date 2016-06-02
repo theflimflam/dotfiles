@@ -264,7 +264,7 @@ nmap <C-H> <C-W>h<C-W>-
 " nmap <C-H> <C-W>h
 
 " Control C is copy (like copy paste-a)
-"nmap <C-c> "+y<CR>
+nmap <C-c> "+y<CR>
 
 set number relativenumber
 
