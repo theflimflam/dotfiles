@@ -89,21 +89,21 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'fatih/vim-go'
 Plug 'junegunn/vim-easy-align'
 Plug 'michaeljsmith/vim-indent-object'
-Plug 'roman/golden-ratio'
+" Plug 'roman/golden-ratio'
 Plug 'scrooloose/nerdtree'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-surround'
-Plug 'dyng/ctrlsf.vim'           " Calls to the platinum searcher
+Plug 'dyng/ctrlsf.vim'
 Plug 'tpope/vim-rails'
 " Plug 'nelstrom/vim-textobj-rubyblock' | Plug 'kana/vim-textobj-user'
-Plug 'rhysd/vim-textobj-ruby' | Plug 'kana/vim-textobj-user'
+" Plug 'rhysd/vim-textobj-ruby' | Plug 'kana/vim-textobj-user'
 call plug#end()
 
 "let NERDTreeShowLineNumbers=1
 autocmd FileType nerdtree setlocal relativenumber
 
 "let g:golden_ratio_autocommand = 0
-nnoremap <silent> <C-w>- :GoldenRatioResize<CR>
+"nnoremap <silent> <C-w>- :GoldenRatioResize<CR>
 
 " Open files edits
 nnoremap <leader>vv :e $MYVIMRC<CR>

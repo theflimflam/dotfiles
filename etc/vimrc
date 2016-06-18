@@ -357,6 +357,6 @@ inoremap jj <Esc>
 " gg=G will format your html(?) files :)
 " This will format just before save...
 " autocmd BufWritePre *.html :normal gg=G
-"
+
 autocmd FileType markdown,eruby,html iabbrev --- &mdash;
 autocmd FileType gitcommit nnoremap @@ O<ESC>!!beetle<CR>A<SPACE>
