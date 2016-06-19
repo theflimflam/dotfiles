@@ -86,24 +86,37 @@ nnoremap <leader>vv :e $MYVIMRC<CR>
 nnoremap <leader>zz :e $HOME/.zshrc<CR>
 
 call plug#begin('~/.config/nvim/plugged')
-Plug 'fatih/vim-go'
-Plug 'tpope/vim-rails'
-Plug 'junegunn/vim-easy-align'
-Plug 'michaeljsmith/vim-indent-object'
-Plug 'roman/golden-ratio'
-Plug 'scrooloose/nerdtree'
-Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-surround'
-" Plug 'dyng/ctrlsf.vim'
-" Plug 'nelstrom/vim-textobj-rubyblock' | Plug 'kana/vim-textobj-user'
-" Plug 'rhysd/vim-textobj-ruby' | Plug 'kana/vim-textobj-user'
-call plug#end()
-
-"let NERDTreeShowLineNumbers=1
+Plug 'fatih/vim-go'                      " Golang tools
+" Plug 'rhysd/vim-textobj-ruby'            " Ruby text objects NVIM BUSTED??
+Plug 'tpope/vim-rails'                   " Rails tools
+Plug 'junegunn/vim-easy-align'           " Generic align script
+Plug 'michaeljsmith/vim-indent-object'   " Select indents as an object
+Plug 'roman/golden-ratio'                " Layout splits with golden ratio
+let g:golden_ratio_autocommand = 0
+nnoremap <silent> <C-w>- :GoldenRatioResize<CR>
+Plug 'scrooloose/nerdtree'               " File browser
+let NERDTreeShowLineNumbers=1            " Make nerdtree honor numbers
 autocmd FileType nerdtree setlocal relativenumber
-
-"let g:golden_ratio_autocommand = 0
-"nnoremap <silent> <C-w>- :GoldenRatioResize<CR>
+Plug 'airblade/vim-gitgutter'            " Show git changes in the editor gutter
+Plug 'tpope/vim-surround'                " Delete, or insert around text objects
+Plug 'altercation/vim-colors-solarized'  " Damn it looks good
+colorscheme solarized
+set background=dark
+set guifont=hack:h12
+Plug 'elzr/vim-json'                     " JSON
+let g:vim_json_syntax_conceal = 0        " Don't hide quotes in json files
+Plug 'dyng/ctrlsf.vim'                   " Grep alternative, uses the Silver Searcher
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+nnoremap <leader>e :FZF<CR>
+Plug 'kien/ctrlp.vim'
+nnoremap <leader>r :CtrlPBufTag<CR>          " fuzzy search recent fiels
+nnoremap <leader>f :CtrlPLine<CR>        
+nnoremap <leader>r :CtrlPMRUFiles<CR>    " Recently used files
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](\.git|\.hg|\.svn|tmp)$',
+  \ 'file': '\.pyc$\|\.pyo$|\.class$|\.min\..*\.js',
+  \ }
+call plug#end()
 
 " Open files edits
 nnoremap <leader>vv :e $MYVIMRC<CR>
