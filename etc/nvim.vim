@@ -17,6 +17,34 @@
 let mapleader = "\<tab>"
 "let mapleader = ","
 
+
+call plug#begin('~/.config/nvim/plugged')
+Plug 'git@github.com:theflimflam/vim-unclutter.git'
+Plug 'git@github.com:theflimflam/vim-visible-whitespace.git'
+Plug 'fatih/vim-go'                      " Golang tools
+" Plug 'rhysd/vim-textobj-ruby'            " Ruby text objects NVIM BUSTED??
+Plug 'tpope/vim-rails'                   " Rails tools
+Plug 'ecomba/vim-ruby-refactoring'       " TODO make some habits around this
+Plug 'kana/vim-textobj-user' | Plug 'nelstrom/vim-textobj-rubyblock'
+Plug 'junegunn/vim-easy-align'           " Generic align script
+Plug 'michaeljsmith/vim-indent-object'   " Select indents as an object
+Plug 'roman/golden-ratio'                " Layout splits with golden ratio
+let g:golden_ratio_autocommand = 0
+nnoremap <silent> <C-w>- :GoldenRatioResize<CR>
+Plug 'scrooloose/nerdtree'               " File browser
+let NERDTreeShowLineNumbers=1            " Make nerdtree honor numbers
+autocmd FileType nerdtree setlocal relativenumber
+Plug 'airblade/vim-gitgutter'            " Show git changes in the editor gutter
+Plug 'tpope/vim-surround'                " Delete, or insert around text objects
+Plug 'altercation/vim-colors-solarized'  " Damn it looks good
+Plug 'elzr/vim-json'                     " JSON
+let g:vim_json_syntax_conceal = 0        " Don't hide quotes in json files
+Plug 'dyng/ctrlsf.vim'                   " Grep alternative, uses the Silver Searcher
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+Plug 'kien/ctrlp.vim'
+call plug#end()
+
+
 set relativenumber    " better navigation
 set number            " give line number that you're on
 set scrolloff=5       " when scrolling, keep cursor 5 lines away from border
@@ -66,6 +94,68 @@ set colorcolumn=120    " Show 120th char visually
 set tabstop=2 softtabstop=2 shiftwidth=2
 autocmd Filetype perl setlocal tabstop=4 softtabstop=4 shiftwidth=4
 
+" Open files edits
+nnoremap <leader>vv :e $MYVIMRC<CR>
+nnoremap <leader>zz :e $HOME/.zshrc<CR>
+
+nnoremap H <C-o> " Browse code with back button
+nnoremap L <C-i> " Browse code with forward button
+
+" Colours
+colorscheme solarized
+set background=dark
+set guifont=hack:h12
+
+" Search [f]iles, [l]ines, [r]ecent files
+nnoremap <leader>f :FZF<CR>
+nnoremap <leader>r :CtrlPBufTag<CR>
+nnoremap <leader>l :CtrlPLine<CR>
+nnoremap <leader>r :CtrlPMRUFiles<CR>
+
+" Filetype switcher
+"use t to change filetype
+nmap <leader>tt :set filetype=text<CR>
+nmap <leader>tm :set filetype=markdown<CR>
+nmap <leader>tp :set filetype=perl<CR>
+nmap <leader>th :set filetype=eruby<CR>
+nmap <leader>tr :set filetype=ruby<CR>
+nmap <leader>ts :set filetype=sql<CR>
+nmap <leader>tx :set filetype=xml<CR>
+nmap <leader>tj :set filetype=javascript<CR>
+nmap <leader>ts :set filetype=sass<CR>
+nmap <leader>tl :set filetype=less<CR>
+nmap <leader>tv :set filetype=vim<CR>
+
+
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](\.git|\.hg|\.svn|tmp)$',
+  \ 'file': '\.pyc$\|\.pyo$|\.class$|\.min\..*\.js',
+  \ }
+
+" Source local configuration files if available
+if filereadable($HOME . '/.vimrc.local')
+    source $HOME/.vimrc.local
+endif
+
+" For vim stuff local to the host you're on
+if filereadable("/etc/vim/vimrc.local")
+    source /etc/vim/vimrc.local
+endif
+
+" If we're in a fresh vim, under $HOME
+" AND there is a pinned directory present
+"   THEN Change to this directory
+if filereadable($HOME . "/.pindir") && getcwd() == $HOME
+    let pindir_lines = readfile($HOME . "/.pindir")
+    if len(pindir_lines) > 0
+      exe "chdir " . pindir_lines[0]
+    endif
+
+    " If you've got a buffer open
+    " chdir to this buffer
+    " It might be more interesting to do this only if
+endif
+
 " Quickfix window when shelling out to grep
 " Also works for Git grep
 "   e.g. :Ggrep FIXME
@@ -83,44 +173,5 @@ autocmd BufReadPost COMMIT_EDITMSG exe "normal! gg"
 
 " Quickopen and edit config files
 nnoremap <leader>vv :e $MYVIMRC<CR>
+nnoremap <leader>vr :source $MYVIMRC<CR>:PlugUpdate<CR>:source $MYVIMRC<CR>
 nnoremap <leader>zz :e $HOME/.zshrc<CR>
-
-call plug#begin('~/.config/nvim/plugged')
-Plug 'fatih/vim-go'                      " Golang tools
-" Plug 'rhysd/vim-textobj-ruby'            " Ruby text objects NVIM BUSTED??
-Plug 'tpope/vim-rails'                   " Rails tools
-Plug 'junegunn/vim-easy-align'           " Generic align script
-Plug 'michaeljsmith/vim-indent-object'   " Select indents as an object
-Plug 'roman/golden-ratio'                " Layout splits with golden ratio
-let g:golden_ratio_autocommand = 0
-nnoremap <silent> <C-w>- :GoldenRatioResize<CR>
-Plug 'scrooloose/nerdtree'               " File browser
-let NERDTreeShowLineNumbers=1            " Make nerdtree honor numbers
-autocmd FileType nerdtree setlocal relativenumber
-Plug 'airblade/vim-gitgutter'            " Show git changes in the editor gutter
-Plug 'tpope/vim-surround'                " Delete, or insert around text objects
-Plug 'altercation/vim-colors-solarized'  " Damn it looks good
-colorscheme solarized
-set background=dark
-set guifont=hack:h12
-Plug 'elzr/vim-json'                     " JSON
-let g:vim_json_syntax_conceal = 0        " Don't hide quotes in json files
-Plug 'dyng/ctrlsf.vim'                   " Grep alternative, uses the Silver Searcher
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
-nnoremap <leader>e :FZF<CR>
-Plug 'kien/ctrlp.vim'
-nnoremap <leader>r :CtrlPBufTag<CR>          " fuzzy search recent fiels
-nnoremap <leader>f :CtrlPLine<CR>        
-nnoremap <leader>r :CtrlPMRUFiles<CR>    " Recently used files
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/](\.git|\.hg|\.svn|tmp)$',
-  \ 'file': '\.pyc$\|\.pyo$|\.class$|\.min\..*\.js',
-  \ }
-call plug#end()
-
-" Open files edits
-nnoremap <leader>vv :e $MYVIMRC<CR>
-nnoremap <leader>zz :e $HOME/.zshrc<CR>
-
-nnoremap H <C-o> " Browse code with back button
-nnoremap L <C-i> " Browse code with forward button
