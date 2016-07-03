@@ -35,11 +35,15 @@ Plug 'scrooloose/nerdtree'               " File browser
 let NERDTreeShowLineNumbers=1            " Make nerdtree honor numbers
 autocmd FileType nerdtree setlocal relativenumber
 Plug 'airblade/vim-gitgutter'            " Show git changes in the editor gutter
+Plug 'tpope/vim-fugitive'                " TODO Git integration
+Plug 'mattn/gist-vim'                    " Create gists
 Plug 'tpope/vim-surround'                " Delete, or insert around text objects
 Plug 'altercation/vim-colors-solarized'  " Damn it looks good
 Plug 'elzr/vim-json'                     " JSON
 let g:vim_json_syntax_conceal = 0        " Don't hide quotes in json files
 Plug 'dyng/ctrlsf.vim'                   " Grep alternative, uses the Silver Searcher
+vmap <C-F> <Plug>CtrlSFVwordExec
+nmap <C-F> <Plug>CtrlSFCwordPath
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 Plug 'kien/ctrlp.vim'
 call plug#end()
@@ -50,6 +54,7 @@ set number            " give line number that you're on
 set scrolloff=5       " when scrolling, keep cursor 5 lines away from border
 set foldmethod=manual " Easier to manage this myself imho
 set autoread          " When someone modifies a file externally, autoread it back in
+set clipboard=unnamed " yank and paste to and from OS clipboard
 
 
 """"""""""""""""""""""""""""""""""""""""
@@ -108,7 +113,6 @@ set guifont=hack:h12
 
 " Search [f]iles, [l]ines, [r]ecent files
 nnoremap <leader>f :FZF<CR>
-nnoremap <leader>r :CtrlPBufTag<CR>
 nnoremap <leader>l :CtrlPLine<CR>
 nnoremap <leader>r :CtrlPMRUFiles<CR>
 
@@ -150,10 +154,6 @@ if filereadable($HOME . "/.pindir") && getcwd() == $HOME
     if len(pindir_lines) > 0
       exe "chdir " . pindir_lines[0]
     endif
-
-    " If you've got a buffer open
-    " chdir to this buffer
-    " It might be more interesting to do this only if
 endif
 
 " Quickfix window when shelling out to grep
@@ -175,3 +175,9 @@ autocmd BufReadPost COMMIT_EDITMSG exe "normal! gg"
 nnoremap <leader>vv :e $MYVIMRC<CR>
 nnoremap <leader>vr :source $MYVIMRC<CR>:PlugUpdate<CR>:source $MYVIMRC<CR>
 nnoremap <leader>zz :e $HOME/.zshrc<CR>
+
+" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+vmap <Enter> <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. <leader>aip)
+nmap <leader>a <Plug>(EasyAlign)
