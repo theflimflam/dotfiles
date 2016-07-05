@@ -29,6 +29,7 @@ Plug 'kana/vim-textobj-user' | Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'junegunn/vim-easy-align'           " Generic align script
 Plug 'michaeljsmith/vim-indent-object'   " Select indents as an object
 Plug 'roman/golden-ratio'                " Layout splits with golden ratio
+Plug 'nelstrom/vim-textobj-rubyblock'    " Trying it out
 let g:golden_ratio_autocommand = 0
 nnoremap <silent> <C-w>- :GoldenRatioResize<CR>
 Plug 'scrooloose/nerdtree'               " File browser
@@ -98,6 +99,8 @@ set colorcolumn=120    " Show 120th char visually
 " Whitespace management
 set tabstop=2 softtabstop=2 shiftwidth=2
 autocmd Filetype perl setlocal tabstop=4 softtabstop=4 shiftwidth=4
+autocmd Filetype go setlocal tabstop=4 softtabstop=4 shiftwidth=4 nolist
+
 
 " Open files edits
 nnoremap <leader>vv :e $MYVIMRC<CR>
