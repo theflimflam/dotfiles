@@ -184,3 +184,10 @@ vmap <Enter> <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. <leader>aip)
 nmap <leader>a <Plug>(EasyAlign)
+
+
+" turn off EX mode (it annoys me, I don't use it)
+":map Q <Nop>
+" More usefully, reformat paragraphs with vim rules
+" - http://alols.github.io/2012/11/07/writing-prose-with-vim/
+map Q gqap
