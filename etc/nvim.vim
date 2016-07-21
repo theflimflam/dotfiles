@@ -35,7 +35,6 @@ nnoremap <silent> <C-w>- :GoldenRatioResize<CR>
 Plug 'scrooloose/nerdtree'               " File browser
 let NERDTreeShowLineNumbers=1            " Make nerdtree honor numbers
 autocmd FileType nerdtree setlocal relativenumber
-Plug 'airblade/vim-gitgutter'            " Show git changes in the editor gutter
 Plug 'tpope/vim-fugitive'                " TODO Git integration
 Plug 'mattn/gist-vim'                    " Create gists
 Plug 'tpope/vim-surround'                " Delete, or insert around text objects
