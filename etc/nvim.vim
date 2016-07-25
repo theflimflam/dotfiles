@@ -25,6 +25,7 @@ Plug 'fatih/vim-go'                      " Golang tools
 " Plug 'rhysd/vim-textobj-ruby'            " Ruby text objects NVIM BUSTED??
 Plug 'tpope/vim-rails'                   " Rails tools
 Plug 'ecomba/vim-ruby-refactoring'       " TODO make some habits around this
+Plug 'vim-ruby/vim-ruby'                 " Make ruby files FAST
 Plug 'kana/vim-textobj-user' | Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'junegunn/vim-easy-align'           " Generic align script
 Plug 'michaeljsmith/vim-indent-object'   " Select indents as an object
@@ -38,7 +39,7 @@ nnoremap <silent> <C-l> <C-w>l:GoldenRatioResize<CR>
 nnoremap <silent> <C-h> <C-w>h:GoldenRatioResize<CR>
 Plug 'scrooloose/nerdtree'               " File browser
 let NERDTreeShowLineNumbers=1            " Make nerdtree honor numbers
-autocmd FileType nerdtree setlocal relativenumber
+autocmd FileType nerdtree setlocal number relativenumber
 Plug 'tpope/vim-fugitive'                " TODO Git integration
 Plug 'mattn/gist-vim'                    " Create gists
 Plug 'tpope/vim-surround'                " Delete, or insert around text objects
@@ -52,7 +53,6 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 Plug 'ctrlpvim/ctrlp.vim'
 nmap <C-F> :CtrlPLine<CR>
 call plug#end()
-
 
 set relativenumber    " better navigation
 set number            " give line number that you're on
@@ -137,7 +137,6 @@ nmap <leader>ts :set filetype=sass<CR>
 nmap <leader>tl :set filetype=less<CR>
 nmap <leader>tv :set filetype=vim<CR>
 
-
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/](\.git|\.hg|\.svn|tmp)$',
   \ 'file': '\.pyc$\|\.pyo$|\.class$|\.min\..*\.js',
@@ -189,9 +188,11 @@ vmap <Enter> <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. <leader>aip)
 nmap <leader>a <Plug>(EasyAlign)
 
-
 " turn off EX mode (it annoys me, I don't use it)
 ":map Q <Nop>
 " More usefully, reformat paragraphs with vim rules
 " - http://alols.github.io/2012/11/07/writing-prose-with-vim/
 map Q gqap
+
+" Display line numbers in help
+autocmd FileType help setlocal number relativenumber
