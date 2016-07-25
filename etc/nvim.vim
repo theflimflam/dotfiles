@@ -32,6 +32,10 @@ Plug 'roman/golden-ratio'                " Layout splits with golden ratio
 Plug 'nelstrom/vim-textobj-rubyblock'    " Trying it out
 let g:golden_ratio_autocommand = 0
 nnoremap <silent> <C-w>- :GoldenRatioResize<CR>
+nnoremap <silent> <C-k> <C-w>k:GoldenRatioResize<CR>
+nnoremap <silent> <C-j> <C-w>j:GoldenRatioResize<CR>
+nnoremap <silent> <C-l> <C-w>l:GoldenRatioResize<CR>
+nnoremap <silent> <C-h> <C-w>h:GoldenRatioResize<CR>
 Plug 'scrooloose/nerdtree'               " File browser
 let NERDTreeShowLineNumbers=1            " Make nerdtree honor numbers
 autocmd FileType nerdtree setlocal relativenumber
