@@ -157,7 +157,10 @@ bindkey "^[3;5~" delete-char
 # bindkey -v # Terminal vim mode
 # bindkey '^R' history-incremental-search-backward
 
-export PATH="$PATH:$HOME/bin:$HOME/script"
+# Personal programs
+export PATH="$PATH:$HOME/bin"
+export PATH="$PATH:$HOME/script"
+export PATH="$PATH:$HOME/code/go/bin"
 
 # Habits
 if which nvim > /dev/null; then
