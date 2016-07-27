@@ -30,7 +30,7 @@ Plug 'kana/vim-textobj-user' | Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'junegunn/vim-easy-align'           " Generic align script
 Plug 'michaeljsmith/vim-indent-object'   " Select indents as an object
 Plug 'roman/golden-ratio'                " Layout splits with golden ratio
-Plug 'nelstrom/vim-textobj-rubyblock'    " Trying it out
+Plug 'nelstrom/vim-textobj-rubyblock'    " Match ruby blocks
 let g:golden_ratio_autocommand = 0
 nnoremap <silent> <C-w>- :GoldenRatioResize<CR>
 nnoremap <silent> <C-k> <C-w>k:GoldenRatioResize<CR>
@@ -40,7 +40,7 @@ nnoremap <silent> <C-h> <C-w>h:GoldenRatioResize<CR>
 Plug 'scrooloose/nerdtree'               " File browser
 let NERDTreeShowLineNumbers=1            " Make nerdtree honor numbers
 autocmd FileType nerdtree setlocal number relativenumber
-Plug 'tpope/vim-fugitive'                " TODO Git integration
+Plug 'tpope/vim-fugitive'                " Git integration, TODO adjust habbits
 Plug 'mattn/gist-vim'                    " Create gists
 Plug 'tpope/vim-surround'                " Delete, or insert around text objects
 Plug 'altercation/vim-colors-solarized'  " Damn it looks good
