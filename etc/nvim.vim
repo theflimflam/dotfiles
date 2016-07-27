@@ -48,10 +48,18 @@ Plug 'elzr/vim-json'                     " JSON
 let g:vim_json_syntax_conceal = 0        " Don't hide quotes in json files
 Plug 'dyng/ctrlsf.vim'                   " Grep alternative, uses the Silver Searcher
 vmap <C-F> <Plug>CtrlSFVwordExec
-"nmap <C-F> <Plug>CtrlSFCwordPath
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
-Plug 'ctrlpvim/ctrlp.vim'
-nmap <C-F> :CtrlPLine<CR>
+Plug 'ctrlpvim/ctrlp.vim'                " fuzzy search files, recent files, and buffers
+Plug 'reedes/vim-lexical'                " spell-check and thesaurus/dictionary completion
+Plug 'reedes/vim-wordy'                  " identify phrases for history of misuse, abuse, and overuse
+Plug 'reedes/vim-textobj-sentence'       " sophisticated sentence text object
+Plug 'reedes/vim-pencil'
+let g:pencil#textwidth = 120
+autocmd FileType markdown,mkd call pencil#init()
+                          \ | call lexical#init()
+                          \ | call textobj#sentence#init()
+
+nmap <leader><leader> <Plug>TogglePencil
 call plug#end()
 
 set relativenumber    " better navigation
@@ -191,7 +199,8 @@ nmap <leader>a <Plug>(EasyAlign)
 " turn off EX mode (it annoys me, I don't use it)
 ":map Q <Nop>
 " More usefully, reformat paragraphs with vim rules
-" - http://alols.github.io/2012/11/07/writing-prose-with-vim/
+" - http://alols.github.io/2012/11/07/writing-prose-with-vim
+" - https://github.com/reedes/vim-pencil
 map Q gqap
 
 " Display line numbers in help
