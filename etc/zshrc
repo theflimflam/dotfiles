@@ -24,7 +24,7 @@ setopt CORRECT MULTIOS NO_HUP NO_CHECK_JOBS EXTENDED_GLOB
 
 # History
 export HISTSIZE=2000
-export HISTFILE="~/.zsh_history"
+export HISTFILE=~/.zsh_history
 export SAVEHIST=$HISTSIZE
 
 setopt hist_ignore_all_dups # when running a command again, removes previous refs to it
