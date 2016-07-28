@@ -55,9 +55,9 @@ Plug 'reedes/vim-wordy'                  " identify phrases for history of misus
 Plug 'reedes/vim-textobj-sentence'       " sophisticated sentence text object
 Plug 'reedes/vim-pencil'
 let g:pencil#textwidth = 120
-autocmd FileType markdown,mkd call pencil#init()
-                          \ | call lexical#init()
-                          \ | call textobj#sentence#init()
+"autocmd FileType markdown,mkd call pencil#init()
+"                          \ | call lexical#init()
+"                          \ | call textobj#sentence#init()
 
 nmap <leader><leader> <Plug>TogglePencil
 call plug#end()
