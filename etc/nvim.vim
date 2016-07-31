@@ -122,9 +122,13 @@ nnoremap H <C-o> " Browse code with back button
 nnoremap L <C-i> " Browse code with forward button
 
 " Colours
-colorscheme solarized
-set background=dark
-set guifont=hack:h12
+try
+  silent colorscheme solarized
+  set background=dark
+  set guifont=hack:h12
+catch
+  " Deal with it
+endtry
 
 " Search [f]iles, [l]ines, [r]ecent files
 nnoremap <leader>f :FZF<CR>
