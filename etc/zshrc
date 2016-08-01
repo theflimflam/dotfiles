@@ -158,11 +158,23 @@ bindkey "^[3;5~" delete-char
 # bindkey '^R' history-incremental-search-backward
 
 # Personal programs
-export PATH="$PATH:~/bin"
-export PATH="$PATH:~/script"
-export PATH="$PATH:~/code/go/bin"
+export PATH="$PATH:$HOME/bin"
+export PATH="$PATH:$HOME/script"
+export PATH="$PATH:$HOME/code/go/bin"
 
 # Habits
 if which nvim > /dev/null; then
   alias vim="echo 'nvim?'";
 fi
+
+# Taken from https://github.com/Julian/dotfiles/blob/master/.config/zsh/keybindings.zsh
+# Make ^Z toggle between ^Z and fg
+function ctrlz() {
+  if [[ $#BUFFER == 0 ]]; then
+    fg >/dev/null 2>&1 && zle redisplay
+  else
+    zle push-input
+  fi
+}
+zle -N ctrlz
+bindkey '^Z' ctrlz
