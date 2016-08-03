@@ -49,10 +49,11 @@ let g:vim_json_syntax_conceal = 0        " Don't hide quotes in json files
 Plug 'dyng/ctrlsf.vim'                   " Grep alternative, uses the Silver Searcher
 vmap <C-F> <Plug>CtrlSFVwordExec
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
-Plug 'ctrlpvim/ctrlp.vim'                " fuzzy search files, recent files, and buffers
-Plug 'reedes/vim-lexical'                " spell-check and thesaurus/dictionary completion
-Plug 'reedes/vim-wordy'                  " identify phrases for history of misuse, abuse, and overuse
-Plug 'reedes/vim-textobj-sentence'       " sophisticated sentence text object
+Plug 'ctrlpvim/ctrlp.vim'                " Fuzzy search files, recent files, and buffers
+Plug 'reedes/vim-lexical'                " Spell-check and thesaurus/dictionary completion
+Plug 'reedes/vim-wordy'                  " Identify phrases for history of misuse, abuse, and overuse
+Plug 'reedes/vim-textobj-sentence'       " Sophisticated sentence text object
+Plug 'tpope/vim-commentary'              " Toggle comments on lines
 Plug 'reedes/vim-pencil'
 let g:pencil#textwidth = 120
 "autocmd FileType markdown,mkd call pencil#init()
@@ -191,7 +192,7 @@ autocmd BufReadPost COMMIT_EDITMSG exe "normal! gg"
 
 " Quickopen and edit config files
 nnoremap <leader>vv :e $MYVIMRC<CR>
-nnoremap <leader>vr :PlugUpdate<CR>
+nnoremap <leader>vr :source $MYVIMRC<CR>:PlugUpdate<CR>:source $MYVIMRC<CR>
 nnoremap <leader>zz :e $HOME/.zshrc<CR>
 
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
