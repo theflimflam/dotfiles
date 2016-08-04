@@ -48,6 +48,7 @@ Plug 'elzr/vim-json'                     " JSON
 let g:vim_json_syntax_conceal = 0        " Don't hide quotes in json files
 Plug 'dyng/ctrlsf.vim'                   " Grep alternative, uses the Silver Searcher
 vmap <C-F> <Plug>CtrlSFVwordExec
+nmap <C-F> :CtrlPLine<CR>
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 Plug 'ctrlpvim/ctrlp.vim'                " fuzzy search files, recent files, and buffers
 Plug 'reedes/vim-lexical'                " spell-check and thesaurus/dictionary completion
