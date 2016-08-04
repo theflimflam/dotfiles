@@ -81,6 +81,7 @@ iabbrev teh the
 iabbrev hte the
 iabbrev functino function
 iabbrev iamge image
+iabbrev wehn when
 
 " spell checker automatically there for text and markdown
 autocmd FileType markdown,text :set spell
