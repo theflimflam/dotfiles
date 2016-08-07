@@ -97,7 +97,7 @@ set incsearch          " Incremental search.
 set magic              " Allows pattern matching with special characters
 
 " search visual mode selection with //
-vnoremap // y/<C-R>"<CR>
+vnoremap * y/<C-R>"<CR>
 
 " Search mappings: center cursor on search
 nnoremap N Nzz
