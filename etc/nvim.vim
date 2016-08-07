@@ -54,6 +54,7 @@ Plug 'ctrlpvim/ctrlp.vim'                " fuzzy search files, recent files, and
 Plug 'reedes/vim-lexical'                " spell-check and thesaurus/dictionary completion
 Plug 'reedes/vim-wordy'                  " identify phrases for history of misuse, abuse, and overuse
 Plug 'reedes/vim-textobj-sentence'       " sophisticated sentence text object
+Plug 'tpope/vim-commentary'              " turns out I can't live without this one
 Plug 'reedes/vim-pencil'
 let g:pencil#textwidth = 120
 "autocmd FileType markdown,mkd call pencil#init()
