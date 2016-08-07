@@ -50,11 +50,11 @@ Plug 'dyng/ctrlsf.vim'                   " Grep alternative, uses the Silver Sea
 vmap <C-F> <Plug>CtrlSFVwordExec
 nmap <C-F> :CtrlPLine<CR>
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
-Plug 'ctrlpvim/ctrlp.vim'                " fuzzy search files, recent files, and buffers
-Plug 'reedes/vim-lexical'                " spell-check and thesaurus/dictionary completion
-Plug 'reedes/vim-wordy'                  " identify phrases for history of misuse, abuse, and overuse
-Plug 'reedes/vim-textobj-sentence'       " sophisticated sentence text object
-Plug 'tpope/vim-commentary'              " turns out I can't live without this one
+Plug 'ctrlpvim/ctrlp.vim'                " Fuzzy search files, recent files, and buffers
+Plug 'reedes/vim-lexical'                " Spell-check and thesaurus/dictionary completion
+Plug 'reedes/vim-wordy'                  " Identify phrases for history of misuse, abuse, and overuse
+Plug 'reedes/vim-textobj-sentence'       " Sophisticated sentence text object
+Plug 'tpope/vim-commentary'              " Toggle comments on lines
 Plug 'reedes/vim-pencil'
 let g:pencil#textwidth = 120
 "autocmd FileType markdown,mkd call pencil#init()
