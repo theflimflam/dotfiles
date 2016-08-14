@@ -1,5 +1,7 @@
 DOTFILES="$(HOME)/dotfiles/etc"
 
+all: taskrc zshrc nvim
+
 zshrc:
 	ln -sf $(DOTFILES)/zshrc $(HOME)/.zshrc
 
