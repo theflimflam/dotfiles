@@ -40,12 +40,12 @@ nnoremap <silent> <C-h> <C-w>h:GoldenRatioResize<CR>
 Plug 'scrooloose/nerdtree'               " File browser
 let NERDTreeShowLineNumbers=1            " Make nerdtree honor numbers
 autocmd FileType nerdtree setlocal number relativenumber
-Plug 'tpope/vim-fugitive'                " Git integration, TODO adjust habbits
+Plug 'tpope/vim-fugitive'                " Git integration, TODO adjust habits
 Plug 'mattn/gist-vim'                    " Create gists
 Plug 'tpope/vim-surround'                " Delete, or insert around text objects
 Plug 'altercation/vim-colors-solarized'  " Damn it looks good
 Plug 'elzr/vim-json'                     " JSON
-let g:vim_json_syntax_conceal = 0        " Don't hide quotes in json files
+let g:vim_json_syntax_conceal = 0        " Don't hide quotes in JSON files
 Plug 'dyng/ctrlsf.vim'                   " Grep alternative, uses the Silver Searcher
 vmap <C-F> <Plug>CtrlSFVwordExec
 nmap <C-F> :CtrlPLine<CR>
