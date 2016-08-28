@@ -38,7 +38,8 @@ nnoremap <silent> <C-j> <C-w>j:GoldenRatioResize<CR>
 nnoremap <silent> <C-l> <C-w>l:GoldenRatioResize<CR>
 nnoremap <silent> <C-h> <C-w>h:GoldenRatioResize<CR>
 Plug 'scrooloose/nerdtree'               " File browser
-let NERDTreeShowLineNumbers=1            " Make nerdtree honor numbers
+let NERDTreeShowLineNumbers = 1          " Make nerdtree honor numbers
+let NERDTreeShowHidden = 1               " Show dotfiles
 autocmd FileType nerdtree setlocal number relativenumber
 Plug 'tpope/vim-fugitive'                " Git integration, TODO adjust habits
 Plug 'mattn/gist-vim'                    " Create gists
