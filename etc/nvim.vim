@@ -215,3 +215,5 @@ map Q gqap
 
 " Display line numbers in help
 autocmd FileType help setlocal number relativenumber
+
+autocmd FileType gitcommit nnoremap @@ O<ESC>!!btil<CR>A<SPACE>
