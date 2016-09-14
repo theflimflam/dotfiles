@@ -118,6 +118,7 @@ set tabstop=2 softtabstop=2 shiftwidth=2
 autocmd Filetype perl setlocal tabstop=4 softtabstop=4 shiftwidth=4
 autocmd Filetype go setlocal tabstop=4 softtabstop=4 shiftwidth=4 nolist
 autocmd Filetype cpp setlocal tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
+autocmd Filetype markdown setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 
 
 " Open files edits

@@ -150,7 +150,7 @@ fi
 # Ruby environment overrides system ruby
 export PATH="~/.rbenv/bin:$PATH"
 
-# Make the delete key do the right thing
+# Make the delete key do the right thing (OSX)
 bindkey "^[[3~"  delete-char
 bindkey "^[3;5~" delete-char
 
