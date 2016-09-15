@@ -57,6 +57,9 @@ Plug 'reedes/vim-wordy'                  " Identify phrases for history of misus
 Plug 'reedes/vim-textobj-sentence'       " Sophisticated sentence text object
 Plug 'tpope/vim-commentary'              " Toggle comments on lines
 Plug 'reedes/vim-pencil'
+Plug 'othree/eregex.vim'                 " PCRE engine for VIM
+nnoremap / :M/
+nnoremap ,/ /
 let g:pencil#textwidth = 120
 "autocmd FileType markdown,mkd call pencil#init()
 "                          \ | call lexical#init()
