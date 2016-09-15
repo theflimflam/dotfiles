@@ -164,6 +164,8 @@ export PATH="$PATH:$HOME/bin"
 export PATH="$PATH:$HOME/script"
 export PATH="$PATH:$HOME/code/go/bin"
 
+export GOPATH="$HOME/code/go"
+
 # Habits
 if which nvim > /dev/null; then
   alias vim="echo 'nvim?'";
