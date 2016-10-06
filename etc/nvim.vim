@@ -32,7 +32,7 @@ Plug 'michaeljsmith/vim-indent-object'   " Select indents as an object
 Plug 'roman/golden-ratio'                " Layout splits with golden ratio
 Plug 'nelstrom/vim-textobj-rubyblock'    " Match ruby blocks
 let g:golden_ratio_autocommand = 0
-nnoremap <silent> <C-w>- :GoldenRatioResize<CR>
+nnoremap <silent> <C-w>- :GoldenRatioResize<CR>:GoldenRatioResize<CR>
 nnoremap <silent> <C-k> <C-w>k:GoldenRatioResize<CR>
 nnoremap <silent> <C-j> <C-w>j:GoldenRatioResize<CR>
 nnoremap <silent> <C-l> <C-w>l:GoldenRatioResize<CR>
