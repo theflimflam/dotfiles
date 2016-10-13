@@ -182,3 +182,6 @@ function ctrlz() {
 }
 zle -N ctrlz
 bindkey '^Z' ctrlz
+
+# Solarized cucumber workaround
+export CUCUMBER_COLORS=comment=cyan
