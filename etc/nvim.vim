@@ -77,7 +77,6 @@ set autoread          " When someone modifies a file externally, autoread it bac
 
 """"""""""""""""""""""""""""""""""""""""
 " Spelling and autocorrect
-
 set spl=en spell       " Use English for spellchecking,
 iabbrev waht what
 iabbrev tehn then
