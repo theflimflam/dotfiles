@@ -73,8 +73,6 @@ set number            " give line number that you're on
 set scrolloff=5       " when scrolling, keep cursor 5 lines away from border
 set foldmethod=manual " Easier to manage this myself imho
 set autoread          " When someone modifies a file externally, autoread it back in
-"set clipboard=unnamed " yank and paste to and from OS clipboard
-" gotta learn maor --> http://brianstorti.com/vim-registers
 
 
 """"""""""""""""""""""""""""""""""""""""
