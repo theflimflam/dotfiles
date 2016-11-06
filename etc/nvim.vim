@@ -98,10 +98,10 @@ set smartcase          " Do smart case matching.
 set incsearch          " Incremental search.
 set magic              " Allows pattern matching with special characters
 
-" search visual mode selection with //
+" Search visual mode selection with *
 vnoremap * y/<C-R>"<CR>
 
-" Search mappings: center cursor on search
+" Search mappings: center cursor when jumping in search
 nnoremap N Nzz
 nnoremap n nzz
 
@@ -120,13 +120,17 @@ autocmd Filetype go setlocal tabstop=4 softtabstop=4 shiftwidth=4 nolist
 autocmd Filetype cpp setlocal tabstop=4 softtabstop=4 shiftwidth=4 noexpandtab
 autocmd Filetype markdown setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 
+" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+vmap <Enter> <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. <leader>aip)
+nmap <leader>a <Plug>(EasyAlign)
 
-" Open files edits
+" Quickly open rc files
 nnoremap <leader>vv :e $MYVIMRC<CR>
 nnoremap <leader>zz :e $HOME/.zshrc<CR>
 
-nnoremap H <C-o> " Browse code with back button
-nnoremap L <C-i> " Browse code with forward button
+nnoremap H <C-o> " Browse code like you're using vimium back button
+nnoremap L <C-i> " Browse code like you're using vimium forward button
 
 " Colours
 try
@@ -134,7 +138,7 @@ try
   set background=dark
   set guifont=hack:h12
 catch
-  " Deal with it
+  " If colors and fonts fail, this isn't a big deal
 endtry
 
 " Search [f]iles, [l]ines, [r]ecent files
@@ -174,6 +178,7 @@ endif
 " If we're in a fresh vim, under $HOME
 " AND there is a pinned directory present
 "   THEN Change to this directory
+"   SO that we can act as if we're in the default system project
 if filereadable($HOME . "/.pindir") && getcwd() == $HOME
     let pindir_lines = readfile($HOME . "/.pindir")
     if len(pindir_lines) > 0
@@ -193,19 +198,13 @@ autocmd QuickFixCmdPost *grep* cwindow
 " <500  : store only 500 lines of registers
 set shada='500,f1
 
-" On git commit, position cursor at the top
+" EXCEPTION, cursor placement at top on git commit
 autocmd BufReadPost COMMIT_EDITMSG exe "normal! gg"
 
-" Quickopen and edit config files
+" Quickly open, reload and edit rc files
 nnoremap <leader>vv :e $MYVIMRC<CR>
 nnoremap <leader>vr :source $MYVIMRC<CR>:PlugUpdate<CR>:source $MYVIMRC<CR>
 nnoremap <leader>zz :e $HOME/.zshrc<CR>
-
-" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
-vmap <Enter> <Plug>(EasyAlign)
-
-" Start interactive EasyAlign for a motion/text object (e.g. <leader>aip)
-nmap <leader>a <Plug>(EasyAlign)
 
 " turn off EX mode (it annoys me, I don't use it)
 ":map Q <Nop>
@@ -217,4 +216,5 @@ map Q gqap
 " Display line numbers in help
 autocmd FileType help setlocal number relativenumber
 
+" Ticket lookup based on branch for pleasant lawyer
 autocmd FileType gitcommit nnoremap @@ O<ESC>!!btil<CR>A<SPACE>
