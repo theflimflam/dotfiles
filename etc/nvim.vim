@@ -145,21 +145,6 @@ endtry
 nnoremap <leader>f :FZF<CR>
 nnoremap <leader>l :CtrlPLine<CR>
 nnoremap <leader>r :CtrlPMRUFiles<CR>
-
-" Filetype switcher
-"use t to change filetype
-nmap <leader>tt :set filetype=text<CR>
-nmap <leader>tm :set filetype=markdown<CR>
-nmap <leader>tp :set filetype=perl<CR>
-nmap <leader>th :set filetype=eruby<CR>
-nmap <leader>tr :set filetype=ruby<CR>
-nmap <leader>ts :set filetype=sql<CR>
-nmap <leader>tx :set filetype=xml<CR>
-nmap <leader>tj :set filetype=javascript<CR>
-nmap <leader>ts :set filetype=sass<CR>
-nmap <leader>tl :set filetype=less<CR>
-nmap <leader>tv :set filetype=vim<CR>
-
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/](\.git|\.hg|\.svn|tmp)$',
   \ 'file': '\.pyc$\|\.pyo$|\.class$|\.min\..*\.js',
