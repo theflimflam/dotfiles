@@ -172,7 +172,9 @@ autocmd QuickFixCmdPost *grep* cwindow
 
 " Remap CTRL F to
 nmap <C-F> "zyiw:Ggrep <C-R>z
-vmap <C-F> "zy:exe "Ggrep ".@z<CR>
+vnoremap * y/<C-R>"<CR>
+" vmap <C-F> "zy:exe "Ggrep ".@z<CR>
+vmap <C-F> y:Ggrep <C-R>"<CR>
 
 " Shared data across nvim sessions
 " '500  : save last 500 files local marks [a-z]
