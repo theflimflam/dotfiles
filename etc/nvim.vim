@@ -164,7 +164,7 @@ endif
 if filereadable($HOME . "/.pindir") && getcwd() == $HOME
     let pindir_lines = readfile($HOME . "/.pindir")
     if len(pindir_lines) > 0
-      exe "chdir " . pindir_lines[0]
+        exe "chdir " . pindir_lines[0]
     endif
 endif
 
