@@ -47,7 +47,6 @@ Plug 'tpope/vim-surround'                " Delete, or insert around text objects
 Plug 'altercation/vim-colors-solarized'  " Damn it looks good
 Plug 'elzr/vim-json'                     " JSON
 let g:vim_json_syntax_conceal = 0        " Don't hide quotes in JSON files
-Plug 'dyng/ctrlsf.vim'                   " Grep alternative, uses the Silver Searcher
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 Plug 'ctrlpvim/ctrlp.vim'                " Fuzzy search files, recent files, and buffers
 Plug 'reedes/vim-lexical'                " Spell-check and thesaurus/dictionary completion
@@ -178,8 +177,6 @@ autocmd QuickFixCmdPost *grep* cwindow
 " Remap CTRL F to
 nmap <C-F> "zyiw:Ggrep <C-R>z
 vmap <C-F> "zy:exe "Ggrep ".@z<CR>
-"vmap <C-F> <Plug>CtrlSFVwordExec
-"nmap <C-F> :CtrlPLine<CR>
 
 " Shared data across nvim sessions
 " '500  : save last 500 files local marks [a-z]
