@@ -31,12 +31,10 @@ Plug 'junegunn/vim-easy-align'           " Generic align script
 Plug 'michaeljsmith/vim-indent-object'   " Select indents as an object
 Plug 'roman/golden-ratio'                " Layout splits with golden ratio
 Plug 'nelstrom/vim-textobj-rubyblock'    " Match ruby blocks
+Plug 'fntlnz/atags.vim'                  " helps you creating and updating your tag files (Neovim only)
+Plug 'vim-scripts/LargeFile'             " turn off slow stuff in files > 20mb
 let g:golden_ratio_autocommand = 0
 nnoremap <silent> <C-w>- :GoldenRatioResize<CR>:GoldenRatioResize<CR>
-nnoremap <silent> <C-k> <C-w>k:GoldenRatioResize<CR>
-nnoremap <silent> <C-j> <C-w>j:GoldenRatioResize<CR>
-nnoremap <silent> <C-l> <C-w>l:GoldenRatioResize<CR>
-nnoremap <silent> <C-h> <C-w>h:GoldenRatioResize<CR>
 Plug 'scrooloose/nerdtree'               " File browser
 let NERDTreeShowLineNumbers = 1          " Make nerdtree honor numbers
 let NERDTreeShowHidden = 1               " Show dotfiles
@@ -48,9 +46,6 @@ Plug 'altercation/vim-colors-solarized'  " Damn it looks good
 Plug 'elzr/vim-json'                     " JSON
 Plug 'kchmck/vim-coffee-script'          " Syntax for coffeescript
 let g:vim_json_syntax_conceal = 0        " Don't hide quotes in JSON files
-Plug 'dyng/ctrlsf.vim'                   " Grep alternative, uses the Silver Searcher
-vmap <C-F> <Plug>CtrlSFVwordExec
-nmap <C-F> :CtrlPLine<CR>
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 Plug 'ctrlpvim/ctrlp.vim'                " Fuzzy search files, recent files, and buffers
 Plug 'reedes/vim-lexical'                " Spell-check and thesaurus/dictionary completion
@@ -72,7 +67,9 @@ call plug#end()
 set relativenumber    " better navigation
 set number            " give line number that you're on
 set scrolloff=5       " when scrolling, keep cursor 5 lines away from border
-set foldmethod=manual " Easier to manage this myself imho
+" set foldmethod=manual " Easier to manage this myself imho
+set foldmethod=indent " Fold by indent level
+set foldlevel=999     " Don't fold when you open a file
 set autoread          " When someone modifies a file externally, autoread it back in
 
 
@@ -168,7 +165,7 @@ endif
 if filereadable($HOME . "/.pindir") && getcwd() == $HOME
     let pindir_lines = readfile($HOME . "/.pindir")
     if len(pindir_lines) > 0
-      exe "chdir " . pindir_lines[0]
+        exe "chdir " . pindir_lines[0]
     endif
 endif
 
@@ -177,6 +174,12 @@ endif
 "   e.g. :Ggrep FIXME
 "   see https://github.com/tpope/vim-fugitive
 autocmd QuickFixCmdPost *grep* cwindow
+
+" Remap CTRL F to
+nmap <C-F> "zyiw:Ggrep <C-R>z
+vnoremap * y/<C-R>"<CR>
+" vmap <C-F> "zy:exe "Ggrep ".@z<CR>
+vmap <C-F> y:Ggrep <C-R>"<CR>
 
 " Shared data across nvim sessions
 " '500  : save last 500 files local marks [a-z]
@@ -204,3 +207,26 @@ autocmd FileType help setlocal number relativenumber
 
 " Ticket lookup based on branch for pleasant lawyer
 autocmd FileType gitcommit nnoremap @@ O<ESC>!!btil<CR>A<SPACE>
+
+" Vertical split for help files
+autocmd FileType help wincmd L
+
+" Recompile ctags on write
+if executable('ctags')
+    if filereadable('Gemfile.lock') && executable('rbenv')
+      " Also generate tags for rbenv installed gemfiles
+      let ruby_version=systemlist("rbenv version | awk '{print $1}'")[0]
+      let gem_path = $HOME . "/.rbenv/versions/" . ruby_version . "/lib/ruby/gems"
+      let ctag_paths = ['.', gem_path]
+
+      " echo join(ctag_paths, ' ')
+      " forked from ~/.config/nvim/plugged/atags.vim/autoload/atags.vim
+      let g:atags_build_commands_list = [
+            \"ctags -R -f tags.tmp " . join(ctag_paths, ' '),
+            \"awk 'length($0) < 400' tags.tmp > tags",
+            \"rm tags.tmp"
+            \]
+    endif
+
+    autocmd BufWritePost * call atags#generate()
+endif

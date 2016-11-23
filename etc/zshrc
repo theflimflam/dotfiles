@@ -205,3 +205,6 @@ fi
 # zle -N zle-line-init
 # zle -N zle-keymap-select
 export KEYTIMEOUT=1
+
+# Homebrew flub
+export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
