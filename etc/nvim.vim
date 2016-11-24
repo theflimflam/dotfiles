@@ -67,9 +67,8 @@ call plug#end()
 set relativenumber    " better navigation
 set number            " give line number that you're on
 set scrolloff=5       " when scrolling, keep cursor 5 lines away from border
-" set foldmethod=manual " Easier to manage this myself imho
 set foldmethod=indent " Fold by indent level
-set foldlevel=999     " Don't fold when you open a file
+set nofoldenable      " Don't fold files you just opened
 set autoread          " When someone modifies a file externally, autoread it back in
 
 
