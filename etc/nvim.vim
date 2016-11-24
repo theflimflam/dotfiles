@@ -172,7 +172,14 @@ endif
 " Also works for Git grep
 "   e.g. :Ggrep FIXME
 "   see https://github.com/tpope/vim-fugitive
-autocmd QuickFixCmdPost *grep* cwindow
+" autocmd QuickFixCmdPost *grep* cwindow
+"
+" Also http://stackoverflow.com/a/39010855/81271
+augroup myvimrc
+    autocmd!
+    autocmd QuickFixCmdPost [^l]* cwindow
+    autocmd QuickFixCmdPost l*    lwindow
+augroup END
 
 " Remap CTRL F to
 nmap <C-F> "zyiw:Ggrep <C-R>z
