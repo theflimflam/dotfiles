@@ -186,21 +186,21 @@ bindkey '^Z' ctrlz
 # Solarized cucumber workaround
 export CUCUMBER_COLORS=comment=cyan
 
-# Vi mode, god help me
-# https://dougblack.io/words/zsh-vi-mode.html
-bindkey -v
-export KEYTIMEOUT=1
-bindkey '^P' up-history
-bindkey '^N' down-history
-bindkey '^?' backward-delete-char
-bindkey '^h' backward-delete-char
-bindkey '^w' backward-kill-word
-
-if which fzf-history-widget > /dev/null; then
-  bindkey '^r' fzf-history-widget
-else
-  bindkey '^r' history-incremental-search-backward
-fi
+## Vi mode, god help me
+## https://dougblack.io/words/zsh-vi-mode.html
+#bindkey -v
+#export KEYTIMEOUT=1
+#bindkey '^P' up-history
+#bindkey '^N' down-history
+#bindkey '^?' backward-delete-char
+#bindkey '^h' backward-delete-char
+#bindkey '^w' backward-kill-word
+#
+#if which fzf-history-widget > /dev/null; then
+#  bindkey '^r' fzf-history-widget
+#else
+#  bindkey '^r' history-incremental-search-backward
+#fi
 
 # zle -N zle-line-init
 # zle -N zle-keymap-select
