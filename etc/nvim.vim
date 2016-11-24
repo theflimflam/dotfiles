@@ -236,5 +236,5 @@ if executable('ctags')
             \]
     endif
 
-    autocmd BufWritePost * call atags#generate()
+    " autocmd BufWritePost * call atags#generate()
 endif
