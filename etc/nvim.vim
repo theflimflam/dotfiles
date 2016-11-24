@@ -214,7 +214,10 @@ autocmd FileType help setlocal number relativenumber
 autocmd FileType gitcommit nnoremap @@ O<ESC>!!btil<CR>A<SPACE>
 
 " Vertical split for help files
-autocmd FileType help wincmd L
+" autocmd FileType help wincmd L
+
+set splitright
+set splitbelow
 
 " Recompile ctags on write
 if executable('ctags')
