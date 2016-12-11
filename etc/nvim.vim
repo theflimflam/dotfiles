@@ -238,3 +238,6 @@ if executable('ctags')
 
     " autocmd BufWritePost * call atags#generate()
 endif
+
+" jj is like escape
+inoremap jj <ESC>
