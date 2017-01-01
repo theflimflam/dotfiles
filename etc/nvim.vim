@@ -43,6 +43,7 @@ Plug 'tpope/vim-fugitive'                " Git integration, TODO adjust habits
 Plug 'mattn/gist-vim'                    " Create gists
 Plug 'tpope/vim-surround'                " Delete, or insert around text objects
 Plug 'altercation/vim-colors-solarized'  " Damn it looks good
+Plug 'sickill/vim-monokai'
 Plug 'elzr/vim-json'                     " JSON
 Plug 'kchmck/vim-coffee-script'          " Syntax for coffeescript
 let g:vim_json_syntax_conceal = 0        " Don't hide quotes in JSON files
@@ -131,8 +132,9 @@ nnoremap L <C-i> " Browse code like you're using vimium forward button
 
 " Colours
 try
-  silent colorscheme solarized
+  " silent colorscheme solarized
   set background=dark
+  colorscheme monokai
   set guifont=hack:h12
 catch
   " If colors and fonts fail, this isn't a big deal
