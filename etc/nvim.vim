@@ -85,7 +85,7 @@ iabbrev iamge image
 iabbrev wehn when
 
 " spell checker automatically there for text and markdown
-autocmd FileType markdown,text :set spell
+set nospell
 
 
 """"""""""""""""""""""""""""""""""""""""
