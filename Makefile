@@ -1,17 +1,16 @@
 DOTFILES="$(HOME)/dotfiles/etc"
 
-all: taskrc zshrc nvim
+all: clean prep link
 
-zshrc:
-	ln -sf $(DOTFILES)/zshrc $(HOME)/.zshrc
-
-taskrc:
-	ln -sf $(DOTFILES)/taskrc $(HOME)/.taskrc
-
-nvim:
+clean:
 	rm -rf ~/.config/nvim
-	mkdir -p $(HOME)/.config/nvim
-	ln -sf $(DOTFILES)/nvim.vim $(HOME)/.config/nvim/init.vim
+
+prep:
 	curl -fLo $(HOME)/.config/nvim/autoload/plug.vim --create-dirs \
 	     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	nvim -c PlugInstall
+
+link:
+	stow zsh
+	stow task
+	stow nvim
+	stow xmodmap
