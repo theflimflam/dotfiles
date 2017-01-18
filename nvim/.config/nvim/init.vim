@@ -217,7 +217,7 @@ autocmd FileType gitcommit nnoremap @@ O<ESC>!!btil<CR>A<SPACE>
 " autocmd FileType help wincmd L
 
 set splitright
-set splitbelow
+" set splitbelow
 
 " Recompile ctags on write
 if executable('ctags')
