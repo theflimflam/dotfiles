@@ -80,21 +80,19 @@ cur_git_branch() {
 }
 
 setopt PROMPT_SUBST
-case $TERM in
-  xterm*|rxvt*|screen|Apple_Terminal)
-    # PROMPT=$(echo '%{\e]0;%n@%m: %~\a\e[%(?.32.31)m%}%# %{\e[m%}')
-    PROMPT=$(echo '%{\e]0;%n@%m: %~\a\e[%(?.32.31)m%}λ %{\e[m%}')
-    RPROMPT=$(echo '$(cur_git_branch) %{\e[32m%}%3~ %{\e[m%}%U%T%u')
 
-    # Echo current process name in the xterm title bar
-    preexec () {
-      print -Pn "\e]0;$1\a"
-    }
-    ;;
-  *)
-    PROMPT="[%n@%m] %# "
-    ;;
-esac
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+  PROMPT=$(echo '%{\e]0;%n@%m: %~\a\e[%(?.32.31)m%}Σ %{\e[m%}')
+else
+  PROMPT=$(echo '%{\e]0;%n@%m: %~\a\e[%(?.32.31)m%}λ %{\e[m%}')
+fi
+
+RPROMPT=$(echo '$(cur_git_branch) %{\e[32m%}%3~ %{\e[m%}%U%T%u')
+
+# Echo current process name in the xterm title bar
+preexec () {
+  print -Pn "\e]0;$1\a"
+}
 
 export LS_COLORS="exfxcxdxbxegedabagacad"
 ZLS_COLORS=$LS_COLORS
