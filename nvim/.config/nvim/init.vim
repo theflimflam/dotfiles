@@ -31,7 +31,6 @@ Plug 'junegunn/vim-easy-align'           " Generic align script
 Plug 'michaeljsmith/vim-indent-object'   " Select indents as an object
 Plug 'roman/golden-ratio'                " Layout splits with golden ratio
 Plug 'nelstrom/vim-textobj-rubyblock'    " Match ruby blocks
-Plug 'fntlnz/atags.vim'                  " helps you creating and updating your tag files (Neovim only)
 Plug 'vim-scripts/LargeFile'             " turn off slow stuff in files > 20mb
 let g:golden_ratio_autocommand = 0
 nnoremap <silent> <C-w>- :GoldenRatioResize<CR>:GoldenRatioResize<CR>
@@ -218,26 +217,6 @@ autocmd FileType gitcommit nnoremap @@ O<ESC>!!btil<CR>A<SPACE>
 
 set splitright
 " set splitbelow
-
-" Recompile ctags on write
-if executable('ctags')
-    if filereadable('Gemfile.lock') && executable('rbenv')
-      " Also generate tags for rbenv installed gemfiles
-      let ruby_version=systemlist("rbenv version | awk '{print $1}'")[0]
-      let gem_path = $HOME . "/.rbenv/versions/" . ruby_version . "/lib/ruby/gems"
-      let ctag_paths = ['.', gem_path]
-
-      " echo join(ctag_paths, ' ')
-      " forked from ~/.config/nvim/plugged/atags.vim/autoload/atags.vim
-      let g:atags_build_commands_list = [
-            \"ctags -R -f tags.tmp " . join(ctag_paths, ' '),
-            \"awk 'length($0) < 400' tags.tmp > tags",
-            \"rm tags.tmp"
-            \]
-    endif
-
-    " autocmd BufWritePost * call atags#generate()
-endif
 
 " jj is like escape
 inoremap jj <ESC>
