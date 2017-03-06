@@ -132,7 +132,7 @@ nnoremap L <C-i> " Browse code like you're using vimium forward button
 try
   " silent colorscheme solarized
   set background=dark
-  colorscheme monokai
+  colorscheme solarized
   set guifont=hack:h12
 catch
   " If colors and fonts fail, this isn't a big deal
