@@ -1,5 +1,5 @@
 " .config/nvim/init.vim configuration file
-" Copyright (C) 2016 Matthew B. Gray
+" Copyright (C) 2017 Matthew B. Gray
 "
 " This program is free software: you can redistribute it and/or modify
 " it under the terms of the GNU General Public License as published by
