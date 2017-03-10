@@ -41,8 +41,9 @@ autocmd FileType nerdtree setlocal number relativenumber
 Plug 'tpope/vim-fugitive'                " Git integration, TODO adjust habits
 Plug 'mattn/gist-vim'                    " Create gists
 Plug 'tpope/vim-surround'                " Delete, or insert around text objects
-Plug 'altercation/vim-colors-solarized'  " Damn it looks good
-Plug 'sickill/vim-monokai'
+Plug 'altercation/vim-colors-solarized'  " Sexy has a new plugin
+Plug 'rakr/vim-one'                      " Like Atom
+Plug 'sickill/vim-monokai'               " Like Sublime
 Plug 'elzr/vim-json'                     " JSON
 Plug 'kchmck/vim-coffee-script'          " Syntax for coffeescript
 let g:vim_json_syntax_conceal = 0        " Don't hide quotes in JSON files
