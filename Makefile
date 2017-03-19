@@ -14,3 +14,10 @@ link:
 	stow task
 	stow nvim
 	stow xmodmap
+
+mac-updates:
+	sudo softwareupdate --install --all
+	brew upgrade
+	brew cleanup
+	brew prune
+	brew doctor
