@@ -200,6 +200,9 @@ nnoremap <leader>vv :e $MYVIMRC<CR>
 nnoremap <leader>vr :source $MYVIMRC<CR>:PlugUpdate<CR>:source $MYVIMRC<CR>
 nnoremap <leader>zz :e $HOME/.zshrc<CR>
 
+" Syntax highlighting is often not quite right.
+nnoremap <leader>t :set filetype=
+
 " turn off EX mode (it annoys me, I don't use it)
 ":map Q <Nop>
 " More usefully, reformat paragraphs with vim rules
