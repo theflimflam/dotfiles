@@ -32,3 +32,7 @@ brew:
 	brew cask install gimp google-chrome hyper iterm2
 	brew cask install keepassx libreoffice skype spotify
 	brew cask install transmission tunnelblick
+
+unfuck-osx:
+	# Turn off mouse acceleration http://osxdaily.com/2010/08/25/mouse-acceleration
+	defaults write .GlobalPreferences com.apple.mouse.scaling -1
