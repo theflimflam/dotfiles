@@ -62,7 +62,6 @@ let g:pencil#textwidth = 120
 "                          \ | call lexical#init()
 "                          \ | call textobj#sentence#init()
 
-nmap <leader><leader> <Plug>TogglePencil
 call plug#end()
 
 set relativenumber    " better navigation
@@ -228,3 +227,15 @@ inoremap jj <ESC>
 " Copy current file to clipboard
 nmap <leader>cf :let @*=expand("%")<CR>
 " nmap <leader>cl :let @*=expand("%")<CR>
+
+function ProseMode()
+  let window_width = winwidth('%')
+  let gutter       = 10 " avoid foldcolumn complaints
+  let page_width   = window_width - (gutter * 2)
+  exe printf('set textwidth=%.f', page_width - 1)
+  exe printf('set colorcolumn=%.f', page_width)
+  exe printf('set foldcolumn=%.f', gutter)
+  set norelativenumber nonumber
+endfunction
+
+nmap <leader><leader> :call ProseMode()
