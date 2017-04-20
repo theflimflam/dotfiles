@@ -229,3 +229,14 @@ elif which vim > /dev/null; then
 else
   export EDITOR=vi
 fi
+
+function friday() {
+  cd ~/dotfiles
+  make run-updates
+}
+
+function first() {
+  git init
+  git add .
+  git commit -m "First!"
+}
