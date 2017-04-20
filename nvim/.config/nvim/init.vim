@@ -228,7 +228,7 @@ inoremap jj <ESC>
 nmap <leader>cf :let @*=expand("%")<CR>
 " nmap <leader>cl :let @*=expand("%")<CR>
 
-function ProseMode()
+function! ProseMode()
   let window_width = winwidth('%')
   let gutter       = 10 " avoid foldcolumn complaints
   let page_width   = window_width - (gutter * 2)
