@@ -30,8 +30,8 @@ brew:
 	brew install mplayer syncthing wget
 	brew cask install caffeine docker firefox flux
 	brew cask install gimp google-chrome hyper iterm2
-	brew cask install keepassx libreoffice skype spotify
-	brew cask install transmission tunnelblick
+	brew cask install keepassx libreoffice skype
+	brew cask install vlc spotify transmission tunnelblick
 
 unfuck-osx:
 	# Turn off mouse acceleration http://osxdaily.com/2010/08/25/mouse-acceleration
