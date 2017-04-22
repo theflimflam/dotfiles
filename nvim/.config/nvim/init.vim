@@ -232,10 +232,15 @@ function! ProseMode()
   let window_width = winwidth('%')
   let gutter       = 10 " avoid foldcolumn complaints
   let page_width   = window_width - (gutter * 2)
+
+  if (page_width > 100)
+    let page_width = 100
+  endif
+
   exe printf('set textwidth=%.f', page_width - 1)
   exe printf('set colorcolumn=%.f', page_width)
   exe printf('set foldcolumn=%.f', gutter)
-  set norelativenumber nonumber
+  set norelativenumber nonumber spell
 endfunction
 
 nmap <leader><leader> :call ProseMode()
