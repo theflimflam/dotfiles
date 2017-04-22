@@ -21,6 +21,7 @@ let mapleader = "\<tab>"
 call plug#begin('~/.config/nvim/plugged')
 Plug 'git@github.com:wohyah/vim-unclutter.git'
 Plug 'git@github.com:wohyah/vim-visible-whitespace.git'
+Plug 'git@github.com:wohyah/vim-prose.git'
 Plug 'fatih/vim-go'                      " Golang tools
 " Plug 'rhysd/vim-textobj-ruby'            " Ruby text objects NVIM BUSTED??
 Plug 'tpope/vim-rails'                   " Rails tools
@@ -227,20 +228,5 @@ inoremap jj <ESC>
 " Copy current file to clipboard
 nmap <leader>cf :let @*=expand("%")<CR>
 " nmap <leader>cl :let @*=expand("%")<CR>
-
-function! ProseMode()
-  let window_width = winwidth('%')
-  let gutter       = 10 " avoid foldcolumn complaints
-  let page_width   = window_width - (gutter * 2)
-
-  if (page_width > 100)
-    let page_width = 100
-  endif
-
-  exe printf('set textwidth=%.f', page_width - 1)
-  exe printf('set colorcolumn=%.f', page_width)
-  exe printf('set foldcolumn=%.f', gutter)
-  set norelativenumber nonumber spell
-endfunction
 
 nmap <leader><leader> :call ProseMode()
