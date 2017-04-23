@@ -36,3 +36,10 @@ brew:
 unfuck-osx:
 	# Turn off mouse acceleration http://osxdaily.com/2010/08/25/mouse-acceleration
 	defaults write .GlobalPreferences com.apple.mouse.scaling -1
+
+syncthing:
+	# stable chan from https://apt.syncthing.net/
+	curl -s https://syncthing.net/release-key.txt | sudo apt-key add -
+	echo "deb https://apt.syncthing.net/ syncthing stable" | sudo tee /etc/apt/sources.list.d/syncthing.list
+	sudo apt-get update
+	sudo apt-get install syncthing
