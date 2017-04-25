@@ -230,3 +230,7 @@ nmap <leader>cf :let @*=expand("%")<CR>
 " nmap <leader>cl :let @*=expand("%")<CR>
 
 nmap <leader><leader> :call ProseMode()
+
+" Quickly split current view
+nmap <leader>y :split<cr>
+nmap <leader>x :vsplit<cr>
