@@ -233,5 +233,11 @@ nmap <leader>cf :let @*=expand("%")<CR>
 nmap <leader><leader> :call ProseMode()
 
 " Quickly split current view
-nmap <leader>y :split<cr>
-nmap <leader>x :vsplit<cr>
+nmap <leader>y :split<cr><C-w>-
+nmap <leader>x :vsplit<cr><C-w>-
+
+" Navigate splits
+nmap <leader>h <C-w>h<C-w>
+nmap <leader>j <C-w>j<C-w>
+nmap <leader>k <C-w>k<C-w>
+nmap <leader>l <C-w>l<C-w>
