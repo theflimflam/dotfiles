@@ -32,6 +32,7 @@ Plug 'junegunn/vim-easy-align'           " Generic align script
 Plug 'michaeljsmith/vim-indent-object'   " Select indents as an object
 Plug 'roman/golden-ratio'                " Layout splits with golden ratio
 Plug 'nelstrom/vim-textobj-rubyblock'    " Match ruby blocks
+Plug 'vim-syntastic/syntastic'           " Generic linter
 Plug 'vim-scripts/LargeFile'             " turn off slow stuff in files > 20mb
 let g:golden_ratio_autocommand = 0
 nnoremap <silent> <C-w>- :GoldenRatioResize<CR>:GoldenRatioResize<CR>
