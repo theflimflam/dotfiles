@@ -235,7 +235,7 @@ nmap <leader>y :split<cr><C-w>-
 nmap <leader>x :vsplit<cr><C-w>-
 
 " Navigate splits
-nmap <leader>h <C-w>h<C-w>
-nmap <leader>j <C-w>j<C-w>
-nmap <leader>k <C-w>k<C-w>
-nmap <leader>l <C-w>l<C-w>
+nmap <backspace>h <C-w>h<C-w>
+nmap <backspace>j <C-w>j<C-w>
+nmap <backspace>k <C-w>k<C-w>
+nmap <backspace>l <C-w>l<C-w>
