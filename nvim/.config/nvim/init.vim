@@ -57,6 +57,7 @@ Plug 'reedes/vim-textobj-sentence'       " Sophisticated sentence text object
 Plug 'tpope/vim-commentary'              " Toggle comments on lines
 Plug 'reedes/vim-pencil'
 Plug 'othree/eregex.vim'                 " PCRE engine for VIM
+Plug 'bronson/vim-visual-star-search'    " Vim multiline search
 nnoremap / :M/
 nnoremap ,/ /
 let g:pencil#textwidth = 120
@@ -95,9 +96,6 @@ set ignorecase         " Do case insensitive matching.
 set smartcase          " Do smart case matching.
 set incsearch          " Incremental search.
 set magic              " Allows pattern matching with special characters
-
-" Search visual mode selection with *
-vnoremap * y/<C-R>"<CR>
 
 " Search mappings: center cursor when jumping in search
 nnoremap N Nzz
