@@ -212,7 +212,7 @@ map Q gqap
 autocmd FileType help setlocal number relativenumber
 
 " Ticket lookup based on branch for pleasant lawyer
-autocmd FileType gitcommit nnoremap @@ O<ESC>!!btil<CR>A<SPACE>
+autocmd FileType gitcommit nnoremap @@ O<ESC>:.!git log --pretty="format:%s" -n 5
 
 " Vertical split for help files
 " autocmd FileType help wincmd L
@@ -233,8 +233,5 @@ nmap <leader><leader> :call ProseMode()
 nmap <leader>y :split<cr><C-w>-
 nmap <leader>x :vsplit<cr><C-w>-
 
-" Navigate splits
-nmap <backspace>h <C-w>h<C-w>
-nmap <backspace>j <C-w>j<C-w>
-nmap <backspace>k <C-w>k<C-w>
-nmap <backspace>l <C-w>l<C-w>
+" Quickly open new tab
+nmap <leader>o :tabnew %<cr>
