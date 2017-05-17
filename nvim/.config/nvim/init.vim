@@ -88,7 +88,6 @@ iabbrev wehn when
 " spell checker automatically there for text and markdown
 set nospell
 
-
 """"""""""""""""""""""""""""""""""""""""
 " Searching
 set hlsearch           " Highlight my searches :)
