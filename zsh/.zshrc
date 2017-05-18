@@ -194,7 +194,7 @@ bindkey '^Z' ctrlz
 # Solarized cucumber workaround
 export CUCUMBER_COLORS=comment=cyan
 
-# Vi mode, god help me
+# Vim mode, god help me
 # https://dougblack.io/words/zsh-vi-mode.html
 bindkey -v
 export KEYTIMEOUT=1
