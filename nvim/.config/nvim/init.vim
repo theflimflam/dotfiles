@@ -44,6 +44,7 @@ Plug 'tpope/vim-fugitive'                " Git integration, TODO adjust habits
 Plug 'mattn/gist-vim'                    " Create gists
 Plug 'tpope/vim-surround'                " Delete, or insert around text objects
 Plug 'altercation/vim-colors-solarized'  " Sexy has a new plugin
+Plug 't9md/vim-textmanip'                " Move text about
 Plug 'rakr/vim-one'                      " Like Atom
 Plug 'sickill/vim-monokai'               " Like Sublime
 Plug 'elzr/vim-json'                     " JSON
@@ -253,3 +254,10 @@ tnoremap <esc><esc> <C-\><C-N>
 " nnoremap <C-j> <C-w>j
 " nnoremap <C-k> <C-w>k
 " nnoremap <C-l> <C-w>l
+
+" Movement stuff
+let g:textmanip_startup_mode = "insert"
+xmap <up>    <Plug>(textmanip-move-up)
+xmap <down>  <Plug>(textmanip-move-down)
+xmap <left>  <Plug>(textmanip-move-left)
+xmap <right> <Plug>(textmanip-move-right)
