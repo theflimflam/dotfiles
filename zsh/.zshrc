@@ -179,11 +179,6 @@ export PATH="$PATH:$HOME/code/go/bin"
 
 export GOPATH="$HOME/code/go"
 
-# Habits
-if which nvim > /dev/null; then
-  alias vim="echo 'nvim?'";
-fi
-
 # Taken from https://github.com/Julian/dotfiles/blob/master/.config/zsh/keybindings.zsh
 # Make ^Z toggle between ^Z and fg
 function ctrlz() {
@@ -228,6 +223,11 @@ elif which vim > /dev/null; then
   export EDITOR=vim
 else
   export EDITOR=vi
+fi
+
+# Habits
+if which nvim > /dev/null; then
+  alias vim=$(which nvim);
 fi
 
 function friday() {
