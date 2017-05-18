@@ -227,7 +227,9 @@ inoremap jj <ESC>
 " Copy current file to clipboard
 nnoremap <leader>cf :let @*=expand("%")<CR>
 
-nmap <leader><leader> :call ProseMode()
+" Triage stuff: Quickly open and close tabs
+nnoremap <leader><leader> :tabnew %<cr>
+nnoremap <backspace><backspace> :tabclose<cr>
 
 " Quickly split current view
 nmap <leader>y :split<cr><C-w>-
