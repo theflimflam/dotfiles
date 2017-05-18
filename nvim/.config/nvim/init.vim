@@ -225,8 +225,7 @@ set splitright
 inoremap jj <ESC>
 
 " Copy current file to clipboard
-nmap <leader>cf :let @*=expand("%")<CR>
-" nmap <leader>cl :let @*=expand("%")<CR>
+nnoremap <leader>cf :let @*=expand("%")<CR>
 
 nmap <leader><leader> :call ProseMode()
 
