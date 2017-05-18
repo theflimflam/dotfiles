@@ -179,10 +179,11 @@ augroup myvimrc
     autocmd QuickFixCmdPost l*    lwindow
 augroup END
 
-" Remap CTRL F to
+" Find/Search: Remap CTRL F, most of this is a workaround to how grep windows work
 vnoremap * y/<C-R>"<CR>
-nmap <C-F> "zyiw:Ggrep <C-R>z
 vmap <C-F> y:Ggrep "<C-R>""<CR>
+nmap <C-F> "zyiw<CR>:vsplit<CR>:GoldenRatioResize<CR>:Ggrep <C-R>z<CR>
+" ^^ open window in new tab, split and search
 
 " Shared data across nvim sessions
 " '500  : save last 500 files local marks [a-z]
