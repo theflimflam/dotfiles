@@ -238,10 +238,15 @@ nnoremap <backspace><backspace> :tabclose<cr>
 nnoremap <leader>y :split<cr><C-w>-
 nnoremap <leader>x :vsplit<cr><C-w>-
 
-" Terminal trix
-tnoremap <C-w>      <C-\><C-N><C-w>
+" Ctrl + w actions in terminal windows
+tnoremap <C-w>   <C-\><C-N><C-w>
+
+" Shift Escape and jj leave insert mode
 tnoremap jj         <C-\><C-N>
-tnoremap <esc><esc> <C-\><C-N>
+tnoremap <ESC><ESC> <C-\><C-N>
+
+autocmd BufWinEnter,WinEnter term://* startinsert
+autocmd BufLeave             term://* stopinsert
 
 " tnoremap jj <C-\><C-N>
 " tnoremap <C-h> <C-\><C-N><C-w>h
