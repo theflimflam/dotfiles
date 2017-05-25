@@ -243,8 +243,8 @@ nnoremap <leader><leader> :tabnew %<cr>
 nnoremap <backspace><backspace> :tabclose<cr>
 
 " Quickly split current view
-nnoremap <leader>y :split<cr><C-w>-
-nnoremap <leader>x :vsplit<cr><C-w>-
+nmap <leader>y :split<cr><C-w>-
+nmap <leader>x :vsplit<cr><C-w>-
 
 " Ctrl + w actions in terminal windows
 tnoremap <C-w>   <C-\><C-N><C-w>
