@@ -185,10 +185,15 @@ augroup myvimrc
     autocmd QuickFixCmdPost l*    lwindow
 augroup END
 
+" Quickfix horizontal
+" https://stackoverflow.com/a/16743676
+autocmd FileType qf nnoremap <buffer> <leader><Enter> <C-w><Enter><C-w>L
+
+
 " Find/Search: Remap CTRL F, most of this is a workaround to how grep windows work
 vnoremap * y/<C-R>"<CR>
-vmap <C-F> y:Ggrep "<C-R>""<CR>
-nmap <C-F> "zyiw<CR>:vsplit<CR>:GoldenRatioResize<CR>:Ggrep <C-R>z<CR>
+vmap <C-F> y:vsplit<CR>:GoldenRatioResize<CR>:Ggrep "<C-R>""<CR>
+nmap <C-F> yiw:vsplit<CR>:GoldenRatioResize<CR>:Ggrep "<C-R>""
 " ^^ open window in new tab, split and search
 
 " Shared data across nvim sessions
