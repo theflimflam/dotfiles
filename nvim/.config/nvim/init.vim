@@ -21,9 +21,9 @@ let mapleader = "\<tab>"
 autocmd!
 
 call plug#begin('~/.config/nvim/plugged')
-Plug 'git@github.com:wohyah/vim-unclutter.git'
-Plug 'git@github.com:wohyah/vim-visible-whitespace.git'
-Plug 'git@github.com:wohyah/vim-prose.git'
+Plug 'git@github.com:matthewbgray/vim-unclutter.git'
+Plug 'git@github.com:matthewbgray/vim-visible-whitespace.git'
+Plug 'git@github.com:matthewbgray/vim-prose.git'
 Plug 'fatih/vim-go'                      " Golang tools
 " Plug 'rhysd/vim-textobj-ruby'            " Ruby text objects NVIM BUSTED??
 Plug 'tpope/vim-rails'                   " Rails tools
