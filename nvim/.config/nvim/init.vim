@@ -250,11 +250,12 @@ nmap <leader>x :vsplit<cr><C-w>-
 tnoremap <C-w>   <C-\><C-N><C-w>
 
 " Shift Escape and jj leave insert mode
-tnoremap jj         <C-\><C-N>
 tnoremap <ESC><ESC> <C-\><C-N>
 
 autocmd BufWinEnter,WinEnter term://* startinsert
 autocmd BufLeave             term://* stopinsert
+autocmd TermOpen * setlocal statusline=%{b:term_title}
+
 
 " tnoremap jj <C-\><C-N>
 " tnoremap <C-h> <C-\><C-N><C-w>h
