@@ -102,10 +102,11 @@ set smartcase          " Do smart case matching.
 set incsearch          " Incremental search.
 set magic              " Allows pattern matching with special characters
 
-" Search mappings: center cursor when jumping in search
+" Search and page mappings: center cursor when jumping in search
 nnoremap N Nzz
 nnoremap n nzz
-
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
 
 """"""""""""""""""""""""""""""""""""""""
 " Code
