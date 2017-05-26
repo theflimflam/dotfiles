@@ -30,7 +30,7 @@ Plug 'tpope/vim-rails'                   " Rails tools
 Plug 'ecomba/vim-ruby-refactoring'       " TODO make some habits around this
 Plug 'vim-ruby/vim-ruby'                 " Make ruby files FAST
 Plug 'kana/vim-textobj-user' | Plug 'nelstrom/vim-textobj-rubyblock'
-Plug 'junegunn/vim-easy-align'           " Generic align script
+Plug 'godlygeek/tabular'                 " Align stuff
 Plug 'michaeljsmith/vim-indent-object'   " Select indents as an object
 Plug 'roman/golden-ratio'                " Layout splits with golden ratio
 Plug 'nelstrom/vim-textobj-rubyblock'    " Match ruby blocks
@@ -121,9 +121,9 @@ autocmd Filetype markdown setlocal expandtab   tabstop=4 softtabstop=4 shiftwidt
 autocmd Filetype perl     setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
 
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
-vmap <Enter> <Plug>(EasyAlign)
+vmap <leader>\ :Tabularize /
 " Start interactive EasyAlign for a motion/text object (e.g. <leader>aip)
-nmap <leader>a <Plug>(EasyAlign)
+nmap <leader>\ :Tabularize /
 
 " Quickly open rc files
 nnoremap <leader>vv :e $MYVIMRC<CR>
@@ -207,6 +207,7 @@ autocmd BufReadPost COMMIT_EDITMSG exe "normal! gg"
 
 " Quickly open, reload and edit rc files
 nnoremap <leader>vv :e $MYVIMRC<CR>
+nnoremap <leader>vrr :source $MYVIMRC<CR>
 nnoremap <leader>vr :source $MYVIMRC<CR>:PlugUpdate<CR>:source $MYVIMRC<CR>
 nnoremap <leader>zz :e $HOME/.zshrc<CR>
 
@@ -239,7 +240,7 @@ inoremap jj <ESC>
 nnoremap <leader>cf :let @*=expand("%")<CR>
 
 " Triage stuff: Quickly open and close tabs
-nnoremap <leader><leader> :tabnew %<cr>
+nnoremap <leader><leader> :tab split<cr>
 nnoremap <backspace><backspace> :tabclose<cr>
 
 " Quickly split current view
