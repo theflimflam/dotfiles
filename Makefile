@@ -14,6 +14,7 @@ softlink-dotfiles:
 	stow task
 	stow nvim
 	stow xmodmap
+	stow ranger
 
 run-updates:
 	sudo softwareupdate --install --all
