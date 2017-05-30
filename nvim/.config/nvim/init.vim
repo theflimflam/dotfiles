@@ -18,7 +18,8 @@
 let mapleader = "\<tab>"
 
 " Remove ALL autocommands for the current group.
-autocmd!
+" autocmd!
+" Comment out just in case it's doing something with the highlights
 
 call plug#begin('~/.config/nvim/plugged')
 Plug 'git@github.com:matthewbgray/vim-unclutter.git'
