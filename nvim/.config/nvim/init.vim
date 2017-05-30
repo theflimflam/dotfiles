@@ -193,8 +193,8 @@ autocmd FileType qf nnoremap <buffer> <leader><Enter> <C-w><Enter><C-w>L
 
 " Find/Search: Remap CTRL F, most of this is a workaround to how grep windows work
 vnoremap * y/<C-R>"<CR>
-vmap <C-F> y:vsplit<CR>:GoldenRatioResize<CR>:Ggrep "<C-R>""<CR>
-nmap <C-F> yiw:vsplit<CR>:GoldenRatioResize<CR>:Ggrep "<C-R>""
+vmap <C-F> :cclose<CR>y:vsplit<CR>:GoldenRatioResize<CR>:Ggrep "<C-R>""<CR>
+nmap <C-F> :cclose<CR>yiw:vsplit<CR>:GoldenRatioResize<CR>:Ggrep "<C-R>""<CR>
 " ^^ open window in new tab, split and search
 
 " Shared data across nvim sessions
