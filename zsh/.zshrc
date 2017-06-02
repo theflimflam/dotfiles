@@ -228,9 +228,6 @@ fi
 # Habits
 if which nvim > /dev/null; then
   alias vim=$(which nvim);
-  function nvim() {
-    echo "vim?"
-  }
 fi
 
 function friday() {
