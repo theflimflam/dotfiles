@@ -208,6 +208,7 @@ export KEYTIMEOUT=1
 # Homebrew flub
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
+# Setting default editor
 if which nvim > /dev/null; then
   export EDITOR=nvim
 elif which vim > /dev/null; then
