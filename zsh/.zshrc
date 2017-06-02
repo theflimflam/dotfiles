@@ -163,10 +163,6 @@ fi
 # Ruby environment overrides system ruby
 export PATH="~/.rbenv/bin:$PATH"
 
-# Make the delete key do the right thing (OSX)
-bindkey "^[[3~"  delete-char
-bindkey "^[3;5~" delete-char
-
 # Personal programs
 export PATH="$PATH:$HOME/bin"
 export PATH="$PATH:$HOME/script"
@@ -235,3 +231,14 @@ function first() {
   git add .
   git commit -m "First!"
 }
+
+# OSX Cludges
+if [[ `uname` == "Darwin" ]]; then
+  # Fix GPG agent detection
+  GPG_TTY=$(tty)
+  export GPG_TTY
+
+  # Delete key fixup
+  bindkey "^[[3~"  delete-char
+  bindkey "^[3;5~" delete-char
+fi
