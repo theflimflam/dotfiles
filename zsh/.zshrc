@@ -151,7 +151,6 @@ cdd
 [ -e ~/.zshrc.local ] && source ~/.zshrc.local
 [ -f ~/.fzf.zsh ]     && source ~/.fzf.zsh
 
-
 function rehash() {
   source ~/.zshrc
 }
@@ -167,10 +166,6 @@ export PATH="~/.rbenv/bin:$PATH"
 # Make the delete key do the right thing (OSX)
 bindkey "^[[3~"  delete-char
 bindkey "^[3;5~" delete-char
-
-# Sometimes I do this, but it's _not_ the best for an interactive shell
-# bindkey -v # Terminal vim mode
-# bindkey '^R' history-incremental-search-backward
 
 # Personal programs
 export PATH="$PATH:$HOME/bin"
