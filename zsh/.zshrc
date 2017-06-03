@@ -132,20 +132,10 @@ function randommac() {
   ruby -e 'puts ("%02x"%((rand 64)*4|2))+(0..4).inject(""){|s,x|s+":%02x"%(rand 256)}'
 }
 
-# TODO move this out into a condiontally loaded folder
-# Pin, save a dir for later
-alias pin="pwd > ~/.pindir"
-
-# Quick nav to pin dir with cdd
-function cdd() {
-  if [ -e ~/.pindir ]; then
-    export pind=$(cat ~/.pindir)
-    cd "$pind"
-  fi
-}
-
-# Start terminal in pinned directory
-cdd
+# Default working directories per-box
+alias pin="pwd > ~/.pindir"                        # pin cwd as pin dir
+alias cdd='cd $(cat ~/.pindir) &> /dev/null || cd' # cdd nav to pin dir
+cdd                                                # open pin dir on term open
 
 # Conditionally load files
 [ -e ~/.zshrc.local ] && source ~/.zshrc.local
