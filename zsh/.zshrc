@@ -123,6 +123,7 @@ export GREP_OPTIONS="--colour=auto --directories=skip"
 export GREP_COLOR='1;33'
 
 
+# Checkout github pull requests locally
 # https://gist.github.com/piscisaureus/3342247
 function pullify() {
   git config --add remote.origin.fetch '+refs/pull/*/head:refs/remotes/origin/pr/*'
@@ -160,8 +161,8 @@ export PATH="$PATH:$HOME/code/go/bin"
 
 export GOPATH="$HOME/code/go"
 
-# Taken from https://github.com/Julian/dotfiles/blob/master/.config/zsh/keybindings.zsh
 # Make ^Z toggle between ^Z and fg
+# https://github.com/Julian/dotfiles/blob/master/.config/zsh/keybindings.zsh
 function ctrlz() {
   if [[ $#BUFFER == 0 ]]; then
     fg >/dev/null 2>&1 && zle redisplay
@@ -226,6 +227,7 @@ function first() {
 # OSX Cludges
 if [[ `uname` == "Darwin" ]]; then
   # Fix GPG agent detection
+  # see https://github.com/pstadler/keybase-gpg-github/issues/11
   GPG_TTY=$(tty)
   export GPG_TTY
 
