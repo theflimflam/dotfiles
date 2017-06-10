@@ -134,9 +134,9 @@ function randommac() {
 }
 
 # Default working directories per-box
-alias pin="pwd > ~/.pindir"                        # pin cwd as pin dir
-alias cdd='cd $(cat ~/.pindir) &> /dev/null || cd' # cdd nav to pin dir
-cdd                                                # open pin dir on term open
+alias pin="pwd > ~/.pindir"                   # pin cwd as pin dir
+alias cdd='cd $(cat ~/.pindir 2&> /dev/null)' # cdd nav to pin dir
+cdd                                           # open pin dir on term open
 
 # Conditionally load files
 [ -e ~/.zshrc.local ] && source ~/.zshrc.local
