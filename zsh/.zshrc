@@ -38,6 +38,7 @@ setopt inc_append_history # write after exec rather than waiting till shell exit
 setopt no_hist_beep       # no terminal bell please
 # setopt share_history      # all open shells see history
 
+setopt interactivecomments # Don't execute comments in interactive shell
 
 ## Completion
 setopt NO_BEEP AUTO_LIST AUTO_MENU
