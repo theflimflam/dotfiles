@@ -120,7 +120,6 @@ alias cdg='cd $(git rev-parse --show-cdup)' # cd to root of repo
 
 export LESS='-R'
 
-export GREP_OPTIONS="--colour=auto --directories=skip"
 export GREP_COLOR='1;33'
 
 
