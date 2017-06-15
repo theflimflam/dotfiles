@@ -256,7 +256,7 @@ nmap <leader>x :vsplit<cr><C-w>-
 " Ctrl + w actions in terminal windows
 tnoremap <C-w> <C-\><C-N><C-w>
 
-" Shift Escape and jj leave insert mode
+" Double Escape and jj leave insert mode
 tnoremap <ESC><ESC> <C-\><C-N>
 
 autocmd BufWinEnter,WinEnter term://* startinsert
