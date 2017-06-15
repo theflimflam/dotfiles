@@ -123,9 +123,9 @@ autocmd Filetype markdown setlocal expandtab   tabstop=4 softtabstop=4 shiftwidt
 autocmd Filetype perl     setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
 
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
-vmap <leader>\ :Tabularize /
-" Start interactive EasyAlign for a motion/text object (e.g. <leader>aip)
-nmap <leader>\ :Tabularize /
+if exists(":Tabularize")
+  vnoremap <cr> :Tabularize /
+endif
 
 " Quickly open rc files
 nnoremap <leader>vv :e $MYVIMRC<CR>
