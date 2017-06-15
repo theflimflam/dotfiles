@@ -254,7 +254,7 @@ nmap <leader>y :split<cr><C-w>-
 nmap <leader>x :vsplit<cr><C-w>-
 
 " Ctrl + w actions in terminal windows
-tnoremap <C-w>   <C-\><C-N><C-w>
+tnoremap <C-w> <C-\><C-N><C-w>
 
 " Shift Escape and jj leave insert mode
 tnoremap <ESC><ESC> <C-\><C-N>
