@@ -25,8 +25,8 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'git@github.com:matthewbgray/vim-unclutter.git'
 Plug 'git@github.com:matthewbgray/vim-visible-whitespace.git'
 Plug 'git@github.com:matthewbgray/vim-prose.git'
-Plug 'fatih/vim-go'                      " Golang tools
-" Plug 'rhysd/vim-textobj-ruby'            " Ruby text objects NVIM BUSTED??
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' } " Golang tools
+" Plug 'rhysd/vim-textobj-ruby'          " Ruby text objects NVIM BUSTED??
 Plug 'tpope/vim-rails'                   " Rails tools
 Plug 'ecomba/vim-ruby-refactoring'       " TODO make some habits around this
 Plug 'vim-ruby/vim-ruby'                 " Make ruby files FAST
