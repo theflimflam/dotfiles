@@ -74,12 +74,13 @@ let g:pencil#textwidth = 120
 
 call plug#end()
 
-set relativenumber    " better navigation
-set number            " give line number that you're on
-set scrolloff=5       " when scrolling, keep cursor 5 lines away from border
-set foldmethod=manual " Fold by indent level
-set autoread          " When someone modifies a file externally, autoread it back in
-set textwidth=120     " Line length should be ~120 chars #modern
+set relativenumber        " better navigation
+set number                " give line number that you're on
+set scrolloff=5           " when scrolling, keep cursor 5 lines away from border
+set foldmethod=manual     " Fold by indent level
+set autoread              " When someone modifies a file externally, autoread it back in
+set textwidth=120         " Line length should be ~120 chars #modern
+set clipboard=unnamedplus " yank and put straight to system clipboard
 
 
 """"""""""""""""""""""""""""""""""""""""
@@ -286,9 +287,7 @@ xmap <left>  <Plug>(textmanip-move-left)
 xmap <right> <Plug>(textmanip-move-right)
 
 " Experimental go stuff
-autocmd Filetype go nnoremap <buffer> R  :GoRun<CR>
-autocmd Filetype go nnoremap <buffer> TT :GoAlternate<CR>
-autocmd Filetype go nnoremap <buffer> T  :GoTest<CR>
-
-" yank and put straight to system clipboard
-set clipboard=unnamedplus
+autocmd Filetype go nnoremap <buffer> R     :GoRun<CR>
+autocmd Filetype go nnoremap <buffer> TT    :GoAlternate<CR>
+autocmd Filetype go nnoremap <buffer> T     :GoTest<CR>
+autocmd Filetype go nnoremap <buffer> <C-[> :GoCallees<CR>
