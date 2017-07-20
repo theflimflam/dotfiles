@@ -196,14 +196,11 @@ autocmd FileType qf nnoremap <buffer> <leader><Enter> <C-w><Enter><C-w>L
 
 " Find/Search: Remap CTRL F, most of this is a workaround to how grep windows work
 vnoremap * y/<C-R>"<CR>
-vmap <C-F> :cclose<CR>y:silent Ggrep -I "<C-R>""<CR><CR>:redraw!<CR>
-nmap <C-F> :cclose<CR>yiw:silent Ggrep -I "<C-R>""<CR><CR>:redraw!<CR>
+vmap <C-F> :cclose<CR>y:silent Ggrep -I "<C-R>""<CR>
+nmap <C-F> :cclose<CR>yiw:silent Ggrep -I "<C-R>""<CR>
 
 " ^^ open window in new tab, split and search
 " TODO Detect :Ggrep, fall back on :grep
-
-" Manual search, Ctrl shift eff
-nmap <C-S-F> :Ggrep -I ""<LEFT>
 
 " Shared data across nvim sessions
 " '500  : save last 500 files local marks [a-z]
