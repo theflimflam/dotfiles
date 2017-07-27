@@ -289,3 +289,6 @@ xmap <right> <Plug>(textmanip-move-right)
 autocmd Filetype go nnoremap <buffer> R  :GoRun<CR>
 autocmd Filetype go nnoremap <buffer> TT :GoAlternate<CR>
 autocmd Filetype go nnoremap <buffer> T  :GoTest<CR>
+
+" Set title on terminal to focused buffer filename
+auto BufEnter * :set title | let &titlestring = 'v:' . expand('%')
