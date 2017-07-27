@@ -292,3 +292,6 @@ autocmd Filetype go nnoremap <buffer> T  :GoTest<CR>
 
 " Set title on terminal to focused buffer filename
 auto BufEnter * :set title | let &titlestring = 'v:' . expand('%')
+
+" Use system clipboard
+set clipboard=unnamedplus
