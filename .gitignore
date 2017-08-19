@@ -1,3 +1,8 @@
 # No logs
 i3log
 *.log
+
+# ranger has a bunch of files that shouldn't be tracked
+**/ranger/bookmarks
+**/ranger/history
+**/ranger/tagged
