@@ -15,6 +15,7 @@ softlink-dotfiles:
 	stow nvim
 	stow xmodmap
 	stow ranger
+	stow urxvt
 
 setup-env:
 	mkdir ~/.config/local
