@@ -16,6 +16,7 @@ softlink-dotfiles:
 	stow xmodmap
 	stow ranger
 	stow urxvt
+	stow git
 
 setup-env:
 	mkdir ~/.config/local

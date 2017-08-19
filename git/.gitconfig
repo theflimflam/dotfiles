@@ -1,0 +1,6 @@
+[include]
+	path = ~/.config/local/git_author
+[push]
+	default = simple
+[commit]
+	verbose
