@@ -2,7 +2,7 @@ DOTFILES="$(HOME)/dotfiles/etc"
 
 default: run-updates
 
-install: reset-vim-plugins softlink-dotfiles run-updates
+install: reset-vim-plugins softlink-dotfiles setup-env run-updates
 
 reset-vim-plugins:
 	rm -rf ~/.config/nvim
@@ -15,6 +15,11 @@ softlink-dotfiles:
 	stow nvim
 	stow xmodmap
 	stow ranger
+
+setup-env:
+	mkdir ~/.config/local
+	vim ~/.config/local/git_author
+	vim ~/.config/local/env
 
 run-updates:
 	sudo softwareupdate --install --all
