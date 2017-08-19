@@ -297,7 +297,8 @@ let g:go_template_autocreate = 0
 auto BufEnter * :set title | let &titlestring = 'v:' . expand('%')
 
 " Use system clipboard
-set clipboard=unnamedplus
+set clipboard=unnamed
+" set clipboard=unnamedplus
 
 " w!! saves as sudo
 cmap w!! w !sudo tee > /dev/null %
