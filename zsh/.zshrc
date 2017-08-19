@@ -155,9 +155,9 @@ fi
 export PATH="~/.rbenv/bin:$PATH"
 
 # Personal programs
-export PATH="$PATH:$HOME/bin"
-export PATH="$PATH:$HOME/script"
-export PATH="$PATH:$HOME/code/go/bin"
+export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/script:$PATH"
+export PATH="$HOME/code/go/bin:$PATH"
 
 export GOPATH="$HOME/code/go"
 
