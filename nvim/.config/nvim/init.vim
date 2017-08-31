@@ -55,7 +55,6 @@ Plug 'kchmck/vim-coffee-script'          " Syntax for coffeescript
 let g:vim_json_syntax_conceal = 0        " Don't hide quotes in JSON files
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
 Plug 'ctrlpvim/ctrlp.vim'                " Fuzzy search files, recent files, and buffers
-Plug 'jeetsukumaran/vim-buffergator'     " Navigate buffers
 Plug 'reedes/vim-lexical'                " Spell-check and thesaurus/dictionary completion
 Plug 'reedes/vim-wordy'                  " Identify phrases for history of misuse, abuse, and overuse
 Plug 'reedes/vim-textobj-sentence'       " Sophisticated sentence text object
