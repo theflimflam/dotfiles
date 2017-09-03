@@ -231,7 +231,8 @@ map Q gqap
 autocmd FileType help setlocal number relativenumber
 
 " Ticket lookup based on branch for pleasant lawyer
-autocmd FileType gitcommit nnoremap @@ O<ESC>:.!git log --pretty="format:%s" -n 5
+autocmd FileType gitcommit nnoremap T O<ESC>:.!git rev-parse --abbrev-ref HEAD<CR>g~iWA 
+
 
 " Vertical split for help files
 " autocmd FileType help wincmd L
