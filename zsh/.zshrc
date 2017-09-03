@@ -139,8 +139,8 @@ alias cdd='cd $(cat ~/.pindir 2&> /dev/null)' # cdd nav to pin dir
 cdd                                           # open pin dir on term open
 
 # Conditionally load files
-[ -e ~/.zshrc.local ] && source ~/.config/local/env
-[ -f ~/.fzf.zsh ]     && source ~/.fzf.zsh
+[ -e ~/.config/local/env ] && source ~/.config/local/env
+[ -f ~/.fzf.zsh ]          && source ~/.fzf.zsh
 
 function rehash() {
   source ~/.zshrc
