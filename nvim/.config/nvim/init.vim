@@ -53,7 +53,7 @@ Plug 'sickill/vim-monokai'               " Like Sublime
 Plug 'elzr/vim-json'                     " JSON
 Plug 'kchmck/vim-coffee-script'          " Syntax for coffeescript
 let g:vim_json_syntax_conceal = 0        " Don't hide quotes in JSON files
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+Plug 'junegunn/fzf', { 'dir': '~/code/fzf', 'do': 'yes \| ./install' }
 Plug 'ctrlpvim/ctrlp.vim'                " Fuzzy search files, recent files, and buffers
 Plug 'reedes/vim-lexical'                " Spell-check and thesaurus/dictionary completion
 Plug 'reedes/vim-wordy'                  " Identify phrases for history of misuse, abuse, and overuse
