@@ -17,6 +17,7 @@ softlink-dotfiles:
 	stow ranger
 	stow urxvt
 	stow git
+	stow i3
 
 setup-env:
 	mkdir ~/.config/local

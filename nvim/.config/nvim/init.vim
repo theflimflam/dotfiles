@@ -22,9 +22,10 @@ let mapleader = "\<tab>"
 " Comment out just in case it's doing something with the highlights
 
 call plug#begin('~/.config/nvim/plugged')
-Plug 'git@github.com:matthewbgray/vim-unclutter.git'
-Plug 'git@github.com:matthewbgray/vim-visible-whitespace.git'
-Plug 'git@github.com:matthewbgray/vim-prose.git'
+Plug 'git@github.com:heymatthew/vim-unclutter.git'
+Plug 'git@github.com:heymatthew/vim-visible-whitespace.git'
+Plug 'git@github.com:heymatthew/vim-prose.git'
+Plug 'antoyo/vim-licenses'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' } " Golang tools
 " Plug 'rhysd/vim-textobj-ruby'          " Ruby text objects NVIM BUSTED??
 Plug 'tpope/vim-rails'                   " Rails tools
@@ -53,7 +54,7 @@ Plug 'sickill/vim-monokai'               " Like Sublime
 Plug 'elzr/vim-json'                     " JSON
 Plug 'kchmck/vim-coffee-script'          " Syntax for coffeescript
 let g:vim_json_syntax_conceal = 0        " Don't hide quotes in JSON files
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': 'yes \| ./install' }
+Plug 'junegunn/fzf', { 'dir': '~/code/fzf', 'do': 'yes \| ./install' }
 Plug 'ctrlpvim/ctrlp.vim'                " Fuzzy search files, recent files, and buffers
 Plug 'reedes/vim-lexical'                " Spell-check and thesaurus/dictionary completion
 Plug 'reedes/vim-wordy'                  " Identify phrases for history of misuse, abuse, and overuse
@@ -301,3 +302,6 @@ set clipboard=unnamed
 
 " w!! saves as sudo
 cmap w!! w !sudo tee > /dev/null %
+
+let git_user = systemlist("git config user.name")[0]
+let g:licenses_copyright_holders_name = ($EMPLOYER == "" ? git_user : $EMPLOYER)
