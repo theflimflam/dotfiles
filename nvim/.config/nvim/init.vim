@@ -25,6 +25,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'git@github.com:heymatthew/vim-unclutter.git'
 Plug 'git@github.com:heymatthew/vim-visible-whitespace.git'
 Plug 'git@github.com:heymatthew/vim-prose.git'
+Plug 'antoyo/vim-licenses'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' } " Golang tools
 " Plug 'rhysd/vim-textobj-ruby'          " Ruby text objects NVIM BUSTED??
 Plug 'tpope/vim-rails'                   " Rails tools
@@ -300,3 +301,5 @@ set clipboard=unnamed
 
 " w!! saves as sudo
 cmap w!! w !sudo tee > /dev/null %
+
+let g:licenses_copyright_holders_name = systemlist("git config user.name")[0]
