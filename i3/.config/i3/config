@@ -115,6 +115,9 @@ bindsym $win+Shift+8 move container to workspace 8
 bindsym $win+Shift+9 move container to workspace 9
 bindsym $win+Shift+0 move container to workspace 10
 
+# switch to previous workspace
+bindsym $win+Tab workspace back_and_forth
+
 # reload the configuration file
 bindsym $win+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
