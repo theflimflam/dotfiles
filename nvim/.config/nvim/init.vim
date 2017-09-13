@@ -302,4 +302,5 @@ set clipboard=unnamed
 " w!! saves as sudo
 cmap w!! w !sudo tee > /dev/null %
 
-let g:licenses_copyright_holders_name = systemlist("git config user.name")[0]
+let git_user = systemlist("git config user.name")[0]
+let g:licenses_copyright_holders_name = ($EMPLOYER == "" ? git_user : $EMPLOYER)
