@@ -22,9 +22,9 @@ let mapleader = "\<tab>"
 " Comment out just in case it's doing something with the highlights
 
 call plug#begin('~/.config/nvim/plugged')
-Plug 'git@github.com:matthewbgray/vim-unclutter.git'
-Plug 'git@github.com:matthewbgray/vim-visible-whitespace.git'
-Plug 'git@github.com:matthewbgray/vim-prose.git'
+Plug 'git@github.com:heymatthew/vim-unclutter.git'
+Plug 'git@github.com:heymatthew/vim-visible-whitespace.git'
+Plug 'git@github.com:heymatthew/vim-prose.git'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' } " Golang tools
 " Plug 'rhysd/vim-textobj-ruby'          " Ruby text objects NVIM BUSTED??
 Plug 'tpope/vim-rails'                   " Rails tools
