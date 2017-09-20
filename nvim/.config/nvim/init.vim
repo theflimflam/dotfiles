@@ -195,11 +195,15 @@ augroup END
 " https://stackoverflow.com/a/16743676
 autocmd FileType qf nnoremap <buffer> <leader><Enter> <C-w><Enter><C-w>L
 
-
-" Find/Search: Remap CTRL F, most of this is a workaround to how grep windows work
+" Select and hitting * does a serach for the full string
 vnoremap * y/<C-R>"<CR>
-vmap <C-F> :cclose<CR>y:silent Ggrep -I "<C-R>""<CR>
-nmap <C-F> :cclose<CR>yiw:silent Ggrep -I "<C-R>""<CR>
+
+" TODO file a bug for this, double escape repeats this command over and over
+" nnoremap <C-[> :hello
+
+" find/search, save current
+vmap <C-f> :cclose<CR>:vsplit<CR>y:silent Ggrep -I "<C-R>""<CR>
+nmap <C-f> :cclose<CR>:vsplit<CR>yiw:silent Ggrep -I "<C-R>""<CR>
 
 " ^^ open window in new tab, split and search
 " TODO Detect :Ggrep, fall back on :grep
