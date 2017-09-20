@@ -308,5 +308,9 @@ set clipboard=unnamed
 " w!! saves as sudo
 cmap w!! w !sudo tee > /dev/null %
 
+" Modfiy licence copyright to be author based
 let git_user = systemlist("git config user.name")[0]
 let g:licenses_copyright_holders_name = ($EMPLOYER == "" ? git_user : $EMPLOYER)
+
+" Let vim use the mouse, grab and pull splits around etc.
+set mouse=a
