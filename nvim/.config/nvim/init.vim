@@ -202,8 +202,8 @@ vnoremap * y/<C-R>"<CR>
 " nnoremap <C-[> :hello
 
 " find/search, save current
-vmap <C-f> y:cclose<CR>:vsplit<CR>:silent Ggrep -I "<C-r>0"
-nmap <C-f> yiw:cclose<CR>:vsplit<CR>:silent Ggrep -I "<C-r>0"
+vmap <C-f> y:cclose<CR>:vsplit<CR>:silent Ggrep -I "<C-r>0"<CR>
+nmap <C-f> yiw:cclose<CR>:vsplit<CR>:silent Ggrep -I "<C-r>0"<CR>
 
 " ^^ open window in new tab, split and search
 " TODO Detect :Ggrep, fall back on :grep
