@@ -136,7 +136,9 @@ function randommac() {
 # Default working directories per-box
 alias pin="pwd > ~/.pindir"                   # pin cwd as pin dir
 alias cdd='cd $(cat ~/.pindir 2&> /dev/null)' # cdd nav to pin dir
-cdd                                           # open pin dir on term open
+if [[ $(pwd) == $HOME ]]; then                # open pin dir on term open
+  cdd
+fi
 
 # Conditionally load files
 [ -e ~/.config/local/env ] && source ~/.config/local/env
