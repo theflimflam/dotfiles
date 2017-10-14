@@ -80,7 +80,7 @@ set scrolloff=5           " when scrolling, keep cursor 5 lines away from border
 set foldmethod=manual     " Fold by indent level
 set autoread              " When someone modifies a file externally, autoread it back in
 set textwidth=120         " Line length should be ~120 chars #modern
-set clipboard=unnamedplus " yank and put straight to system clipboard
+"set clipboard=unnamedplus " yank and put straight to system clipboard
 
 
 """"""""""""""""""""""""""""""""""""""""
@@ -299,10 +299,6 @@ let g:go_template_autocreate = 0
 
 " Set title on terminal to focused buffer filename
 auto BufEnter * :set title | let &titlestring = 'v:' . expand('%')
-
-" Use system clipboard
-" set clipboard=unnamed
-" set clipboard=unnamedplus
 
 " w!! saves as sudo
 cmap w!! w !sudo tee > /dev/null %
