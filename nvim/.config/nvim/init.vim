@@ -26,7 +26,6 @@ Plug 'git@github.com:heymatthew/vim-unclutter.git'
 Plug 'git@github.com:heymatthew/vim-visible-whitespace.git'
 Plug 'git@github.com:heymatthew/vim-prose.git'
 Plug 'antoyo/vim-licenses'               " Help with open source licences
-Plug 'Yggdroot/indentLine'               " Show indent levels
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' } " Golang tools
 " Plug 'rhysd/vim-textobj-ruby'          " Ruby text objects NVIM BUSTED??
 Plug 'tpope/vim-rails'                   " Rails tools
