@@ -145,7 +145,7 @@ fi
 [ -f ~/.fzf.zsh ]          && source ~/.fzf.zsh
 
 function rehash() {
-  source ~/.zshrc
+  source ~/.zshrc && stty sane
 }
 
 # If rbenv exists, init shims autocompletion
