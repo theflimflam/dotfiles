@@ -200,9 +200,13 @@ vnoremap * y/<C-R>"<CR>
 " TODO file a bug for this, double escape repeats this command over and over
 " nnoremap <C-[> :hello
 
+" " find/search, save current
+" vmap <C-f> y:cclose<CR>:vsplit<CR>:GoldenRatioResize<CR>:silent Ggrep -I "<C-r>0"<CR>zz
+" nmap <C-f> yiw:cclose<CR>:vsplit<CR>:GoldenRatioResize<CR>:silent Ggrep -I "<C-r>0"<CR>zz
+
 " find/search, save current
-vmap <C-f> y:cclose<CR>:vsplit<CR>:GoldenRatioResize<CR>:silent Ggrep -I "<C-r>0"<CR>zz
-nmap <C-f> yiw:cclose<CR>:vsplit<CR>:GoldenRatioResize<CR>:silent Ggrep -I "<C-r>0"<CR>zz
+vmap <C-f> y:cclose<CR>:silent Ggrep -I "<C-r>0"<CR>zz
+nmap <C-f> yiw:cclose<CR>:silent Ggrep -I "<C-r>0"<CR>zz
 
 " ^^ open window in new tab, split and search
 " TODO Detect :Ggrep, fall back on :grep
