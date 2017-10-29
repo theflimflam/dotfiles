@@ -24,7 +24,7 @@ cdpath=(~ ~/Desktop ~/code ~/code/go/src/github.com ~/.config/nvim/plugged)
 setopt CORRECT MULTIOS NO_HUP NO_CHECK_JOBS EXTENDED_GLOB
 
 # History
-export HISTSIZE=2000
+export HISTSIZE=10000
 export HISTFILE=~/.zsh_history
 export SAVEHIST=$HISTSIZE
 
