@@ -259,9 +259,14 @@ nnoremap <leader>cf :let @*=expand("%")<CR>
 nnoremap <leader><leader> :tab split<cr>
 nnoremap <backspace><backspace> :tabclose<cr>
 
+" Non chorded window commands, e.g. leader w v -> vsplit
+nmap <leader>w <C-w>
+
 " Quickly split current view
-nmap <leader>y :split<cr><C-w>-
-nmap <leader>x :vsplit<cr><C-w>-
+nmap <leader>y :cclose<cr>:split<cr><C-w>-
+nmap <leader>x :cclose<cr>:vsplit<cr><C-w>-
+nmap <leader>n :cclose<cr><C-w>n<C-w>-
+nmap <leader>q :cclose<cr><C-w>q<C-w>-
 
 " Ctrl + w actions in terminal windows
 tnoremap <C-w> <C-\><C-N><C-w>
