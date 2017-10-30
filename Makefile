@@ -20,7 +20,6 @@ softlink-dotfiles:
 	stow i3
 
 setup-env:
-	mkdir ~/.config/local
 	vim ~/.config/local/git_author
 	vim ~/.config/local/env
 
