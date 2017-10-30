@@ -31,11 +31,12 @@ export SAVEHIST=$HISTSIZE
 setopt hist_ignore_all_dups # when running a command again, removes previous refs to it
 setopt hist_save_no_dups    # kill duplicates on save
 setopt hist_ignore_space    # prefixed with space doesn't store command
+setopt hist_no_store        # don't store the command history in history
+setopt hist_verify          # when using history expansion, reload history
 
-setopt hist_no_store      # don't store the command history in history
-setopt hist_verify        # when using history expansion, reload history
-setopt inc_append_history # write after exec rather than waiting till shell exit
-setopt no_hist_beep       # no terminal bell please
+setopt extended_history     # save timestamp and runtime information
+setopt inc_append_history   # write after exec rather than waiting till shell exit
+setopt no_hist_beep         # no terminal bell please
 # setopt share_history      # all open shells see history
 
 setopt interactivecomments # Don't execute comments in interactive shell
