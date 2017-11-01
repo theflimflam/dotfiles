@@ -223,7 +223,7 @@ autocmd BufReadPost COMMIT_EDITMSG exe "normal! gg"
 " Quickly open, reload and edit rc files
 nnoremap <leader>vv :e $MYVIMRC<CR>
 nnoremap <leader>vrr :source $MYVIMRC<CR>
-nnoremap <leader>vr :source $MYVIMRC<CR>:GoInstallBinaries<CR>:PlugUpdate<CR>:source $MYVIMRC<CR>
+nnoremap <leader>vr :source $MYVIMRC<CR>:PlugUpdate<CR>:source $MYVIMRC<CR>:GoInstallBinaries<CR>
 nnoremap <leader>zz :e $HOME/.zshrc<CR>
 
 " Syntax highlighting is often not quite right.
