@@ -156,16 +156,6 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\.pyc$\|\.pyo$|\.class$|\.min\..*\.js',
   \ }
 
-" Source local configuration files if available
-if filereadable($HOME . '/.vimrc.local')
-    source $HOME/.vimrc.local
-endif
-
-" For vim stuff local to the host you're on
-if filereadable("/etc/vim/vimrc.local")
-    source /etc/vim/vimrc.local
-endif
-
 " If we're in a fresh vim, under $HOME
 " AND there is a pinned directory present
 "   THEN Change to this directory
@@ -175,6 +165,16 @@ if filereadable($HOME . "/.pindir") && getcwd() == $HOME
     if len(pindir_lines) > 0
         exe "chdir " . pindir_lines[0]
     endif
+endif
+
+" Source local configuration files if available
+if filereadable($HOME . '/.vimrc.local')
+    source $HOME/.vimrc.local
+endif
+
+" For vim stuff local to the host you're on
+if filereadable("/etc/vim/vimrc.local")
+    source /etc/vim/vimrc.local
 endif
 
 " Quickfix window when shelling out to grep
