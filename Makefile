@@ -2,7 +2,7 @@ DOTFILES="$(HOME)/dotfiles/etc"
 
 default: run-updates
 
-install: reset-vim-plugins softlink-dotfiles setup-env run-updates
+install: reset-vim-plugins setup-env softlink-dotfiles run-updates
 
 reset-vim-plugins:
 	rm -rf ~/.config/nvim
@@ -20,10 +20,13 @@ softlink-dotfiles:
 	stow i3
 
 setup-env:
+	rm -rf ~/.config/local
+	cp -rv templates/.config/local ~/.config/local
 	vim ~/.config/local/git_author
 	vim ~/.config/local/env
 
 run-updates:
+	nvim -c 'call UpdateEverything() | qa'
 	sudo softwareupdate --install --all
 	brew upgrade
 	brew cleanup
