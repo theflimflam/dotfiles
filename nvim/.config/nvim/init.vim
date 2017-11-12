@@ -172,6 +172,12 @@ if filereadable($HOME . '/.vimrc.local')
     source $HOME/.vimrc.local
 endif
 
+" Per repo custom commands
+let git_vimrc = getcwd() . '/.git/vimrc'
+if filereadable(git_vimrc)
+    exe 'source ' . git_vimrc
+endif
+
 " For vim stuff local to the host you're on
 if filereadable("/etc/vim/vimrc.local")
     source /etc/vim/vimrc.local
