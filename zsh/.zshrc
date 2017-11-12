@@ -19,7 +19,7 @@ export LANG=en_US
 export LC_CTYPE=$LANG.UTF-8
 
 # CD from anywhere
-cdpath=(~ ~/Desktop ~/code ~/code/go/src/github.com ~/.config/nvim/plugged)
+cdpath=(~ ~/Desktop ~/code ~/code/go/src/github.com ~/.config/nvim)
 
 setopt CORRECT MULTIOS NO_HUP NO_CHECK_JOBS EXTENDED_GLOB
 
