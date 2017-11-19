@@ -3,4 +3,4 @@
 [push]
 	default = simple
 [commit]
-	verbose
+	verbose = true
