@@ -26,6 +26,7 @@ setup-env:
 	vim ~/.config/local/env
 
 run-updates:
+	sudo echo "get privs for updates"
 	nvim -c 'call UpdateEverything() | qa'
 	sudo softwareupdate --install --all
 	brew upgrade
