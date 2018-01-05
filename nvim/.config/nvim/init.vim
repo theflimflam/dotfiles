@@ -268,9 +268,10 @@ inoremap jj <ESC>
 " Copy current file to clipboard
 nnoremap <leader>cf :let @*=expand("%")<CR>
 
-" Triage stuff: Quickly open and close tabs
+" Triage stuff: Quickly cycle between contexts
 nnoremap <leader><leader> :tab split<cr>
 nnoremap <backspace><backspace> :tabclose<cr>
+nnoremap <space><space> :bnext<cr>
 
 " Non chorded window commands, e.g. leader w v -> vsplit
 nmap <leader>w <C-w>
