@@ -87,6 +87,7 @@ set textwidth=120         " Line length should be ~120 chars #modern
 """"""""""""""""""""""""""""""""""""""""
 " Spelling and autocorrect
 set spl=en spell       " Use English for spellchecking,
+set nojoinspaces       " Single space after period when using J
 iabbrev waht what
 iabbrev tehn then
 iabbrev teh the
