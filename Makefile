@@ -27,6 +27,7 @@ setup-env:
 
 run-updates:
 	sudo echo "get privs for updates"
+	ssh-add
 	nvim -c 'call UpdateEverything() | qa'
 	sudo softwareupdate --install --all
 	brew upgrade
