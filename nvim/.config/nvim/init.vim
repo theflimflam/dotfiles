@@ -319,7 +319,7 @@ autocmd FileType ruby iabbrev <buffer> pry require "pry"; binding.pry
 
 " Experimental go stuff
 autocmd Filetype go nnoremap <buffer> R  :GoRun %<CR>
-autocmd Filetype go nnoremap <buffer> TT :GoAlternate<CR>
+autocmd Filetype go nnoremap <buffer> TT :w<CR>:GoAlternate<CR>
 autocmd Filetype go nnoremap <buffer> T  :GoTest<CR>
 let g:go_template_autocreate = 0
 
