@@ -38,6 +38,8 @@ Plug 'roman/golden-ratio'                " Layout splits with golden ratio
 Plug 'nelstrom/vim-textobj-rubyblock'    " Match ruby blocks
 " Plug 'vim-syntastic/syntastic'           " Generic linter
 Plug 'w0rp/ale'                          " more linting
+let g:ale_set_loclist = 0                " prefer quickfix list to location list
+let g:ale_set_quickfix = 1
 Plug 'vim-scripts/LargeFile'             " turn off slow stuff in files > 20mb
 let g:golden_ratio_autocommand = 0
 nnoremap <silent> <C-w>- :GoldenRatioResize<CR>:GoldenRatioResize<CR>
@@ -212,8 +214,37 @@ vnoremap * y/<C-R>"<CR>
 " nmap <C-f> yiw:cclose<CR>:vsplit<CR>:GoldenRatioResize<CR>:silent Ggrep -I "<C-r>0"<CR>zz
 
 " find/search, save current
-vmap <C-f> y:cclose<CR>:silent Ggrep -I "<C-r>0"<CR>zz
-nmap <C-f> yiw:cclose<CR>:silent Ggrep -I "<C-r>0"<CR>zz
+" vmap <C-f> y:cclose<CR>:vsplit<CR>:silent Ggrep -I "<C-r>0"<CR>zz
+" nmap <C-f> yiw:cclose<CR>:vsplit<CR>:silent Ggrep -I "<C-r>0"<CR>zz
+
+" find/search, save current
+function! Find()
+  " Copy thing we're searching for to variable
+  normal yiw
+  let thing = '"' . @0 . '"'
+
+  " Reopen location lists, open a split
+  exe('vsplit')
+
+  " Close all windows to the right
+  try
+    while 1
+      exe("+q")
+    endwhile
+  catch
+    " bail on fail baby
+  endtry
+
+  " Search and open results in location list
+  exe('silent Glgrep -I '.thing)
+
+  " Center
+  normal zz
+  " exe("GoldenRatioResize")
+endfunction
+
+vmap <C-f> y:lclose<CR>:vsplit<CR>:silent Glgrep -I "<C-r>0"<CR>zz
+nmap <C-f> :call Find()<CR>
 
 " ^^ open window in new tab, split and search
 " TODO Detect :Ggrep, fall back on :grep
@@ -313,9 +344,6 @@ xmap <up>    <Plug>(textmanip-move-up)
 xmap <down>  <Plug>(textmanip-move-down)
 xmap <left>  <Plug>(textmanip-move-left)
 xmap <right> <Plug>(textmanip-move-right)
-
-" Quick debugging
-autocmd FileType ruby iabbrev <buffer> pry require "pry"; binding.pry
 
 " Experimental go stuff
 autocmd Filetype go nnoremap <buffer> R  :GoRun %<CR>
