@@ -63,6 +63,7 @@ Plug 'reedes/vim-lexical'                " Spell-check and thesaurus/dictionary 
 Plug 'reedes/vim-wordy'                  " Identify phrases for history of misuse, abuse, and overuse
 Plug 'reedes/vim-textobj-sentence'       " Sophisticated sentence text object
 Plug 'tpope/vim-commentary'              " Toggle comments on lines
+Plug 'tpope/vim-unimpaired'              " Pairings that marry ] and ['s
 Plug 'reedes/vim-pencil'
 Plug 'haya14busa/incsearch.vim'          " incremental search tool
 let g:incsearch#auto_nohlsearch = 1
