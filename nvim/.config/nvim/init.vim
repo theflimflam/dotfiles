@@ -50,7 +50,8 @@ autocmd FileType nerdtree setlocal number relativenumber
 Plug 'tpope/vim-fugitive'                " Git integration, TODO adjust habits
 Plug 'mattn/gist-vim'                    " Create gists
 Plug 'tpope/vim-surround'                " Delete, or insert around text objects
-Plug 'altercation/vim-colors-solarized'  " Sexy has a new plugin
+"Plug 'altercation/vim-colors-solarized'  " n.b. you need to change terminal colours too
+Plug 'crusoexia/vim-monokai'             " Monokai, port of sublime theme
 Plug 't9md/vim-textmanip'                " Move text about
 Plug 'rakr/vim-one'                      " Like Atom
 Plug 'sickill/vim-monokai'               " Like Sublime
@@ -143,9 +144,10 @@ nnoremap L <C-i> " Browse code like you're using vimium forward button
 
 " Colours
 try
-  " silent colorscheme solarized
-  set background=dark
-  colorscheme solarized
+  " don't explode if colour scheme doesn't exist
+  syntax on
+  set background=light
+  colorscheme monokai
   set guifont=hack:h12
 catch
   " If colors and fonts fail, this isn't a big deal
