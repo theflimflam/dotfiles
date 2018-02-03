@@ -268,10 +268,10 @@ nnoremap <leader>vr :source $MYVIMRC<CR>:PlugUpdate<CR>:source $MYVIMRC<CR>:GoIn
 nnoremap <leader>zz :e $HOME/.zshrc<CR>
 
 function! UpdateEverything()
-	exe('source ' . $MYVIMRC)
-	exe('PlugUpdate')
-	exe('source ' . $MYVIMRC)
-	exe('GoInstallBinaries')
+  exe('source ' . $MYVIMRC)
+  exe('PlugUpdate')
+  exe('source ' . $MYVIMRC)
+  exe('GoInstallBinaries')
 endfunction
 " Syntax highlighting is often not quite right.
 nnoremap <leader>t :set filetype=
