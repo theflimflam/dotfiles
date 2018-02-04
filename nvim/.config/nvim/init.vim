@@ -226,9 +226,6 @@ function! Find()
   normal yiw
   let thing = '"' . @0 . '"'
 
-  " Reopen location lists, open a split
-  exe('vsplit')
-
   " Close all windows to the right
   try
     while 1
@@ -246,7 +243,7 @@ function! Find()
   " exe("GoldenRatioResize")
 endfunction
 
-vmap <C-f> y:lclose<CR>:vsplit<CR>:silent Glgrep -I "<C-r>0"<CR>zz
+vmap <C-f> y:lclose<CR>:silent Glgrep -I "<C-r>0"<CR>zz
 nmap <C-f> :call Find()<CR>
 
 " ^^ open window in new tab, split and search
