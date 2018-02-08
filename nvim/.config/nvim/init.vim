@@ -38,8 +38,9 @@ Plug 'roman/golden-ratio'                " Layout splits with golden ratio
 Plug 'nelstrom/vim-textobj-rubyblock'    " Match ruby blocks
 " Plug 'vim-syntastic/syntastic'           " Generic linter
 Plug 'w0rp/ale'                          " more linting
+let g:ale_set_highlights = 0             " remove highlights
 let g:ale_set_loclist = 0                " prefer quickfix list to location list
-let g:ale_set_quickfix = 1
+let g:ale_set_quickfix = 0
 Plug 'vim-scripts/LargeFile'             " turn off slow stuff in files > 20mb
 let g:golden_ratio_autocommand = 0
 nnoremap <silent> <C-w>- :GoldenRatioResize<CR>:GoldenRatioResize<CR>
