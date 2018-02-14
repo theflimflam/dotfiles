@@ -88,12 +88,10 @@ case $TERM in
   xterm*|rxvt*|screen|Apple_Terminal)
     # Remotes look different
     if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-      PROMPT=$(echo '%{\e]0;%n@%m: %~\a\e[%(?.32.31)m%}β %{\e[m%}')
+      PROMPT=$(echo "%{\e]0;%n@%m: %~\a\e[%(?.32.31)m%}β %{\e[m%}")
     else
-      PROMPT=$(echo '%{\e]0;%n@%m: %~\a\e[%(?.32.31)m%}λ %{\e[m%}')
+      PROMPT=$(echo "%{\e]0;%n@%m: %~\a\e[%(?.32.31)m%}λ %{\e[m%}")
     fi
-
-    RPROMPT=$(echo '$(cur_git_branch) %{\e[32m%}%3~ %{\e[m%}%U%T%u')
 
     # Echo current process name in the xterm title bar
     preexec () {
