@@ -363,11 +363,10 @@ function! RSpec()
   if specfile !~ "_spec.rb$"
     let specfile = substitute(specfile,'.*/','**/','g')
     let specfile = substitute(specfile,'.rb$','_spec.rb','g')
-    exec("make " . specfile)
   endif
 
-  " Run the spec file that we're looking at
-  exec("make " . specfile)
+  " Return spec file matcher
+  exec("silent make " . specfile)
 endfunction
 
 " Set title on terminal to focused buffer filename
