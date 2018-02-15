@@ -353,6 +353,23 @@ autocmd Filetype go nnoremap <buffer> TT :w<CR>:GoAlternate<CR>
 autocmd Filetype go nnoremap <buffer> T  :GoTest<CR>
 let g:go_template_autocreate = 0
 
+" Experimental ruby stuff
+autocmd FileType ruby compiler rspec
+autocmd FileType ruby nnoremap <buffer> T :call RSpec()<CR>
+function! RSpec()
+  let specfile = expand("%")
+
+  " Correct for non spec files
+  if specfile !~ "_spec.rb$"
+    let specfile = substitute(specfile,'.*/','**/','g')
+    let specfile = substitute(specfile,'.rb$','_spec.rb','g')
+    exec("make " . specfile)
+  endif
+
+  " Run the spec file that we're looking at
+  exec("make " . specfile)
+endfunction
+
 " Set title on terminal to focused buffer filename
 auto BufEnter * :set title | let &titlestring = 'v:' . expand('%')
 
