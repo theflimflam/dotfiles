@@ -197,6 +197,7 @@ endif
 " autocmd QuickFixCmdPost *grep* cwindow
 "
 " Also http://stackoverflow.com/a/39010855/81271
+" automatically open the location/quickfix window after :make, :grep, :lvimgrep and friends if there are valid locations/errors
 augroup myvimrc
     autocmd!
     autocmd QuickFixCmdPost [^l]* cwindow
