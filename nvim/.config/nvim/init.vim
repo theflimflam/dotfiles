@@ -310,10 +310,10 @@ nnoremap <space><space> :bnext<cr>
 nmap <leader>w <C-w>
 
 " Quickly split current view
-nmap <leader>y :cclose<cr>:split<cr><C-w>-
-nmap <leader>x :cclose<cr>:vsplit<cr><C-w>-
-nmap <leader>n :cclose<cr><C-w>n<C-w>-
-nmap <leader>q :cclose<cr><C-w>q<C-w>-
+nmap <leader>y :lclose<CR>:cclose<cr>:split<cr>
+nmap <leader>x :lclose<CR>:cclose<cr>:vsplit<cr>
+nmap <leader>n :lclose<CR>:cclose<cr><C-w>n
+nmap <leader>q <C-w>q
 
 " Ctrl + w actions in terminal windows
 tnoremap <C-w> <C-\><C-N><C-w>
