@@ -218,9 +218,6 @@ fi
 function friday() {
   cd ~/dotfiles
   make run-updates
-  if (which brew && brew list | grep imagemagick) {
-    brew link --force imagemagick@6
-  }
 }
 
 function first() {
