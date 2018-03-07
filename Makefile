@@ -2,7 +2,15 @@ DOTFILES="$(HOME)/dotfiles/etc"
 
 default: run-updates
 
-install: reset-vim-plugins setup-env softlink-dotfiles run-updates
+install: prompt-for-privs reset-vim-plugins setup-env brew softlink-dotfiles run-updates
+	# Remember to..."
+	#
+	# Colours git@github.com:deepsweet/Monokai-Soda-iTerm.git"
+	# Setup font 'hack' in iterm"
+	# Remove prompt Prefs > General > Confirm quit iterm 2"
+	# Set scrollback to 100,000 lines"
+	# Key repeat, Settings > Keyboard"
+	# Remap Super-W, Settings > Keyboard > Shortcuts > App Shortcuts, +iterm, 'Close' Shift C-W"
 
 reset-vim-plugins:
 	rm -rf ~/.config/nvim
@@ -25,15 +33,17 @@ setup-env:
 	vim ~/.config/local/git_author
 	vim ~/.config/local/env
 
-run-updates:
-	sudo echo "get privs for updates"
-	ssh-add
+run-updates: prompt-for-privs
 	nvim -c 'call UpdateEverything() | qa'
 	sudo softwareupdate --install --all
 	brew upgrade
 	brew cleanup
 	brew prune
-	brew doctor
+	brew doctor || true
+
+prompt-for-privs:
+	sudo echo "get privs for updates"
+	ssh-add
 
 brew:
 	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -45,6 +55,7 @@ brew:
 	brew cask install gimp google-chrome iterm2
 	brew cask install keepassx skype
 	brew cask install vlc spotify transmission tunnelblick
+	brew cask install caskroom/fonts/font-hack
 
 unfuck-osx:
 	# Turn off mouse acceleration http://osxdaily.com/2010/08/25/mouse-acceleration
