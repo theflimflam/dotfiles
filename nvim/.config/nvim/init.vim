@@ -139,6 +139,7 @@ autocmd Filetype perl     setlocal expandtab   tabstop=4 softtabstop=4 shiftwidt
 " Quickly open rc files
 nnoremap <leader>vv :e $MYVIMRC<CR>
 nnoremap <leader>zz :e $HOME/.zshrc<CR>
+nnoremap <leader>ii :e $HOME/.config/local/env<CR>
 
 nnoremap H <C-o> " Browse code like you're using vimium back button
 nnoremap L <C-i> " Browse code like you're using vimium forward button
