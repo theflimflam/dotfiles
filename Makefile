@@ -47,7 +47,7 @@ prompt-for-privs:
 
 brew:
 	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-	brew install git tig neovim aspell gnupg go rbenv task
+	brew install git tig neovim aspell gnupg go rbenv task ctags
 	brew install md5sha1sum mtr ncdu zsh tor htop iftop
 	brew install stow ranger tree unrar watch rename
 	brew install mplayer syncthing wget
