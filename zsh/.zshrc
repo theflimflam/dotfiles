@@ -151,10 +151,14 @@ function rehash() {
 # If rbenv exists, init shims autocompletion
 if which rbenv > /dev/null; then
   eval "$(rbenv init -)";
+  export PATH="~/.rbenv/bin:$PATH"
 fi
 
-# Ruby environment overrides system ruby
-export PATH="~/.rbenv/bin:$PATH"
+# If chruby exists, init shims and hook cd
+if [ -f  /usr/local/share/chruby/chruby.sh ]; then
+  source /usr/local/share/chruby/chruby.sh
+  source /usr/local/share/chruby/auto.sh
+fi
 
 # Personal programs
 export PATH="$HOME/bin:$PATH"
