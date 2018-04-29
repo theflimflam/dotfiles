@@ -324,8 +324,8 @@ tnoremap <C-w> <C-\><C-N><C-w>
 " Double Escape and jj leave insert mode
 tnoremap <ESC><ESC> <C-\><C-N>
 
-autocmd BufWinEnter,WinEnter term://* startinsert
-autocmd BufLeave             term://* stopinsert
+autocmd TermOpen,BufWinEnter,WinEnter term://* startinsert
+autocmd BufLeave                      term://* stopinsert
 autocmd TermOpen * setlocal statusline=%{b:term_title}
 
 
