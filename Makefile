@@ -55,7 +55,8 @@ brew:
 	brew cask install gimp google-chrome iterm2
 	brew cask install keepassx skype
 	brew cask install vlc spotify transmission tunnelblick
-	brew cask install caskroom/fonts/font-hack
+	brew cask install font-hack
+	brew cask install font-m-plus
 
 unfuck-osx:
 	# Turn off mouse acceleration http://osxdaily.com/2010/08/25/mouse-acceleration
