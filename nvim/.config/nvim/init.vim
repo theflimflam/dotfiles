@@ -355,6 +355,7 @@ autocmd Filetype go nnoremap <buffer> R  :GoRun %<CR>
 autocmd Filetype go nnoremap <buffer> TT :w<CR>:GoAlternate<CR>
 autocmd Filetype go nnoremap <buffer> T  :GoTest<CR>
 let g:go_template_autocreate = 0
+let g:go_fmt_command = "goimports"
 
 " Experimental ruby stuff
 autocmd FileType ruby compiler rspec
