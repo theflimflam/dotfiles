@@ -149,7 +149,7 @@ nnoremap L <C-i> " Browse code like you're using vimium forward button
 try
   " don't explode if colour scheme doesn't exist
   syntax on
-  set background=dark
+  set background=light
   " colorscheme monokai
   colorscheme solarized
   set guifont=hack:h12
