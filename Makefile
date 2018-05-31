@@ -42,8 +42,8 @@ run-updates: prompt-for-privs
 	brew doctor || true
 
 prompt-for-privs:
-	sudo echo "get privs for updates"
-	ssh-add
+	sudo echo "you are ${whoami}"
+	ssh-add -l && echo "reusing unlocked key" || ssh-add
 
 brew:
 	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
