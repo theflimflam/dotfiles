@@ -42,7 +42,7 @@ run-updates: prompt-for-privs
 	brew doctor || true
 
 prompt-for-privs:
-	sudo echo "you are ${whoami}"
+	sudo echo "pre-prompting so you don't get bugged later"
 	ssh-add -l && echo "reusing unlocked key" || ssh-add
 
 brew:
