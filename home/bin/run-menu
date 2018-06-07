@@ -1,0 +1,5 @@
+#!/bin/sh
+
+export PATH="$HOME/bin:$PATH"
+
+dmenu_run -nb '#34639f' -nf '#eef' -sb '#99b' -sf '#336' -fn "-*-helvetica-medium-r-normal-*-17-*-*-*-*-*-*-*"

@@ -26,6 +26,7 @@ softlink-dotfiles:
 	stow urxvt
 	stow git
 	stow i3
+	stow home
 
 setup-env:
 	rm -rf ~/.config/local

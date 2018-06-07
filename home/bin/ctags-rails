@@ -1,0 +1,66 @@
+#!/usr/bin/env ruby
+
+require 'time'
+
+class TagBuilder
+  CTAGS_TMP = ".git/ctags.tmp"
+  CTAGS_FILE = ".git/ctags"
+
+  def initalize
+    if !ctags?
+      puts "ctags not present on system"
+      exit(0)
+    end
+
+    if !gemfile?
+      puts "cowardly exiting a project without a gemfile"
+      exit(0)
+    end
+  end
+
+  def call
+    create_tmp_tags_for_project and make_tmp_tags_current
+  end
+
+  private
+
+  def create_tmp_tags_for_project
+    puts "building #{CTAGS_TMP}"
+    system("ctags -R -f #{CTAGS_TMP} #{ctags_paths}")
+  end
+
+  def make_tmp_tags_current
+    puts "updating #{CTAGS_FILE}"
+    system("mv #{CTAGS_TMP} #{CTAGS_FILE}")
+  end
+
+  def ctags?
+    system("which ctags > /dev/null")
+  end
+
+  def gemfile?
+    File.exist?('.gemfile')
+  end
+
+  def ctags_paths
+    "#{cwd} #{gem_path}"
+  end
+
+  def cwd
+    "."
+  end
+
+  def gem_path
+    "#{home}/.rbenv/versions/#{version}/lib/ruby/gems"
+  end
+
+  def home
+    ENV["HOME"]
+  end
+
+  def version
+    `rbenv version`.chomp.split(' ').first
+  end
+end
+
+TagBuilder.new.call

@@ -162,7 +162,6 @@ fi
 
 # Personal programs
 export PATH="$HOME/bin:$PATH"
-export PATH="$HOME/script:$PATH"
 export PATH="$HOME/code/go/bin:$PATH"
 
 export GOPATH="$HOME/code/go"

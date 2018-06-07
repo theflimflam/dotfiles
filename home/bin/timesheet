@@ -1,0 +1,38 @@
+#!/usr/bin/env ruby
+
+require 'date'
+
+Timer = Struct.new(:start, :finish) do
+  def date
+    time(start).to_date
+  end
+
+  def duration
+    seconds = time(finish) - time(start)
+    seconds / seconds_per_hour
+  end
+
+  def seconds_per_hour
+    60 * 60
+  end
+
+  def time(str)
+    DateTime.parse(str).to_time
+  end
+end
+
+puts "Enter timesheet times"
+puts "In order of start,stop,start,stop"
+puts "press Ctrl D when done"
+
+input = STDIN.read()
+times = input.lines.map(&:chomp).reject(&:empty?)
+entries = times.each_slice(2).map do |start, finish|
+  Timer.new(start, finish)
+end
+
+entries.group_by(&:date).each do |date, times|
+  duration = sprintf("%.2f", times.sum(&:duration))
+  puts "#{date}"
+  puts  "#{duration} TODO Timesheet stub"
+end

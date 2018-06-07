@@ -1,0 +1,6 @@
+#!/bin/bash
+
+TIME=`date +%FT%H.%M.%S`
+import -frame ~/public/screenshot/$TIME.png
+#shutter -s -o ~/public/screenshot/$TIME.png &
+echo -n http://$(hostname -f)/screenshot/$TIME.png | xclip

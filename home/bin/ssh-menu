@@ -1,0 +1,5 @@
+#!/bin/bash
+
+host=$((sed 's/[, ].*//' $HOME/.ssh/known_hosts) | sort -u  | dmenu -nb '#34639f' -nf '#eef' -sb '#99b' -sf '#336' -fn "-*-helvetica-medium-r-normal-*-17-*-*-*-*-*-*-*")
+
+x-terminal-emulator -T "ssh $host" -e ssh $host

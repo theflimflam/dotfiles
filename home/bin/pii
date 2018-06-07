@@ -1,0 +1,249 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+use File::Glob;
+use Term::ReadLine;
+use Data::Dumper;
+use Time::HiRes;
+
+my $settings = {
+    display_time => 0,
+};
+
+# Optional modules
+my $optional_modules = { # {{{
+    'Data::Dump'          => {
+        suggestion => 'Installing Data::Dump will provide nicer output',
+    },
+    'Module::Refresh'     => {
+        suggestion => 'Installing Module::Refresh will enable reloading of modules as they change on disk automatically',
+    },
+    'Term::ReadLine::Gnu' => {
+        suggestion => 'Installing Term::ReadLine::Gnu will enable tab completion and saved history in pii',
+    },
+    'autodie' => {
+    },
+}; # }}}
+
+# Load optional modules
+foreach my $module ( keys %{$optional_modules} ) { # {{{
+    eval "use $module";
+    if ( $@ ) {
+        if ( $optional_modules->{$module}{suggestion} ) {
+            print $optional_modules->{$module}{suggestion}, "\n";
+        }
+        $optional_modules->{$module}{available} = 0;
+    }
+    else {
+        $optional_modules->{$module}{available} = 1;
+    }
+} # }}}
+
+my $term = new Term::ReadLine 'Interactive Perl shell';
+
+# set the readline history if a Gnu terminal
+if ($term->ReadLine eq 'Term::ReadLine::Gnu') {
+    #$SIG{'INT'} = 'IGNORE';
+    $term->ReadHistory($ENV{HOME} . '/.pii_history');
+
+    $term->Attribs->{completer_word_break_characters} =~ s{\$}{};
+    $term->Attribs->{completer_word_break_characters} =~ s{\@}{};
+    $term->Attribs->{completer_word_break_characters} =~ s{-}{};
+    $term->Attribs->{completer_word_break_characters} =~ s{>}{};
+    $term->Attribs->{completer_word_break_characters} .= '!';
+    $term->Attribs->{completion_entry_function} = \&completion_entry_function;
+
+    $term->Attribs->ornaments(0);
+}
+
+my $command_prefix = q{
+    package CommandScope;
+    no strict;
+};
+
+if ( -e '.piirc' ) {
+    print "Processing rc file\n";
+    package CommandScope;
+    no strict;
+    do '.piirc';
+    if ( $@ ) {
+        chomp $@ unless ref $@;
+        print "rc_file ERROR: $@\n";
+    }
+    package main;
+}
+
+# Main REPL loop
+debug('Starting main REPL loop');
+while ( defined ( $_ = $term->readline('pii> ') ) ) {
+    if ( $optional_modules->{'Module::Refresh'}{available} ) {
+        Module::Refresh->refresh();
+    }
+    execute_command($_);
+}
+print "\n";
+
+if ($term->ReadLine eq 'Term::ReadLine::Gnu') {
+    $term->WriteHistory($ENV{HOME} . '/.pii_history');
+}
+
+# Execute a command inside and display output
+sub execute_command { # {{{
+    my ($command) = @_;
+
+    my $time = join('.', Time::HiRes::gettimeofday());
+    my @response = eval "$command_prefix$command";
+    $time = join('.', Time::HiRes::gettimeofday()) - $time;
+
+    if ( $@ ) {
+        chomp $@;
+        print "ERROR: $@\n";
+        return;
+    }
+
+    if ( $optional_modules->{'Data::Dump'}{available} ) {
+        print Data::Dump::dump(@response), "\n";
+    }
+    else {
+        print Dumper(@response);
+    }
+
+    if ( $settings->{display_time} ) {
+        if ( $time > 1 ) {
+            printf "Time: %0.3f s\n", $time;
+        }
+        else {
+            printf "Time: %0.3f ms\n", $time * 1000;
+        }
+    }
+} # }}}
+
+sub debug {
+    #open LOG, '>>', 'pii.log';
+    #my $message = join('', @_);
+    #chomp $message;
+    #$message .= "\n";
+    #print LOG $message;
+    #close LOG;
+}
+
+# Return a list of symbols in the specified package
+sub get_symbols { # {{{
+    my ($package, $type) = @_;
+
+    my %types = (
+        'scalar'  => sub { no strict 'refs'; defined ${${$_[0] . '::'}{$_[1]}} },
+        'hash'    => sub { no strict 'refs'; %{${$_[0] . '::'}{$_[1]}} and $_[1] !~ /::$/ },
+        'list'    => sub { no strict 'refs'; defined @{${$_[0] . '::'}{$_[1]}} },
+        'sub'     => sub { no strict 'refs'; defined &{${$_[0] . '::'}{$_[1]}} },
+        'package' => sub { no strict 'refs'; %{${$_[0] . '::'}{$_[1]}} and $_[1] =~ s/::$// },
+    );
+
+    die "Invalid type: $type" if $type and not exists $types{$type};
+
+    my @symbols;
+
+    no strict 'refs';
+
+    foreach my $key ( keys %{"${package}::"} ) {
+        if ( $type ) {
+            unless ( eval { $types{$type}->($package, $key); } ) {
+                next;
+            }
+        }
+        push @symbols, $key;
+    }
+
+
+    return @symbols;
+} # }}}
+
+# Term::ReadLine::Gnu tab completion function
+sub completion_entry_function { # {{{
+    my ($text, $n) = @_;
+
+    debug("completion_entry($text, $n)");
+
+    my ($prefix, $package, $match);
+
+    if ( $text =~ m{ \A (.* \$ ) ([a-zA-Z_][a-zA-Z0-9_]*) -> ([a-zA-Z_][a-zA-Z0-9_]*)? \z }xms ) {
+        my ($prefix, $var, $match) = ($1, $2, $3);
+        $match ||= '';
+        my $ref = eval { no strict 'refs'; ${'CommandScope::' . $var} };
+
+        return unless UNIVERSAL::isa($ref, 'UNIVERSAL');
+
+        my @list;
+        push @list, map { "$_(" } get_symbols(ref $ref, 'sub');
+        push @list, map { "$_(" } map { get_symbols($_, 'sub') } eval { no strict 'refs'; @{ref($ref) . '::ISA'} };
+
+        my @sublist = grep { /^$match/ } @list;
+
+        return $prefix . $var . '->' . $sublist[$n] if defined $sublist[$n];
+
+        return;
+    }
+    else {
+        $text =~ s{ \A (.* [->]) }{}xms;
+        my $pre_prefix = $1 || '';
+        ($prefix, $package, $match) = $text =~ m{ ( \$ | \@ | \% | \& )? (?: ( .* ) :: )? (.*) }xms;
+        $prefix ||= '';
+        $package ||= '';
+        $prefix = $pre_prefix . $prefix;
+
+        my $search_package = $package || 'CommandScope';
+
+        my @list;
+        my @packages;
+
+        # Variables/Subs
+        if ( $prefix eq '$' ) {
+            push @list, get_symbols($search_package, 'scalar');
+            push @list, map { $_ . '{' } get_symbols($search_package, 'hash');
+            push @list, map { $_ . '[' } get_symbols($search_package, 'list');
+        }
+        elsif ( $prefix eq '%' ) {
+            push @list, get_symbols($search_package, 'hash');
+        }
+        elsif ( $prefix eq '@' ) {
+            push @list, get_symbols($search_package, 'list');
+        }
+        else {
+            push @list, map { $_ . '(' } get_symbols($search_package, 'sub');
+        }
+
+        # Packages
+        if ( $package ) {
+            #debug('get_symbols ', $package);
+            push @packages, map { $_ . '::' } get_symbols($package, 'package');
+        }
+        else {
+            push @packages, map { $_ . '::' } get_symbols('main', 'package');
+        }
+
+        #debug("List: ", join(', ', @list, @packages));
+
+        # Filter the list
+        my @sublist = grep { /^$match/ } @list;
+        my @subpackages = grep { /^$match/ } @packages;
+
+        #debug("Sublist: ", join(', ', @sublist, @subpackages));
+
+        # If there's only one in the list and it's a package:
+        if ( @sublist == 0 and @subpackages == 1 ) {
+            #debug("Subsearch: $subpackages[0]");
+            $package .= '::' if $package;
+            return completion_entry_function($prefix . $package . $subpackages[0], $n);
+        }
+
+        # Render some output;
+        push @sublist, @subpackages;
+
+        $package .= '::' if $package;
+
+        return $prefix . $package . $sublist[$n] if defined $sublist[$n];
+    }
+
+    return undef;
+} # }}}
