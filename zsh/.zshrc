@@ -220,7 +220,7 @@ fi
 
 function friday() {
   cd ~/dotfiles
-  make run-updates
+  make updates
 }
 
 function first() {

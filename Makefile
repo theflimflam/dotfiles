@@ -1,8 +1,8 @@
 DOTFILES="$(HOME)/dotfiles/etc"
 
-default: run-updates
+default: updates
 
-install: preflight-checks reset-vim-plugins setup-env brew softlink-dotfiles run-updates
+install: preflight neovim env brew softlink updates
 	# Remember to..."
 	#
 	# Colours git@github.com:deepsweet/Monokai-Soda-iTerm.git"
@@ -12,12 +12,12 @@ install: preflight-checks reset-vim-plugins setup-env brew softlink-dotfiles run
 	# Key repeat, Settings > Keyboard"
 	# Remap Super-W, Settings > Keyboard > Shortcuts > App Shortcuts, +iterm, 'Close' Shift C-W"
 
-reset-vim-plugins:
+neovim:
 	rm -rf ~/.config/nvim
 	curl -fLo $(HOME)/.config/nvim/autoload/plug.vim --create-dirs \
 	     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-softlink-dotfiles:
+softlink:
 	stow zsh
 	stow task
 	stow nvim
@@ -28,13 +28,13 @@ softlink-dotfiles:
 	stow i3
 	stow home
 
-setup-env:
+env:
 	rm -rf ~/.config/local
 	cp -rv templates/.config/local ~/.config/local
 	vim ~/.config/local/git_author
 	vim ~/.config/local/env
 
-run-updates: preflight-checks
+updates: preflight
 	nvim -c 'call UpdateEverything() | qa'
 	sudo softwareupdate --install --all
 	brew upgrade
@@ -42,7 +42,7 @@ run-updates: preflight-checks
 	brew prune
 	brew doctor || true
 
-preflight-checks:
+preflight:
 	git fetch
 	[[ `git status --porcelain` ]] && echo "Please update dotfiles" && exit 1
 	sudo echo "pre-prompting so you don't get bugged later"
