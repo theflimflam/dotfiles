@@ -2,7 +2,7 @@ DOTFILES="$(HOME)/dotfiles/etc"
 
 default: updates
 
-install: preflight neovim env brew softlink updates
+install: preflight neovim env brew softlinks updates
 	# Remember to..."
 	#
 	# Colours git@github.com:deepsweet/Monokai-Soda-iTerm.git"
@@ -17,7 +17,7 @@ neovim:
 	curl -fLo $(HOME)/.config/nvim/autoload/plug.vim --create-dirs \
 	     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-softlink:
+softlinks:
 	stow zsh
 	stow task
 	stow nvim
