@@ -2,7 +2,7 @@ DOTFILES="$(HOME)/dotfiles/etc"
 
 default: run-updates
 
-install: prompt-for-privs reset-vim-plugins setup-env brew softlink-dotfiles run-updates
+install: preflight-checks reset-vim-plugins setup-env brew softlink-dotfiles run-updates
 	# Remember to..."
 	#
 	# Colours git@github.com:deepsweet/Monokai-Soda-iTerm.git"
@@ -34,7 +34,7 @@ setup-env:
 	vim ~/.config/local/git_author
 	vim ~/.config/local/env
 
-run-updates: prompt-for-privs
+run-updates: preflight-checks
 	nvim -c 'call UpdateEverything() | qa'
 	sudo softwareupdate --install --all
 	brew upgrade
@@ -42,7 +42,9 @@ run-updates: prompt-for-privs
 	brew prune
 	brew doctor || true
 
-prompt-for-privs:
+preflight-checks:
+	git fetch
+	[[ `git status --porcelain` ]] && echo "Please update dotfiles" && exit 1
 	sudo echo "pre-prompting so you don't get bugged later"
 	ssh-add -l && echo "reusing unlocked key" || ssh-add
 
