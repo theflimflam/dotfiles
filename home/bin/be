@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+export $(cat .env | grep -v '^#' | xargs)
+bundle exec $@
