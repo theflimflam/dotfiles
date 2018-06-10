@@ -244,3 +244,16 @@ fi
 function backup() {
   restic backup . -r sftp:matthew.nz:restic-backup
 }
+
+# https://coderwall.com/p/s-2_nw/change-iterm2-color-profile-from-the-cli
+it2prof() { echo -e "\033]50;SetProfile=$1\a" }
+
+dark() {
+  export THEME=dark
+  it2prof 'Dark'
+}
+
+light() {
+  export THEME=light
+  it2prof 'Light'
+}

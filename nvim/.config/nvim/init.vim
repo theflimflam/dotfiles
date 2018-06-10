@@ -145,14 +145,18 @@ nnoremap <leader>ii :e $HOME/.config/local/env<CR>
 nnoremap H <C-o> " Browse code like you're using vimium back button
 nnoremap L <C-i> " Browse code like you're using vimium forward button
 
-" Colours
+" Look and Feel
 try
   " don't explode if colour scheme doesn't exist
   syntax on
-  set background=light
-  " colorscheme monokai
   colorscheme solarized
-  set guifont=hack:h12
+  " from system_profiler SPFontsDataType
+  set guifont=mplus-1c-regular:h11
+  if $THEME == 'dark'
+    set background=dark
+  else
+    set background=light
+  end
 catch
   " If colors and fonts fail, this isn't a big deal
 endtry
