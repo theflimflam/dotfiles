@@ -43,7 +43,6 @@ updates: preflight
 	brew doctor || true
 
 preflight:
-	git fetch
 	[[ `git status --porcelain` ]] && echo "Please update dotfiles" && exit 1
 	sudo echo "pre-prompting so you don't get bugged later"
 	ssh-add -l && echo "reusing unlocked key" || ssh-add
