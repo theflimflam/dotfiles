@@ -248,12 +248,9 @@ function backup() {
 # https://coderwall.com/p/s-2_nw/change-iterm2-color-profile-from-the-cli
 it2prof() { echo -e "\033]50;SetProfile=$1\a" }
 
-dark() {
-  export THEME=dark
-  it2prof 'Dark'
-}
+alias fuck='pkill -if'
 
-light() {
-  export THEME=light
-  it2prof 'Light'
-}
+# Set and remember iterm profile
+alias dark='echo dark > ~/.config/iterm_theme && echo -e "\033]50;SetProfile=dark\a"'
+alias light='echo light > ~/.config/iterm_theme && echo -e "\033]50;SetProfile=light\a"'
+echo -e "\033]50;SetProfile=$(cat ~/.config/iterm_theme)\a"

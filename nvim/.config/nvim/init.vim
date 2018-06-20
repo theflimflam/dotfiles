@@ -152,11 +152,13 @@ try
   colorscheme solarized
   " from system_profiler SPFontsDataType
   set guifont=mplus-1c-regular:h11
-  if $THEME == 'dark'
-    set background=dark
-  else
-    set background=light
-  end
+
+  if filereadable($HOME . "/.config/iterm_theme")
+      let iterm_theme = readfile($HOME . "/.config/iterm_theme")
+      if len(iterm_theme) > 0
+        exe "set background=" . iterm_theme[0]
+      endif
+  endif
 catch
   " If colors and fonts fail, this isn't a big deal
 endtry
