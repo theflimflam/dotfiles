@@ -215,7 +215,7 @@ fi
 
 # Habits
 if which nvim > /dev/null; then
-  alias vim=$(which nvim);
+  alias vim="pgrep nvim && echo 'already running' || $(which nvim) -V9$HOME/Desktop/vim-$(isotime).log"
 fi
 
 function friday() {
