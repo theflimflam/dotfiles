@@ -31,6 +31,7 @@ Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' } " Golang tools
 Plug 'tpope/vim-rails'                   " Rails tools
 Plug 'ecomba/vim-ruby-refactoring'       " TODO make some habits around this
 Plug 'vim-ruby/vim-ruby'                 " Make ruby files FAST
+Plug 'airblade/vim-gitgutter'            " Figure out what's changed
 Plug 'kana/vim-textobj-user' | Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'godlygeek/tabular'                 " Align stuff
 Plug 'michaeljsmith/vim-indent-object'   " Select indents as an object
