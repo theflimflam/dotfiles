@@ -37,6 +37,7 @@ Plug 'godlygeek/tabular'                 " Align stuff
 Plug 'michaeljsmith/vim-indent-object'   " Select indents as an object
 Plug 'roman/golden-ratio'                " Layout splits with golden ratio
 Plug 'nelstrom/vim-textobj-rubyblock'    " Match ruby blocks
+Plug 'pangloss/vim-javascript'           " Better Javascript highlighting
 Plug 'posva/vim-vue'                     " Vue syntax highlighting
 " Plug 'vim-syntastic/syntastic'           " Generic linter
 Plug 'w0rp/ale'                          " more linting
