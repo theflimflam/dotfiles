@@ -74,6 +74,7 @@ Plug 'haya14busa/incsearch.vim'          " incremental search tool
 let g:incsearch#auto_nohlsearch = 1
 Plug 'bronson/vim-visual-star-search'    " Vim multiline search
 Plug 'othree/eregex.vim'                 " PCRE engine for VIM
+Plug 'vim-scripts/buffet.vim'            " Interacive buffer navigation
 nnoremap / :M/
 nnoremap <leader>/ /
 let g:pencil#textwidth = 120
