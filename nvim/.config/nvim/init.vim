@@ -39,8 +39,8 @@ Plug 'roman/golden-ratio'                " Layout splits with golden ratio
 Plug 'nelstrom/vim-textobj-rubyblock'    " Match ruby blocks
 Plug 'pangloss/vim-javascript'           " Better Javascript highlighting
 Plug 'posva/vim-vue'                     " Vue syntax highlighting
-" Plug 'vim-syntastic/syntastic'           " Generic linter
-Plug 'w0rp/ale'                          " more linting
+Plug 'vim-syntastic/syntastic'           " Generic linter
+" Plug 'w0rp/ale'                          " more linting
 let g:ale_set_highlights = 0             " remove highlights
 let g:ale_set_loclist = 0                " prefer quickfix list to location list
 let g:ale_set_quickfix = 0
