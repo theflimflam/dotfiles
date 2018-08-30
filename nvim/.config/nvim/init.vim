@@ -131,7 +131,7 @@ set colorcolumn=120    " Show 120th char visually
 
 " Whitespace management
 set                                expandtab   tabstop=2 softtabstop=2 shiftwidth=2
-autocmd Filetype go       setlocal noexpandtab tabstop=4 softtabstop=4 shiftwidth=4
+" autocmd Filetype go       setlocal noexpandtab tabstop=4 softtabstop=4 shiftwidth=4
 autocmd Filetype markdown setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
 autocmd Filetype perl     setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
 
