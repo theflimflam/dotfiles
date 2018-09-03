@@ -23,30 +23,20 @@ let mapleader = "\<tab>"
 
 call plug#begin('~/.config/nvim/plugged')
 Plug 'git@github.com:heymatthew/vim-unclutter.git'
-Plug 'git@github.com:heymatthew/vim-visible-whitespace.git'
 Plug 'git@github.com:heymatthew/vim-prose.git'
-Plug 'antoyo/vim-licenses'               " Help with open source licences
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' } " Golang tools
-" Plug 'rhysd/vim-textobj-ruby'          " Ruby text objects NVIM BUSTED??
 Plug 'tpope/vim-rails'                   " Rails tools
-Plug 'ecomba/vim-ruby-refactoring'       " TODO make some habits around this
 Plug 'vim-ruby/vim-ruby'                 " Make ruby files FAST
-Plug 'airblade/vim-gitgutter'            " Figure out what's changed
-Plug 'kana/vim-textobj-user' | Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'godlygeek/tabular'                 " Align stuff
 Plug 'michaeljsmith/vim-indent-object'   " Select indents as an object
 Plug 'roman/golden-ratio'                " Layout splits with golden ratio
-Plug 'nelstrom/vim-textobj-rubyblock'    " Match ruby blocks
-Plug 'pangloss/vim-javascript'           " Better Javascript highlighting
-Plug 'posva/vim-vue'                     " Vue syntax highlighting
-Plug 'vim-syntastic/syntastic'           " Generic linter
-" Plug 'w0rp/ale'                          " more linting
-let g:ale_set_highlights = 0             " remove highlights
-let g:ale_set_loclist = 0                " prefer quickfix list to location list
-let g:ale_set_quickfix = 0
-Plug 'vim-scripts/LargeFile'             " turn off slow stuff in files > 20mb
 let g:golden_ratio_autocommand = 0
 nnoremap <silent> <C-w>- :GoldenRatioResize<CR>:GoldenRatioResize<CR>
+Plug 'vim-syntastic/syntastic'           " Generic linter
+Plug 'posva/vim-vue'                     " Vue syntax highlighting
+Plug 'elzr/vim-json'                     " JSON
+let g:vim_json_syntax_conceal = 0        " Don't hide quotes in JSON files
+Plug 'kchmck/vim-coffee-script'          " Syntax for coffeescript
+Plug 'vim-scripts/LargeFile'             " turn off slow stuff in files > 20mb
 Plug 'scrooloose/nerdtree'               " File browser
 let NERDTreeShowLineNumbers = 1          " Make nerdtree honor numbers
 let NERDTreeShowHidden = 1               " Show dotfiles
@@ -55,13 +45,7 @@ Plug 'tpope/vim-fugitive'                " Git integration, TODO adjust habits
 Plug 'mattn/gist-vim'                    " Create gists
 Plug 'tpope/vim-surround'                " Delete, or insert around text objects
 Plug 'altercation/vim-colors-solarized'  " n.b. you need to change terminal colours too
-" Plug 'crusoexia/vim-monokai'             " Monokai, port of sublime theme
 Plug 't9md/vim-textmanip'                " Move text about
-Plug 'rakr/vim-one'                      " Like Atom
-Plug 'sickill/vim-monokai'               " Like Sublime
-Plug 'elzr/vim-json'                     " JSON
-Plug 'kchmck/vim-coffee-script'          " Syntax for coffeescript
-let g:vim_json_syntax_conceal = 0        " Don't hide quotes in JSON files
 Plug 'junegunn/fzf', { 'dir': '~/code/fzf', 'do': 'yes \| ./install' }
 Plug 'ctrlpvim/ctrlp.vim'                " Fuzzy search files, recent files, and buffers
 Plug 'reedes/vim-lexical'                " Spell-check and thesaurus/dictionary completion
