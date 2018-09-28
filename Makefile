@@ -40,9 +40,7 @@ updates: preflight
 	brew upgrade
 	brew cask upgrade
 	brew cleanup
-	brew cask cleanup
 	brew prune
-	brew cask prune
 	brew doctor || true
 
 preflight:
