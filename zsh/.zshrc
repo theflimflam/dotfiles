@@ -205,18 +205,10 @@ export KEYTIMEOUT=1
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
 # Setting default editor
-if which nvim > /dev/null; then
-  export EDITOR=nvim
-elif which vim > /dev/null; then
+if which vim > /dev/null; then
   export EDITOR=vim
 else
   export EDITOR=vi
-fi
-
-# Habits
-if which nvim > /dev/null; then
-  # alias vim="pgrep nvim && echo 'already running' || $(which nvim) -V9$HOME/Desktop/vim-$(isotime).log"
-  alias vim="nvim"
 fi
 
 function friday() {
