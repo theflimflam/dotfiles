@@ -2,7 +2,7 @@ DOTFILES="$(HOME)/dotfiles/etc"
 
 default: updates
 
-install: preflight neovim env brew softlinks updates
+install: preflight env brew softlinks updates
 	# Remember to..."
 	#
 	# Colours git@github.com:deepsweet/Monokai-Soda-iTerm.git"
@@ -12,15 +12,16 @@ install: preflight neovim env brew softlinks updates
 	# Key repeat, Settings > Keyboard"
 	# Remap Super-W, Settings > Keyboard > Shortcuts > App Shortcuts, +iterm, 'Close' Shift C-W"
 
-neovim:
-	rm -rf ~/.config/nvim
-	curl -fLo $(HOME)/.config/nvim/autoload/plug.vim --create-dirs \
-	     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+# neovim:
+# 	rm -rf ~/.config/nvim
+# 	curl -fLo $(HOME)/.config/nvim/autoload/plug.vim --create-dirs \
+# 	     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 softlinks:
 	stow zsh
 	stow task
-	stow nvim
+	# stow nvim
+	stow vim
 	stow xmodmap
 	stow ranger
 	stow urxvt
@@ -49,7 +50,7 @@ preflight:
 
 brew:
 	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-	brew install git tig neovim aspell gnupg go rbenv task ctags
+	brew install git tig vim neovim aspell gnupg go rbenv task ctags
 	brew install md5sha1sum mtr ncdu zsh tor htop iftop
 	brew install stow ranger tree unrar watch rename
 	brew install mplayer syncthing wget
