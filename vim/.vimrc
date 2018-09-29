@@ -161,6 +161,7 @@ iabbrev functino function
 iabbrev iamge image
 iabbrev wehn when
 " spell checker automatically there for text and markdown
+nnoremap <leader>s :set spell!<CR>
 set nospell
 
 """"""""""""""""""""""""""""""""""""""""
