@@ -325,6 +325,15 @@ nmap <leader>x :lclose<CR>:cclose<cr>:vsplit<cr>
 nmap <leader>n :lclose<CR>:cclose<cr><C-w>n
 nmap <leader>q <C-w>q
 
+" Search [f]iles, [l]ines, [r]ecent files
+nnoremap <leader>f :FZF<CR>
+nnoremap <leader>l :CtrlPLine<CR>
+nnoremap <leader>r :CtrlPMRUFiles<CR>
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](\.git|\.hg|\.svn|tmp)$',
+  \ 'file': '\.pyc$\|\.pyo$|\.class$|\.min\..*\.js',
+  \ }
+
 " Ctrl + w actions in terminal windows
 tnoremap <C-w> <C-\><C-N><C-w>
 
