@@ -345,10 +345,10 @@ let g:ctrlp_custom_ignore = {
   \ }
 
 " Ctrl + w actions in terminal windows
-tnoremap <C-w> <C-\><C-N><C-w>
+" tnoremap <C-w> <C-\><C-N><C-w>
 
 " Terminal double Escape and jj leave insert mode
-tnoremap <ESC><ESC> <C-\><C-N>
+" tnoremap <ESC><ESC> <C-\><C-N>
 
 " autocmd TermOpen,BufWinEnter,WinEnter term://* startinsert
 " autocmd BufLeave                      term://* stopinsert
