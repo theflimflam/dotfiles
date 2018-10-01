@@ -163,6 +163,7 @@ iabbrev wehn when
 " spell checker automatically there for text and markdown
 nnoremap <leader>s :set spell!<CR>
 set nospell
+nnoremap <leader>s :setlocal spell!<cr>
 
 """"""""""""""""""""""""""""""""""""""""
 " Code
@@ -209,6 +210,15 @@ autocmd FileType qf nnoremap <buffer> <leader><Enter> <C-w><Enter><C-w>L
 
 " Select and hitting * does a serach for the full string
 vnoremap * y/<C-R>"<CR>
+
+" Search [f]iles, [l]ines, [r]ecent files
+nnoremap <leader>f :FZF<CR>
+nnoremap <leader>l :CtrlPLine<CR>
+nnoremap <leader>r :CtrlPMRUFiles<CR>
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/](\.git|\.hg|\.svn|tmp)$',
+  \ 'file': '\.pyc$\|\.pyo$|\.class$|\.min\..*\.js',
+  \ }
 
 " TODO file a bug for this, double escape repeats this command over and over
 " nnoremap <C-[> :hello
