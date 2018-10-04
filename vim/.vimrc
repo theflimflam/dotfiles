@@ -101,7 +101,7 @@ try
   colorscheme solarized
   set background=dark
   " from system_profiler SPFontsDataType
-  set guifont=mplus-1c-regular:h11
+  set guifont=mplus-1m-regular:h12
   set colorcolumn=120    " Show 120th char visually (looks ugly without colours)
 
   if filereadable($HOME . "/.config/iterm_theme")
