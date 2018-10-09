@@ -114,6 +114,17 @@ catch
   " If colors and fonts fail, this isn't a big deal
 endtry
 
+" If we're in a fresh vim, under $HOME
+" AND there is a pinned directory present
+"   THEN Change to this directory
+"   SO that we can act as if we're in the default system project
+if filereadable($HOME . "/.pindir") && getcwd() == $HOME
+    let pindir_lines = readfile($HOME . "/.pindir")
+    if len(pindir_lines) > 0
+        exe "chdir " . pindir_lines[0]
+    endif
+endif
+
 " Source local configuration files if available
 if filereadable($HOME . '/.vimrc.local')
     source $HOME/.vimrc.local
