@@ -320,7 +320,8 @@ map Q gqap
 autocmd FileType help setlocal number relativenumber
 
 " Insert current branch name and put cursor to the end of the line
-autocmd FileType gitcommit nnoremap T O<ESC>:.!git rev-parse --abbrev-ref HEAD<CR>$
+" Uses upper case motion found here https://stackoverflow.com/a/2285278/81271
+autocmd FileType gitcommit nnoremap T O<ESC>:.!git rev-parse --abbrev-ref HEAD<CR>0g~iwf-;C 
 
 " Vertical split for help files
 " autocmd FileType help wincmd L
