@@ -340,7 +340,7 @@ nnoremap <leader><leader> :tab split<CR>
 nnoremap <backspace><backspace> :tabclose<CR>
 
 " Open file browser in the directory of the current file
-nnoremap <space><space> :Sex<CR><C-w>l<C-w>l
+nnoremap <space><space> :Vexplore<CR><C-w>L:GoldenRatioResize<CR>
 
 " Quickly split current view along x or y, or close the split with q
 nmap <leader>y :lclose<CR>:cclose<cr>:split<cr>
