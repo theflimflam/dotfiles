@@ -343,6 +343,9 @@ nnoremap <backspace><backspace> :tabclose<CR>
 " Open file browser in the directory of the current file
 nnoremap <space><space> :Vexplore<CR><C-w>L:GoldenRatioResize<CR>
 
+" Open git status
+nnoremap <leader>g :Gstatus<CR>
+
 " Quickly split current view along x or y, or close the split with q
 nmap <leader>y :lclose<CR>:cclose<cr>:split<cr>
 nmap <leader>x :lclose<CR>:cclose<cr>:vsplit<cr>
