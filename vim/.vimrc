@@ -172,7 +172,8 @@ iabbrev hte the
 iabbrev functino function
 iabbrev iamge image
 iabbrev wehn when
-" spell checker automatically there for text and markdown
+" spell checker automatically there for git commit messages
+autocmd BufReadPost COMMIT_EDITMSG exe "set spell"
 nnoremap <leader>s :set spell!<CR>
 set nospell
 nnoremap <leader>s :setlocal spell!<cr>
