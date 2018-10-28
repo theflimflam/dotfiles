@@ -114,7 +114,6 @@ export LS_COLORS="exfxcxdxbxegedabagacad"
 ZLS_COLORS=$LS_COLORS
 
 # Aliases
-alias :q=exit                               # habbits ;-)
 alias ls='ls -G'                            # technicolour list
 alias cdg='cd $(git rev-parse --show-cdup)' # cd to root of repo
 
