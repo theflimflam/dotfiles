@@ -246,3 +246,6 @@ alias fuck='pkill -if'
 alias dark='echo dark > ~/.config/iterm_theme && echo -e "\033]50;SetProfile=dark\a"'
 alias light='echo light > ~/.config/iterm_theme && echo -e "\033]50;SetProfile=light\a"'
 echo -e "\033]50;SetProfile=$(cat ~/.config/iterm_theme)\a"
+
+# .envrc files contain secrets, use these ;)
+eval "$(direnv hook zsh)"
