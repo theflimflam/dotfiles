@@ -341,7 +341,7 @@ nnoremap <leader><leader> :tab split<CR>
 nnoremap <backspace><backspace> :tabclose<CR>
 
 " Open file browser in the directory of the current file
-nnoremap <space><space> :Explore<CR><C-w>L:GoldenRatioResize<CR>
+nnoremap <space><space> :Explore<CR>
 
 " Open git status
 nnoremap <leader>g :Gstatus<CR>
