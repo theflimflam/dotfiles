@@ -147,18 +147,6 @@ function rehash() {
   source ~/.zshrc && stty sane
 }
 
-# If rbenv exists, init shims autocompletion
-if which rbenv > /dev/null; then
-  eval "$(rbenv init -)";
-  export PATH="~/.rbenv/bin:$PATH"
-fi
-
-# If chruby exists, init shims and hook cd
-if [ -f  /usr/local/share/chruby/chruby.sh ]; then
-  source /usr/local/share/chruby/chruby.sh
-  source /usr/local/share/chruby/auto.sh
-fi
-
 # Personal programs
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/code/go/bin:$PATH"
@@ -247,5 +235,19 @@ alias dark='echo dark > ~/.config/iterm_theme && echo -e "\033]50;SetProfile=dar
 alias light='echo light > ~/.config/iterm_theme && echo -e "\033]50;SetProfile=light\a"'
 echo -e "\033]50;SetProfile=$(cat ~/.config/iterm_theme)\a"
 
-# .envrc files contain secrets, use these ;)
-eval "$(direnv hook zsh)"
+# .envrc files contain secrets, if direnv exists export them on directory traversal
+if which direnv > /dev/null; then
+  eval "$(direnv hook zsh)"
+fi
+
+# If rbenv exists, init shims autocompletion
+if which rbenv > /dev/null; then
+  eval "$(rbenv init -)";
+  export PATH="~/.rbenv/bin:$PATH"
+
+  # If chruby exists, init shims and hook cd
+  if [ -f /usr/local/share/chruby/chruby.sh ]; then
+    source /usr/local/share/chruby/chruby.sh
+    source /usr/local/share/chruby/auto.sh
+  fi
+fi
