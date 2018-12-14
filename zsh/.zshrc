@@ -251,3 +251,9 @@ if which rbenv > /dev/null; then
     source /usr/local/share/chruby/auto.sh
   fi
 fi
+
+# If pyenv exists, init shims autocompletion
+if which pyenv > /dev/null; then
+  eval "$(pyenv init -)"
+  pyenv rehash
+fi
