@@ -228,6 +228,8 @@ function backup() {
 # https://coderwall.com/p/s-2_nw/change-iterm2-color-profile-from-the-cli
 it2prof() { echo -e "\033]50;SetProfile=$1\a" }
 
+# hose things that match string
+# e.g. fuck ruby
 alias fuck='pkill -if'
 
 # Set and remember iterm profile
