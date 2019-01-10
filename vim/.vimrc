@@ -84,6 +84,9 @@ Plug 'reedes/vim-pencil'
 Plug 'haya14busa/incsearch.vim'          " incremental search tool
 let g:incsearch#auto_nohlsearch = 1
 Plug 'bronson/vim-visual-star-search'    " Vim multiline search
+Plug 'hashivim/vim-terraform'            " Terraform integration and support
+let g:terraform_align=1
+let g:terraform_fmt_on_save=1
 Plug 'othree/eregex.vim'                 " PCRE engine for VIM
 Plug 'vim-scripts/buffet.vim'            " Interacive buffer navigation
 nnoremap / :M/
