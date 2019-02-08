@@ -37,12 +37,11 @@ env:
 
 updates: preflight
 	nvim -c 'call UpdateEverything() | qa'
-	sudo softwareupdate --install --all
 	brew upgrade
 	brew cask upgrade
 	brew cleanup
-	brew prune
 	brew doctor || true
+	sudo softwareupdate --install --all --restart
 
 preflight:
 	sudo echo "pre-prompting so you don't get bugged later"
