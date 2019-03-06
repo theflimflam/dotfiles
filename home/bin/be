@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
 
-[ -e .env ] && export $(cat .env | grep -v '^#' | xargs) || echo "skip .env"
+[ -e .env ] && export $(cat .env | sed "s/#.*//g" | xargs) || echo "skip .env"
 
 bundle exec $@
