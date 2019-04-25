@@ -36,10 +36,10 @@ env:
 	vim ~/.config/local/env
 
 updates: preflight
-	nvim -c 'call UpdateEverything() | qa'
+	vim -c 'call UpdateEverything() | qa'
 	brew upgrade
 	brew cask upgrade
-	brew cleanup
+	brew cleanup || true
 	brew doctor || true
 	sudo softwareupdate --install --all --restart
 
