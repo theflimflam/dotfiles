@@ -35,6 +35,7 @@ Plug 'git@github.com:heymatthew/vim-visible-whitespace.git'
 Plug 'git@github.com:heymatthew/vim-prose.git'
 Plug 'antoyo/vim-licenses'               " Help with open source licences
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' } " Golang tools
+Plug 'jalvesaq/Nvim-R'                   " R lang
 Plug 'rhysd/vim-textobj-ruby'            " Ruby text objects
 Plug 'tpope/vim-rails'                   " Rails tools
 Plug 'ecomba/vim-ruby-refactoring'       " TODO make some habits around this
@@ -90,6 +91,7 @@ let g:terraform_align=1
 let g:terraform_fmt_on_save=1
 Plug 'othree/eregex.vim'                 " PCRE engine for VIM
 Plug 'vim-scripts/buffet.vim'            " Interacive buffer navigation
+Plug 'plasticboy/vim-markdown'           " Better markdown support
 nnoremap / :M/
 nnoremap <leader>/ /
 let g:pencil#textwidth = 120
