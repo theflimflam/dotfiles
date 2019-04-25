@@ -105,7 +105,7 @@ try
   " don't explode if colour scheme doesn't exist
   syntax on
   colorscheme solarized
-  set background=dark
+  set background=light
   " from system_profiler SPFontsDataType
   set guifont=mplus-1m-regular:h12
   set colorcolumn=120    " Show 120th char visually (looks ugly without colours)
