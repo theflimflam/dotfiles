@@ -346,8 +346,9 @@ nnoremap <leader><leader> :tab split<CR>
 " Close current splits, drop back to previous tab
 nnoremap <backspace><backspace> :tabclose<CR>
 
+" from https://vim.fandom.com/wiki/Set_working_directory_to_the_current_file
 " Open file browser in the directory of the current file
-nnoremap <space><space> :Explore<CR>
+nnoremap <space><space> :edit %:p:h<CR>
 
 " Open git status
 nnoremap <leader>g :Gstatus<CR>
