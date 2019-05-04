@@ -92,6 +92,7 @@ let g:terraform_fmt_on_save=1
 Plug 'othree/eregex.vim'                 " PCRE engine for VIM
 Plug 'vim-scripts/buffet.vim'            " Interacive buffer navigation
 Plug 'plasticboy/vim-markdown'           " Better markdown support
+let g:vim_markdown_folding_disabled = 1
 nnoremap / :M/
 nnoremap <leader>/ /
 let g:pencil#textwidth = 120
