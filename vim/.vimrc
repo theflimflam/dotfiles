@@ -45,7 +45,7 @@ Plug 'kana/vim-textobj-user' | Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'godlygeek/tabular'                 " Align stuff
 Plug 'michaeljsmith/vim-indent-object'   " Select indents as an object
 Plug 'roman/golden-ratio'                " Layout splits with golden ratio
-let g:golden_ratio_autocommand = 0
+let g:golden_ratio_autocommand = 1
 nnoremap <silent> <C-w>- :GoldenRatioResize<CR>:GoldenRatioResize<CR>
 Plug 'pangloss/vim-javascript'           " Better Javascript highlighting
 Plug 'posva/vim-vue'                     " Vue syntax highlighting
