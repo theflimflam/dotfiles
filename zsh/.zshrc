@@ -249,13 +249,13 @@ fi
 if which rbenv > /dev/null; then
   eval "$(rbenv init -)";
   export PATH="~/.rbenv/bin:$PATH"
-
-  # If chruby exists, init shims and hook cd
-  if [ -f /usr/local/share/chruby/chruby.sh ]; then
-    source /usr/local/share/chruby/chruby.sh
-    source /usr/local/share/chruby/auto.sh
-  fi
 fi
+
+# # If chruby exists, init shims and hook cd
+# if [ -f /usr/local/share/chruby/chruby.sh ]; then
+#   source /usr/local/share/chruby/chruby.sh
+#   source /usr/local/share/chruby/auto.sh
+# fi
 
 # If pyenv exists, init shims autocompletion
 if which pyenv > /dev/null; then
