@@ -161,6 +161,7 @@ set foldmethod=manual     " Fold by indent level
 set autoread              " When someone modifies a file externally, autoread it back in
 set textwidth=120         " Line length should be ~120 chars #modern
 set ruler                 " Show cursor x,y and % of document viewed
+set mouse=a               " Lets you scroll and interact with the mouse
 
 """"""""""""""""""""""""""""""""""""""""
 " Searching and cursor position
