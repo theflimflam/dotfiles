@@ -148,6 +148,12 @@ if filereadable("/etc/vim/vimrc.local")
     source /etc/vim/vimrc.local
 endif
 
+" Create backup and history folders outside of the working dir
+silent !mkdir -p ~/.vim/bak     > /dev/null 2>&1
+silent !mkdir -p ~/.vim/swap    > /dev/null 2>&1
+set directory=~/.vim/swap       " Put swap files here
+set backupdir=~/.vim/bak        " Put backup files here
+
 set relativenumber        " better navigation
 set number                " give line number that you're on
 set scrolloff=5           " when scrolling, keep cursor 5 lines away from border
