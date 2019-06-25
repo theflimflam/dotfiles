@@ -64,7 +64,7 @@ function _recover_line_or_else() {
     LBUFFER+=$ZLE_LINE_ABORTED
     unset ZLE_LINE_ABORTED
   else
-  zle .$WIDGET
+    zle .$WIDGET
   fi
 }
 zle -N up-line-or-history _recover_line_or_else
