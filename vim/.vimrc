@@ -198,6 +198,11 @@ set expandtab          " Pressing tab inserts spaces
 set autoindent         " indent on newlines
 set smartindent        " recognise syntax of files
 
+" turn off matching brackets
+set noshowmatch
+let g:loaded_matchparen=1
+
+
 " Whitespace management
 set                                expandtab   tabstop=2 softtabstop=2 shiftwidth=2
 autocmd Filetype go       setlocal noexpandtab tabstop=4 softtabstop=4 shiftwidth=4
