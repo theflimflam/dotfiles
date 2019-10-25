@@ -280,7 +280,7 @@ function! Find()
   endtry
 
   " Search and open results in location list
-  exe('silent Glgrep -I '.thing)
+  exe('silent Ggrep -I '.thing)
 
   " Center
   normal zz
@@ -289,7 +289,7 @@ endfunction
 
 " Open window in new tab, split and search
 " TODO Detect :Ggrep, fall back on :grep
-vmap <C-f> y:lclose<CR>:silent Glgrep -I "<C-r>0"<CR>zz
+vmap <C-f> y:silent Ggrep -I "<C-r>0"<CR>zz
 nmap <C-f> :call Find()<CR>
 
 " Shared data across nvim sessions
