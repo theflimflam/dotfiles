@@ -150,6 +150,7 @@ function rehash() {
 # Personal programs
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/code/go/bin:$PATH"
+export PATH="/Applications/Xcode.app/Contents/Developer/usr/bin/:$PATH"
 
 export GOPATH="$HOME/code/go"
 
