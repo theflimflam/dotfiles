@@ -99,6 +99,9 @@ let g:pencil#textwidth = 120
 "autocmd FileType markdown,mkd call pencil#init()
 "                          \ | call lexical#init()
 "                          \ | call textobj#sentence#init()
+
+Plug 'Asheq/close-buffers.vim'           " :CloseHiddenBuffers clears things you're not using
+
 call plug#end()
 
 " Look and Feel
@@ -335,6 +338,7 @@ nnoremap <leader>t :set filetype=
 " - http://alols.github.io/2012/11/07/writing-prose-with-vim
 " - https://github.com/reedes/vim-pencil
 map Q gqap
+nnoremap <silent> <C-q> :CloseBuffersMenu<CR>
 
 " Display line numbers in help
 autocmd FileType help setlocal number relativenumber
