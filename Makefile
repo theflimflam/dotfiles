@@ -41,6 +41,7 @@ updates: preflight
 	brew cask upgrade
 	brew cleanup || true
 	brew doctor || true
+	npm update -g
 	sudo softwareupdate --install --all --restart
 
 preflight:
