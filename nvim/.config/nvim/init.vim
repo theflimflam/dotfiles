@@ -82,6 +82,10 @@ let g:pencil#textwidth = 120
 "                          \ | call lexical#init()
 "                          \ | call textobj#sentence#init()
 
+" Firefox and Chrome
+" https://github.com/glacambre/firenvim
+Plug 'glacambre/firenvim', { 'do': function('firenvim#install') }
+
 call plug#end()
 
 set relativenumber        " better navigation
