@@ -6,6 +6,7 @@
 	verbose = true
 [core]
 	excludesfile = ~/.gitignore
+	pager = less -iXFR
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true
