@@ -191,7 +191,9 @@ fi
 export KEYTIMEOUT=1
 
 # Homebrew flub
-export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
+export PATH="/usr/local/opt/*/bin:$PATH"
 
 # Setting default editor
 if which vim > /dev/null; then
