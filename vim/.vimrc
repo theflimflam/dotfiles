@@ -162,7 +162,7 @@ set number                " give line number that you're on
 set scrolloff=5           " when scrolling, keep cursor 5 lines away from border
 set foldmethod=manual     " Fold by indent level
 set autoread              " When someone modifies a file externally, autoread it back in
-set textwidth=120         " Line length should be ~120 chars #modern
+" set textwidth=120         " Line length should be ~120 chars #modern
 set ruler                 " Show cursor x,y and % of document viewed
 set mouse=a               " Lets you scroll and interact with the mouse
 
