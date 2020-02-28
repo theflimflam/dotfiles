@@ -30,37 +30,34 @@ if !filereadable(plug_executable)
 endif
 
 call plug#begin('~/.config/nvim/plugged')
-Plug 'git@github.com:heymatthew/vim-unclutter.git'
-Plug 'git@github.com:heymatthew/vim-visible-whitespace.git'
-Plug 'git@github.com:heymatthew/vim-prose.git'
+" Plug 'git@github.com:heymatthew/vim-unclutter.git'
+" Plug 'git@github.com:heymatthew/vim-visible-whitespace.git'
+" Plug 'git@github.com:heymatthew/vim-prose.git'
 Plug 'antoyo/vim-licenses'               " Help with open source licences
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' } " Golang tools
-Plug 'jalvesaq/Nvim-R'                   " R lang
-Plug 'rhysd/vim-textobj-ruby'            " Ruby text objects
+" Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' } " Golang tools
+" Plug 'jalvesaq/Nvim-R'                   " R lang
+" Plug 'rhysd/vim-textobj-ruby'            " Ruby text objects
 Plug 'tpope/vim-rails'                   " Rails tools
-Plug 'ecomba/vim-ruby-refactoring'       " TODO make some habits around this
+" Plug 'ecomba/vim-ruby-refactoring'       " TODO make some habits around this
 Plug 'vim-ruby/vim-ruby'                 " Make ruby files FAST
-Plug 'airblade/vim-gitgutter'            " Figure out what's changed in Git
-Plug 'kana/vim-textobj-user' | Plug 'nelstrom/vim-textobj-rubyblock'
-Plug 'godlygeek/tabular'                 " Align stuff
+" Plug 'airblade/vim-gitgutter'            " Figure out what's changed in Git
+" Plug 'kana/vim-textobj-user' | Plug 'nelstrom/vim-textobj-rubyblock'
+" Plug 'godlygeek/tabular'                 " Align stuff
 Plug 'michaeljsmith/vim-indent-object'   " Select indents as an object
-Plug 'roman/golden-ratio'                " Layout splits with golden ratio
-let g:golden_ratio_autocommand = 1
-nnoremap <silent> <C-w>- :GoldenRatioResize<CR>:GoldenRatioResize<CR>
-Plug 'pangloss/vim-javascript'           " Better Javascript highlighting
+" Plug 'pangloss/vim-javascript'           " Better Javascript highlighting
 Plug 'posva/vim-vue'                     " Vue syntax highlighting
 " Plug 'vim-syntastic/syntastic'           " Generic linter
-Plug 'w0rp/ale'                          " more linting
-let g:ale_set_highlights = 0             " remove highlights
-let g:ale_set_loclist = 0                " prefer quickfix list to location list
-let g:ale_set_quickfix = 0
+" Plug 'w0rp/ale'                          " more linting
+" let g:ale_set_highlights = 0             " remove highlights
+" let g:ale_set_loclist = 0                " prefer quickfix list to location list
+" let g:ale_set_quickfix = 0
 Plug 'vim-scripts/LargeFile'             " turn off slow stuff in files > 20mb
 Plug 'scrooloose/nerdtree'               " File browser
 let NERDTreeShowLineNumbers = 1          " Make nerdtree honor numbers
 let NERDTreeShowHidden = 1               " Show dotfiles
 autocmd FileType nerdtree setlocal number relativenumber
 Plug 'tpope/vim-fugitive'                " Git integration, TODO adjust habits
-Plug 'mattn/gist-vim'                    " Create gists
+" Plug 'mattn/gist-vim'                    " Create gists
 Plug 'tpope/vim-surround'                " Delete, or insert around text objects
 Plug 'altercation/vim-colors-solarized'  " n.b. you need to change terminal colours too
 " Plug 'rakr/vim-one'                      " Like Atom
@@ -102,6 +99,15 @@ let g:pencil#textwidth = 120
 
 Plug 'Asheq/close-buffers.vim'           " :CloseHiddenBuffers clears things you're not using
 
+" " From https://about.sourcegraph.com/blog/code-intelligence-in-vim
+" Plug 'autozimu/LanguageClient-neovim', {
+"     \ 'branch': 'next',
+"     \ 'do': 'bash install.sh',
+"     \ }
+" let g:LanguageClient_serverCommands = {
+"     \ 'go': ['go-langserver']
+"     \ }
+ 
 call plug#end()
 
 " Look and Feel
@@ -374,7 +380,8 @@ nnoremap <leader>g :Gstatus<CR>
 nmap <leader>y :lclose<CR>:cclose<cr>:split<cr>
 nmap <leader>x :lclose<CR>:cclose<cr>:vsplit<cr>
 nmap <leader>n :lclose<CR>:cclose<cr><C-w>n
-nmap <leader>q <C-w>q
+" nmap <leader>q <C-w>q
+nmap <leader>q :bd<CR>
 
 " Search [f]iles, [l]ines, [r]ecent files
 nnoremap <leader>f :FZF<CR>

@@ -47,6 +47,7 @@ let g:ale_set_quickfix = 0
 Plug 'vim-scripts/LargeFile'             " turn off slow stuff in files > 20mb
 let g:golden_ratio_autocommand = 0
 nnoremap <silent> <C-w>- :GoldenRatioResize<CR>:GoldenRatioResize<CR>
+let g:golden_ratio_autocommand = 1
 Plug 'scrooloose/nerdtree'               " File browser
 let NERDTreeShowLineNumbers = 1          " Make nerdtree honor numbers
 let NERDTreeShowHidden = 1               " Show dotfiles
@@ -405,3 +406,16 @@ endif
 
 " Let vim use the mouse, grab and pull splits around etc.
 set mouse=a
+
+" Open current focused file in new tab
+nnoremap <leader><leader> :tab split<CR>
+
+" Close current splits, drop back to previous tab
+nnoremap <backspace><backspace> :tabclose<CR>
+
+" from https://vim.fandom.com/wiki/Set_working_directory_to_the_current_file
+" Open file browser in the directory of the current file
+nnoremap <space><space> :edit %:p:h<CR>
+
+" Open git status
+nnoremap <leader>g :Gstatus<CR>

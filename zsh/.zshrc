@@ -196,6 +196,10 @@ export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/opt/*/bin:$PATH"
 
 # Setting default editor
+# if which nvim > /dev/null; then
+#   export EDITOR=nvim
+#   alias vim=nvim
+# elif which vim > /dev/null; then
 if which vim > /dev/null; then
   export EDITOR=vim
 else
@@ -273,3 +277,6 @@ if which gcloud > /dev/null; then
   source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
   source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
 fi
+
+export LOCAL_IP=$(ipconfig getifaddr en0)
+export HOSTNAME=$LOCAL_IP:3000
