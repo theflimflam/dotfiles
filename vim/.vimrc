@@ -55,49 +55,55 @@ Plug 'vim-scripts/LargeFile'             " turn off slow stuff in files > 20mb
 Plug 'scrooloose/nerdtree'               " File browser
 let NERDTreeShowLineNumbers = 1          " Make nerdtree honor numbers
 let NERDTreeShowHidden = 1               " Show dotfiles
-autocmd FileType nerdtree setlocal number relativenumber
+"autocmd FileType nerdtree setlocal number relativenumber
 Plug 'tpope/vim-fugitive'                " Git integration, TODO adjust habits
 " Plug 'mattn/gist-vim'                    " Create gists
 Plug 'tpope/vim-surround'                " Delete, or insert around text objects
 Plug 'altercation/vim-colors-solarized'  " n.b. you need to change terminal colours too
 " Plug 'rakr/vim-one'                      " Like Atom
 " Plug 'sickirl/vim-monokai'               " Like Sublime
-Plug 't9md/vim-textmanip'                " Move highlighted text around with arrow keys
-let g:textmanip_startup_mode = "insert"
-xmap <up>    <Plug>(textmanip-move-up)
-xmap <down>  <Plug>(textmanip-move-down)
-xmap <left>  <Plug>(textmanip-move-left)
-xmap <right> <Plug>(textmanip-move-right)
-Plug 'elzr/vim-json'                     " JSON
-Plug 'kchmck/vim-coffee-script'          " Syntax for coffeescript
-Plug 'keith/swift.vim'                   " Syntax for swift
-let g:vim_json_syntax_conceal = 0        " Don't hide quotes in JSON files
+" Plug 't9md/vim-textmanip'                " Move highlighted text around with arrow keys
+"let g:textmanip_startup_mode = "insert"
+"xmap <up>    <Plug>(textmanip-move-up)
+"xmap <down>  <Plug>(textmanip-move-down)
+"xmap <left>  <Plug>(textmanip-move-left)
+"xmap <right> <Plug>(textmanip-move-right)
+" Plug 'elzr/vim-json'                     " JSON
+" Plug 'kchmck/vim-coffee-script'          " Syntax for coffeescript
+" Plug 'keith/swift.vim'                   " Syntax for swift
+"let g:vim_json_syntax_conceal = 0        " Don't hide quotes in JSON files
 Plug 'junegunn/fzf', { 'dir': '~/code/fzf', 'do': 'yes \| ./install' }
 Plug 'ctrlpvim/ctrlp.vim'                " Fuzzy search files, recent files, and buffers
-Plug 'reedes/vim-lexical'                " Spell-check and thesaurus/dictionary completion
-Plug 'reedes/vim-wordy'                  " Identify phrases for history of misuse, abuse, and overuse
-Plug 'reedes/vim-textobj-sentence'       " Sophisticated sentence text object
+" Plug 'reedes/vim-lexical'                " Spell-check and thesaurus/dictionary completion
+" Plug 'reedes/vim-wordy'                  " Identify phrases for history of misuse, abuse, and overuse
+" Plug 'reedes/vim-textobj-sentence'       " Sophisticated sentence text object
 Plug 'tpope/vim-commentary'              " Toggle comments on lines
 Plug 'tpope/vim-unimpaired'              " <3 pairings that marry ] and ['s REALLY GOOD, 5 stars
-Plug 'reedes/vim-pencil'
-Plug 'haya14busa/incsearch.vim'          " incremental search tool
-let g:incsearch#auto_nohlsearch = 1
+" Plug 'reedes/vim-pencil'
+" Plug 'haya14busa/incsearch.vim'          " incremental search tool
+"let g:incsearch#auto_nohlsearch = 1
 Plug 'bronson/vim-visual-star-search'    " Vim multiline search
-Plug 'hashivim/vim-terraform'            " Terraform integration and support
-let g:terraform_align=1
-let g:terraform_fmt_on_save=1
-Plug 'othree/eregex.vim'                 " PCRE engine for VIM
-Plug 'vim-scripts/buffet.vim'            " Interacive buffer navigation
+" Plug 'hashivim/vim-terraform'            " Terraform integration and support
+"let g:terraform_align=1
+"let g:terraform_fmt_on_save=1
+" Plug 'othree/eregex.vim'                 " PCRE engine for VIM
+" Plug 'vim-scripts/buffet.vim'            " Interacive buffer navigation
 Plug 'plasticboy/vim-markdown'           " Better markdown support
 let g:vim_markdown_folding_disabled = 1
-nnoremap / :M/
-nnoremap <leader>/ /
-let g:pencil#textwidth = 120
-"autocmd FileType markdown,mkd call pencil#init()
-"                          \ | call lexical#init()
-"                          \ | call textobj#sentence#init()
+" Plug 'rhysd/clever-f.vim'                " Jump to a character on the current line-- with highlights
+Plug 'rhysd/devdocs.vim'                 " Online documentation for most languages
+augroup plugin-devdocs
+  autocmd!
+  autocmd FileType c,cpp,rust,haskell,python,ruby,html,vue nmap <buffer>K <Plug>(devdocs-under-cursor)
+augroup END
+"nnoremap / :M/
+"nnoremap <leader>/ /
+"let g:pencil#textwidth = 120
+""autocmd FileType markdown,mkd call pencil#init()
+""                          \ | call lexical#init()
+""                          \ | call textobj#sentence#init()
 
-Plug 'Asheq/close-buffers.vim'           " :CloseHiddenBuffers clears things you're not using
+" Plug 'Asheq/close-buffers.vim'           " :CloseHiddenBuffers clears things you're not using
 
 " " From https://about.sourcegraph.com/blog/code-intelligence-in-vim
 " Plug 'autozimu/LanguageClient-neovim', {
