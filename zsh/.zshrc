@@ -28,11 +28,13 @@ export HISTSIZE=100000
 export HISTFILE=~/.zsh_history
 export SAVEHIST=$HISTSIZE
 
+# man zshoptions
 setopt hist_ignore_all_dups # when running a command again, removes previous refs to it
 setopt hist_save_no_dups    # kill duplicates on save
 setopt hist_ignore_space    # prefixed with space doesn't store command
 setopt hist_no_store        # don't store the command history in history
 setopt hist_verify          # when using history expansion, reload history
+setopt hist_reduce_blanks   # blanks from each command line added to the history list
 
 setopt extended_history     # save timestamp and runtime information
 setopt inc_append_history   # write after exec rather than waiting till shell exit
