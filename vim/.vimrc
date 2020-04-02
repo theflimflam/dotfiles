@@ -224,6 +224,9 @@ autocmd Filetype go       setlocal noexpandtab tabstop=4 softtabstop=4 shiftwidt
 autocmd Filetype markdown setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
 autocmd Filetype perl     setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
 
+highlight TrailingWhitespace ctermbg=red guibg=red
+match TrailingWhitespace /\s\+$/
+
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
 " if exists(":Tabularize") > 0
   vnoremap <cr> :Tabularize /
