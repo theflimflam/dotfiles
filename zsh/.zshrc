@@ -80,7 +80,7 @@ zle -N zle-line-finish _zle_line_finish
 
 ## Prompt
 cur_git_branch() {
-  # TODO maybe something like... git rev-parse --abbrev-ref HEAD 
+  # TODO maybe something like... git rev-parse --abbrev-ref HEAD
   git branch --no-color 2>/dev/null|awk '/^\* ([^ ]*)/ {b=$2} END {if (b) {print "[" b "]"}}'
 }
 
