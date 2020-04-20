@@ -76,6 +76,7 @@ Plug 'altercation/vim-colors-solarized'  " n.b. you need to change terminal colo
 " Plug 'keith/swift.vim'                   " Syntax for swift
 "let g:vim_json_syntax_conceal = 0        " Don't hide quotes in JSON files
 Plug 'junegunn/fzf', { 'dir': '~/code/fzf', 'do': 'yes \| ./install' }
+Plug 'nazo/pt.vim'
 Plug 'ctrlpvim/ctrlp.vim'                " Fuzzy search files, recent files, and buffers
 " Plug 'reedes/vim-lexical'                " Spell-check and thesaurus/dictionary completion
 " Plug 'reedes/vim-wordy'                  " Identify phrases for history of misuse, abuse, and overuse
@@ -315,8 +316,11 @@ endfunction
 
 " Open window in new tab, split and search
 " TODO Detect :Ggrep, fall back on :grep
-vmap <C-f> y:silent Ggrep -I "<C-r>0"<CR>zz
-nmap <C-f> :call Find()<CR>
+" vmap <C-f> y:silent Ggrep -I "<C-r>0"<CR>zz
+" nmap <C-f> :call Find()<CR>
+vmap <C-f> y:silent Pt "<C-r>0"<CR>zz
+nmap <C-f> yiw:silent Pt "<C-r>0"<CR>
+
 
 " Shared data across nvim sessions
 " '500  : save last 500 files local marks [a-z]
