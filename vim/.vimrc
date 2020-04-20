@@ -21,6 +21,9 @@ syntax enable       " enable syntax highlighting
 set nocompatible    " be iMproved, required for vundle
 filetype off        " required for vundle
 
+" TODO Read through https://github.com/junegunn/vim-plug sometime
+" There have been lots of new good things added since you started using it
+
 "----------------------------------------
 " Setting up Vundle, vim plugin manager
 let plug_executable=expand('~/.vim/autoload/plug.vim')
@@ -264,6 +267,8 @@ autocmd FileType qf nnoremap <buffer> <leader><Enter> <C-w><Enter><C-w>L
 " Select and hitting * does a serach for the full string
 vnoremap * y/<C-R>"<CR>
 
+" TODO Tweak fzf with
+" https://github.com/junegunn/fzf/wiki/Examples
 " Search [f]iles, [l]ines, [r]ecent files
 nnoremap <leader>f :FZF<CR>
 nnoremap <leader>l :CtrlPLine<CR>
