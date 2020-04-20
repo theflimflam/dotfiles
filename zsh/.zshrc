@@ -219,8 +219,8 @@ function first() {
   git commit -m "First!"
 }
 
-# OSX Cludges
-if [[ `uname` == "Darwin" ]]; then
+# Cludges follow
+if [[ `uname` == "Darwin" ]]; then # OSX
   # Fix GPG agent detection
   # see https://github.com/pstadler/keybase-gpg-github/issues/11
   GPG_TTY=$(tty)
@@ -229,6 +229,20 @@ if [[ `uname` == "Darwin" ]]; then
   # Delete key fixup
   bindkey "^[[3~"  delete-char
   bindkey "^[3;5~" delete-char
+
+  # Local IP as env variable
+  export LOCAL_IP=$(ipconfig getifaddr en0)
+else # Linux
+  # webcam hack, this should really go into the kernel or something
+  # checkout https://github.com/patjak/facetimehd-firmware
+  # ubuntu target based on https://github.com/patjak/bcwc_pcie/wiki/Get-Started
+  alias fixwebcam="cd /home/mbgray/code/facetimehd_camera_drivers && make ubuntu"
+
+  # Turn off capslock
+  setxkbmap -option caps:escape
+
+  # Receiver for HP ZCentral Remote Boost Software
+  export PATH="$PATH:/opt/hpremote/rgreceiver"
 fi
 
 function backup() {
@@ -279,6 +293,3 @@ if which gcloud > /dev/null; then
   source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
   source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
 fi
-
-export LOCAL_IP=$(ipconfig getifaddr en0)
-export HOSTNAME=$LOCAL_IP:3000
