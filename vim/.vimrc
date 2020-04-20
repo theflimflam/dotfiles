@@ -113,17 +113,17 @@ augroup END
 " let g:LanguageClient_serverCommands = {
 "     \ 'go': ['go-langserver']
 "     \ }
- 
+
 call plug#end()
 
 " Look and Feel
 try
   " don't explode if colour scheme doesn't exist
   syntax on
-  colorscheme solarized
+  " colorscheme solarized
   set background=light
   " from system_profiler SPFontsDataType
-  set guifont=mplus-1m-regular:h12
+  " set guifont=mplus-1m-regular:h12
   set colorcolumn=120    " Show 120th char visually (looks ugly without colours)
 
   if filereadable($HOME . "/.config/iterm_theme")
@@ -176,7 +176,7 @@ set foldmethod=manual     " Fold by indent level
 set autoread              " When someone modifies a file externally, autoread it back in
 " set textwidth=120         " Line length should be ~120 chars #modern
 set ruler                 " Show cursor x,y and % of document viewed
-set mouse=a               " Lets you scroll and interact with the mouse
+" set mouse=a               " Lets you scroll and interact with the mouse
 
 """"""""""""""""""""""""""""""""""""""""
 " Searching and cursor position
