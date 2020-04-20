@@ -36,6 +36,7 @@ call plug#begin('~/.config/nvim/plugged')
 " Plug 'git@github.com:heymatthew/vim-unclutter.git'
 " Plug 'git@github.com:heymatthew/vim-visible-whitespace.git'
 " Plug 'git@github.com:heymatthew/vim-prose.git'
+Plug 'tpope/vim-sensible'                " Good defaults, love your work tpope!
 Plug 'antoyo/vim-licenses'               " Help with open source licences
 " Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' } " Golang tools
 " Plug 'jalvesaq/Nvim-R'                   " R lang
