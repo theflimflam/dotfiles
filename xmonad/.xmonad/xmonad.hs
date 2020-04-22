@@ -13,11 +13,17 @@ music = "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify \
 
 -- TODO investigate taffybar - https://hackage.haskell.org/package/taffybar
 
+-- TODO investigate xmobar under windows - https://unix.stackexchange.com/a/303242/10329
+
 -- Adapted from https://github.com/1stl0ve/xmonad-setup
 main = do
-    -- xmproc <- spawnPipe "/usr/bin/xmobar ~/.xmobarrc"
+    xmproc <- spawnPipe "/usr/bin/xmobar"
     xmonad $ defaultConfig
         { manageHook = manageDocks <+> manageHook defaultConfig
+        , logHook = dynamicLogWithPP xmobarPP
+                { ppOutput = hPutStrLn xmproc
+                , ppTitle = xmobarColor "green" "" . shorten 50
+                }
         , modMask = mod4Mask -- super
         , layoutHook = avoidStruts $ layoutHook defaultConfig
         }
