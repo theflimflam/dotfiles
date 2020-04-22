@@ -1,11 +1,11 @@
+import System.IO
 import XMonad
 import XMonad.Actions.Volume
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Util.Dzen
-import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys, additionalKeysP)
-import System.IO
+import XMonad.Util.Run(spawnPipe)
 
 system = "~/.system/"
 music = "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify \
@@ -20,10 +20,6 @@ main = do
         { manageHook = manageDocks <+> manageHook defaultConfig
         , modMask = mod4Mask -- super
         , layoutHook = avoidStruts $ layoutHook defaultConfig
-        -- , logHook = dynamicLogWithPP xmobarPP
-        --     {
-        --         ppOutput = hPutStrLn xmproc, ppTitle = xmobarColor "yellow" "" . shorten 50
-        --     }
         }
         `additionalKeys`
         [     ((0, 0x1008FF12), spawn (system ++ "mute-volume.sh"))
