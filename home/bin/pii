@@ -1,5 +1,9 @@
 #!/usr/bin/perl
 
+# This was written by Martyn Smith and I'm not 100% on what the rights are here
+# But knowing him I recon he doesn't mind. Please read and enjoy!
+# pii is a REPL for perl 5
+
 use strict;
 use warnings;
 use File::Glob;
