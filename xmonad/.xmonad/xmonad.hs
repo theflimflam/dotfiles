@@ -106,7 +106,7 @@ myLauncher = "$(dmenu_run)"
 
 -- Location of your xmobar.hs / xmobarrc
 -- myXmobarrc = "~/.xmonad/xmobar-single.hs"
-myXmobarrc = "~/.xmobarrc"
+myXmobarrc = "~/.xmonad/xmobar.hs"
 
 music = "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify \
         \/org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player."
