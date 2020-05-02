@@ -34,6 +34,8 @@
 
 -- TODO investigate xmobar under windows - https://unix.stackexchange.com/a/303242/10329
 
+-- TODO investigate gaps https://hackage.haskell.org/package/xmonad-contrib-0.16/docs/XMonad-Layout-Spacing.html
+
 -- xmonad freezes up with xmobar... https://wiki.haskell.org/Xmonad/Frequently_asked_questions#XMonad_is_frozen.21
 
 -- Adapted from https://github.com/1stl0ve/xmonad-setup
