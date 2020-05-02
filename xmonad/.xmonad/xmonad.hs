@@ -68,6 +68,7 @@
 import System.IO
 import System.Exit
 import XMonad
+import XMonad.Actions.Volume
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
@@ -77,8 +78,8 @@ import XMonad.Layout.NoBorders
 import XMonad.Layout.Spiral
 import XMonad.Layout.Tabbed
 import XMonad.Layout.ThreeColumns
-import XMonad.Util.Run(spawnPipe)
 import XMonad.Util.EZConfig(additionalKeys)
+import XMonad.Util.Run(spawnPipe)
 import Graphics.X11.ExtraTypes.XF86
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
@@ -109,6 +110,8 @@ myLauncher = "$(dmenu_run)"
 -- Location of your xmobar.hs / xmobarrc
 -- myXmobarrc = "~/.xmonad/xmobar-single.hs"
 myXmobarrc = "~/.xmonad/xmobar.hs"
+
+myBackground = "~/Pictures/background.jpg"
 
 music = "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify \
         \/org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player."
@@ -233,17 +236,18 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((modMask .|. controlMask .|. shiftMask, xK_p),
      spawn myScreenshot)
 
+  -- FIXME these work on command line, why not here?
   -- Mute volume.
   , ((0, xF86XK_AudioMute),
-     spawn "amixer -q set Master toggle")
+     spawn "amixer -D pulse sset toggle")
 
   -- Decrease volume.
   , ((0, xF86XK_AudioLowerVolume),
-     spawn "amixer -q set Master 5%-")
+     spawn "amixer -D pulse sset Master 5%-")
 
   -- Increase volume.
   , ((0, xF86XK_AudioRaiseVolume),
-     spawn "amixer -q set Master 5%+")
+     spawn "amixer -D pulse sset Master 5%+")
 
   -- Mute volume.
   , ((modMask .|. controlMask, xK_m),
@@ -420,15 +424,16 @@ myStartupHook = return ()
 --
 main = do
   xmproc <- spawnPipe ("xmobar " ++ myXmobarrc)
+  fehproc <- spawnPipe ("feh --bg-scale " ++ myBackground)
   xmonad $ defaults {
-      logHook = dynamicLogWithPP $ xmobarPP {
-            ppOutput = hPutStrLn xmproc
-          , ppTitle = xmobarColor xmobarTitleColor "" . shorten 100
-          , ppCurrent = xmobarColor xmobarCurrentWorkspaceColor ""
-          , ppSep = "   "
-      }
-      , manageHook = manageDocks <+> myManageHook
---      , startupHook = docksStartupHook <+> setWMName "LG3D"
+      -- logHook = dynamicLogWithPP $ xmobarPP {
+      --       ppOutput = hPutStrLn xmproc
+      --     , ppTitle = xmobarColor xmobarTitleColor "" . shorten 100
+      --     , ppCurrent = xmobarColor xmobarCurrentWorkspaceColor ""
+      --     , ppSep = "   "
+      -- }
+      manageHook = manageDocks <+> myManageHook
+      -- , startupHook = docksStartupHook <+> setWMName "LG3D"
       , startupHook = setWMName "LG3D"
       , handleEventHook = docksEventHook
   }
