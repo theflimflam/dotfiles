@@ -93,7 +93,7 @@ import qualified Data.Map        as M
 myTerminal = "/usr/bin/gnome-terminal"
 
 -- The command to lock the screen or show the screensaver.
-myScreensaver = "/usr/bin/xscreensaver-command -l"
+myScreensaver = "~/bin/lockscreen"
 
 -- The command to take a selective screenshot, where you select
 -- what you'd like to capture on the screen.
