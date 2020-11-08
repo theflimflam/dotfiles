@@ -21,7 +21,7 @@ DOTFILES="$(HOME)/dotfiles/etc"
 
 default: updates
 
-install: preflight env brew softlinks updates
+install: preflight env brew zsh-workaround softlinks updates
 	# Remember to..."
 	#
 	# Colours git@github.com:deepsweet/Monokai-Soda-iTerm.git"
@@ -79,6 +79,11 @@ brew:
 	brew cask install vlc spotify transmission tunnelblick
 	brew cask install font-hack
 	brew cask install font-m-plus
+
+# From https://stackoverflow.com/a/13785716
+zsh-workaround:
+	sudo chmod -R 755 /usr/local/share/zsh
+	sudo chown -R root:staff /usr/local/share/zsh
 
 unfuck-osx:
 	# Turn off mouse acceleration http://osxdaily.com/2010/08/25/mouse-acceleration
