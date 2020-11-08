@@ -57,7 +57,7 @@ env:
 updates: preflight
 	vim -c 'call UpdateEverything() | qa'
 	brew upgrade
-	brew cask upgrade
+	brew upgrade --cask
 	brew cleanup || true
 	brew doctor || true
 	npm update -g
