@@ -72,6 +72,18 @@ Config {
                              , "--high"     , "darkred"
                              ] 10
 
+        -- load average https://xmobar.org/#cpu-args-refreshrate
+        -- , Run Cpu            [ "--template" , "Load: <total>"
+        --                      , "--Low"      , "3"
+        --                      , "--High"     , "50"
+        --                      , "--normal"   , "darkgreen"
+        --                      , "--high"     , "red"
+        --                      ] 10
+
+        -- Attempt 2...
+        -- based on https://github.com/jaor/xmobar/blob/master/examples/xmobar.config
+        -- , Run Com "~/.xmonad/xmobar-load-average" [] "load-average" 100
+
         -- cpu activity monitor
         , Run MultiCpu       [ "--template" , "Cpu: <total0>%|<total1>%"
                              , "--Low"      , "50"         -- units: %

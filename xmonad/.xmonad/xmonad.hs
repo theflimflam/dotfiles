@@ -162,14 +162,14 @@ myManageHook = composeAll
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = avoidStruts (
+myLayout = avoidStruts (spiral (6/7)) |||
     ThreeColMid 1 (3/100) (1/2) |||
-    Tall 1 (3/100) (1/2) |||
     Mirror (Tall 1 (3/100) (1/2)) |||
     tabbed shrinkText tabConfig |||
-    Full |||
-    spiral (6/7)) |||
     noBorders (fullscreenFull Full)
+
+    -- Full |||
+    -- Tall 1 (3/100) (1/2) |||
 
 
 ------------------------------------------------------------------------
