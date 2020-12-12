@@ -116,6 +116,23 @@ augroup END
 ""                          \ | call lexical#init()
 ""                          \ | call textobj#sentence#init()
 
+Plug 'junegunn/goyo.vim'         " Distraction free writing in vim
+Plug 'cespare/vim-toml'          " TOML configuration langauge
+
+nnoremap <C-d> <C-d>zz
+nnoremap <leader>w :call WritingMode()<CR>
+
+function! WritingMode()
+  set spell
+
+  " word wrap visually rather than in buffer
+  set wrap linebreak
+
+  " distraction free writing plugin
+  exec("Goyo")
+endfunction
+
+
 " Plug 'Asheq/close-buffers.vim'           " :CloseHiddenBuffers clears things you're not using
 
 " " From https://about.sourcegraph.com/blog/code-intelligence-in-vim
