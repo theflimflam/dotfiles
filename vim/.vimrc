@@ -72,6 +72,7 @@ Plug 'tpope/vim-fugitive'                " Git integration, TODO adjust habits
 " Plug 'mattn/gist-vim'                    " Create gists
 Plug 'tpope/vim-surround'                " Delete, or insert around text objects
 Plug 'altercation/vim-colors-solarized'  " n.b. you need to change terminal colours too
+"Plug 'liuchengxu/space-vim-theme'         " true colorscheme derived from spacemacs dark theme
 " Plug 'rakr/vim-one'                      " Like Atom
 " Plug 'sickirl/vim-monokai'               " Like Sublime
 " Plug 't9md/vim-textmanip'                " Move highlighted text around with arrow keys
@@ -400,7 +401,7 @@ autocmd FileType help setlocal number relativenumber
 
 " Insert current branch name and put cursor to the end of the line
 " Uses upper case motion found here https://stackoverflow.com/a/2285278/81271
-autocmd FileType gitcommit nnoremap T O<ESC>:.!git rev-parse --abbrev-ref HEAD<CR>0g~iwf-;C 
+autocmd FileType gitcommit nnoremap T O<ESC>:.!git rev-parse --abbrev-ref HEAD<CR>0g~iwf-;C
 
 " Vertical split for help files
 " autocmd FileType help wincmd L
