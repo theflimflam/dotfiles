@@ -143,6 +143,8 @@ endfunction
 " let g:LanguageClient_serverCommands = {
 "     \ 'go': ['go-langserver']
 "     \ }
+"
+Plug 'katonori/binedit.vim'          " for editing binary files
 
 call plug#end()
 
