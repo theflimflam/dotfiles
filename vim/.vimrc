@@ -43,7 +43,10 @@ call plug#begin('~/.config/nvim/plugged')
 " Plug 'git@github.com:heymatthew/vim-prose.git'
 Plug 'tpope/vim-sensible'                " Good defaults, love your work tpope!
 Plug 'antoyo/vim-licenses'               " Help with open source licences
-" Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' } " Golang tools
+" Based on https://github.com/golang/tools/blob/master/gopls/doc/vim.md
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' } " Golang tools
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
 " Plug 'jalvesaq/Nvim-R'                   " R lang
 " Plug 'rhysd/vim-textobj-ruby'            " Ruby text objects
 Plug 'tpope/vim-rails'                   " Rails tools
