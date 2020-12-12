@@ -298,3 +298,5 @@ if which gcloud > /dev/null; then
   source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
   source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
 fi
+
+alias tcr="git diff origin/master... --name-only | entr $@ && git add . || git checkout ."
