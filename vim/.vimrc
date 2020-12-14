@@ -42,11 +42,14 @@ call plug#begin('~/.config/nvim/plugged')
 " Plug 'git@github.com:heymatthew/vim-visible-whitespace.git'
 " Plug 'git@github.com:heymatthew/vim-prose.git'
 Plug 'tpope/vim-sensible'                " Good defaults, love your work tpope!
-Plug 'antoyo/vim-licenses'               " Help with open source licences
+
 " Based on https://github.com/golang/tools/blob/master/gopls/doc/vim.md
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' } " Golang tools
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
+"
+" Plug 'antoyo/vim-licenses'               " Help with open source licences
+" Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' } " Golang tools
 " Plug 'jalvesaq/Nvim-R'                   " R lang
 " Plug 'rhysd/vim-textobj-ruby'            " Ruby text objects
 Plug 'tpope/vim-rails'                   " Rails tools
@@ -59,16 +62,19 @@ Plug 'michaeljsmith/vim-indent-object'   " Select indents as an object
 " Plug 'pangloss/vim-javascript'           " Better Javascript highlighting
 Plug 'posva/vim-vue'                     " Vue syntax highlighting
 " Plug 'vim-syntastic/syntastic'           " Generic linter
-" Plug 'w0rp/ale'                          " more linting
-" let g:ale_set_highlights = 0             " remove highlights
-" let g:ale_set_loclist = 0                " prefer quickfix list to location list
-" let g:ale_set_quickfix = 0
+Plug 'w0rp/ale'                          " more linting
+let g:ale_set_highlights = 0             " remove highlights
+let g:ale_set_loclist = 0                " prefer quickfix list to location list
+let g:ale_set_quickfix = 0
 Plug 'vim-scripts/LargeFile'             " turn off slow stuff in files > 20mb
 Plug 'scrooloose/nerdtree'               " File browser
 let NERDTreeShowLineNumbers = 1          " Make nerdtree honor numbers
 let NERDTreeShowHidden = 1               " Show dotfiles
 "autocmd FileType nerdtree setlocal number relativenumber
 Plug 'tpope/vim-fugitive'                " Git integration, TODO adjust habits
+Plug '907th/vim-auto-save'               " Autosave in vim <3
+let g:auto_save = 1                      " enable AutoSave on Vim startup
+let g:auto_save_silent = 1               " do not display the auto-save notification
 " Plug 'mattn/gist-vim'                    " Create gists
 Plug 'tpope/vim-surround'                " Delete, or insert around text objects
 Plug 'altercation/vim-colors-solarized'  " n.b. you need to change terminal colours too
@@ -106,6 +112,9 @@ Plug 'plasticboy/vim-markdown'           " Better markdown support
 let g:vim_markdown_folding_disabled = 1
 " Plug 'rhysd/clever-f.vim'                " Jump to a character on the current line-- with highlights
 Plug 'rhysd/devdocs.vim'                 " Online documentation for most languages
+Plug 'dhruvasagar/vim-table-mode'        " Markdown table auto formatting
+autocmd Filetype markdown execute 'TableModeEnable'
+
 augroup plugin-devdocs
   autocmd!
   autocmd FileType c,cpp,rust,haskell,python,ruby,html,vue nmap <buffer>K <Plug>(devdocs-under-cursor)
@@ -153,7 +162,7 @@ call plug#end()
 try
   " don't explode if colour scheme doesn't exist
   syntax on
-  " colorscheme solarized
+  colorscheme solarized
   set background=light
   " from system_profiler SPFontsDataType
   " set guifont=mplus-1m-regular:h12
@@ -209,7 +218,7 @@ set foldmethod=manual     " Fold by indent level
 set autoread              " When someone modifies a file externally, autoread it back in
 " set textwidth=120         " Line length should be ~120 chars #modern
 set ruler                 " Show cursor x,y and % of document viewed
-" set mouse=a               " Lets you scroll and interact with the mouse
+set mouse=a               " Lets you scroll and interact with the mouse
 
 """"""""""""""""""""""""""""""""""""""""
 " Searching and cursor position
@@ -273,8 +282,14 @@ nnoremap <leader>vv :e $MYVIMRC<CR>
 nnoremap <leader>zz :e $HOME/.zshrc<CR>
 nnoremap <leader>ii :e $HOME/.config/local/env<CR>
 
-nnoremap H <C-o> " Browse code like you're using vimium back button
-nnoremap L <C-i> " Browse code like you're using vimium forward button
+" nnoremap H <C-o> " Browse code like you're using vimium back button
+" nnoremap L <C-i> " Browse code like you're using vimium forward button
+
+" Navigate splits more naturally with Alt + hjkl
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
 
 " Quickfix window when shelling out to grep
 " Also works for Git grep
@@ -483,13 +498,13 @@ auto BufEnter * :set title | let &titlestring = 'v:' . expand('%')
 " w!! saves as sudo
 cmap w!! w !sudo tee > /dev/null %
 
-" Modfiy licence copyright to be author based
-let git_user = systemlist("git config user.name")
+" " Modfiy licence copyright to be author based
+" let git_user = systemlist("git config user.name")
 
-if $EMPLOYER != ""
-  let g:licenses_copyright_holders_name = $EMPLOYER
-elseif len(git_user) > 0
-  let g:licenses_copyright_holders_name = git_user[0]
-else
-  let g:licenses_copyright_holders_name = "Matthew B. Gray"
-endif
+" if $EMPLOYER != ""
+"   let g:licenses_copyright_holders_name = $EMPLOYER
+" elseif len(git_user) > 0
+"   let g:licenses_copyright_holders_name = git_user[0]
+" else
+"   let g:licenses_copyright_holders_name = "Matthew B. Gray"
+" endif

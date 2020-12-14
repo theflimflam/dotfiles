@@ -24,7 +24,7 @@ export LANG=en_US
 export LC_CTYPE=$LANG.UTF-8
 
 # CD from anywhere
-cdpath=(~ ~/Desktop ~/code/web ~/code ~/code/go/src ~/.config/nvim)
+cdpath=(~ ~/Desktop ~/code/centrapay ~/code ~/code/go/src ~/.config/nvim)
 
 setopt CORRECT MULTIOS NO_HUP NO_CHECK_JOBS EXTENDED_GLOB
 
@@ -158,6 +158,7 @@ function rehash() {
 # Personal programs
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/code/go/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 export PATH="/Applications/Xcode.app/Contents/Developer/usr/bin/:$PATH"
 
 export GOPATH="$HOME/code/go"
@@ -213,6 +214,12 @@ else
   export EDITOR=vi
 fi
 
+if which nvim > /dev/null; then
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+fi
+
 function friday() {
   cd ~/dotfiles
   make updates
@@ -264,6 +271,7 @@ alias fuck='pkill -if'
 # Set and remember iterm profile
 alias dark='echo dark > ~/.config/iterm_theme && echo -e "\033]50;SetProfile=dark\a"'
 alias light='echo light > ~/.config/iterm_theme && echo -e "\033]50;SetProfile=light\a"'
+alias lightsm='echo light-sm > ~/.config/iterm_theme && echo -e "\033]50;SetProfile=light-sm\a"'
 [ -e ~/.config/iterm_theme ] && echo -e "\033]50;SetProfile=$(cat ~/.config/iterm_theme)\a"
 
 # Quickly put your work on top of master
@@ -280,11 +288,15 @@ if which rbenv > /dev/null; then
   export PATH="~/.rbenv/bin:$PATH"
 fi
 
-# # If chruby exists, init shims and hook cd
-# if [ -f /usr/local/share/chruby/chruby.sh ]; then
-#   source /usr/local/share/chruby/chruby.sh
-#   source /usr/local/share/chruby/auto.sh
-# fi
+if which asdf > /dev/null; then
+  $(brew --prefix asdf)/asdf.sh
+fi
+
+# If chruby exists, init shims and hook cd
+if [ -f /usr/local/share/chruby/chruby.sh ]; then
+  source /usr/local/share/chruby/chruby.sh
+  source /usr/local/share/chruby/auto.sh
+fi
 
 # If pyenv exists, init shims autocompletion
 if which pyenv > /dev/null; then
