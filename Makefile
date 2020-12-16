@@ -69,16 +69,7 @@ preflight:
 
 brew:
 	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-	brew install git tig vim neovim aspell gnupg go rbenv task ctags direnv
-	brew install md5sha1sum mtr ncdu zsh tor htop iftop
-	brew install stow ranger tree unrar watch rename
-	brew install mplayer syncthing wget
-	brew cask install caffeine docker firefox flux
-	brew cask install gimp google-chrome iterm2
-	brew cask install keepassx skype
-	brew cask install vlc spotify transmission tunnelblick
-	brew cask install font-hack
-	brew cask install font-m-plus
+	brew bundle
 
 # From https://stackoverflow.com/a/13785716
 zsh-workaround:
