@@ -445,8 +445,8 @@ nnoremap <leader>g :Gstatus<CR>
 nmap <leader>y :lclose<CR>:cclose<cr>:split<cr>
 nmap <leader>x :lclose<CR>:cclose<cr>:vsplit<cr>
 nmap <leader>n :lclose<CR>:cclose<cr><C-w>n
-" nmap <leader>q <C-w>q
-nmap <leader>q :bd<CR>
+nmap <leader>q <C-w>q
+" nmap <leader>q :bd<CR>
 
 " Search [f]iles, [l]ines, [r]ecent files
 nnoremap <leader>f :FZF<CR>
