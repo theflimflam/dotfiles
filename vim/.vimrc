@@ -28,6 +28,8 @@ filetype off        " required for vundle
 
 " TODO Read through https://github.com/junegunn/vim-plug sometime
 " There have been lots of new good things added since you started using it
+" TODO Look into code intellegence tools for vim
+" https://about.sourcegraph.com/blog/code-intelligence-in-vim
 
 "----------------------------------------
 " Setting up Vundle, vim plugin manager
@@ -38,30 +40,9 @@ if !filereadable(plug_executable)
 endif
 
 call plug#begin('~/.config/nvim/plugged')
-" Plug 'git@github.com:heymatthew/vim-unclutter.git'
-" Plug 'git@github.com:heymatthew/vim-visible-whitespace.git'
-" Plug 'git@github.com:heymatthew/vim-prose.git'
 Plug 'tpope/vim-sensible'                " Good defaults, love your work tpope!
 
-" Based on https://github.com/golang/tools/blob/master/gopls/doc/vim.md
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' } " Golang tools
-let g:go_def_mode='gopls'
-let g:go_info_mode='gopls'
-"
-" Plug 'antoyo/vim-licenses'               " Help with open source licences
-" Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' } " Golang tools
-" Plug 'jalvesaq/Nvim-R'                   " R lang
-" Plug 'rhysd/vim-textobj-ruby'            " Ruby text objects
-Plug 'tpope/vim-rails'                   " Rails tools
-" Plug 'ecomba/vim-ruby-refactoring'       " TODO make some habits around this
-Plug 'vim-ruby/vim-ruby'                 " Make ruby files FAST
-" Plug 'airblade/vim-gitgutter'            " Figure out what's changed in Git
-" Plug 'kana/vim-textobj-user' | Plug 'nelstrom/vim-textobj-rubyblock'
-" Plug 'godlygeek/tabular'                 " Align stuff
 Plug 'michaeljsmith/vim-indent-object'   " Select indents as an object
-" Plug 'pangloss/vim-javascript'           " Better Javascript highlighting
-Plug 'posva/vim-vue'                     " Vue syntax highlighting
-" Plug 'vim-syntastic/syntastic'           " Generic linter
 Plug 'w0rp/ale'                          " more linting
 let g:ale_set_highlights = 0             " remove highlights
 let g:ale_set_loclist = 0                " prefer quickfix list to location list
@@ -70,64 +51,67 @@ Plug 'vim-scripts/LargeFile'             " turn off slow stuff in files > 20mb
 Plug 'scrooloose/nerdtree'               " File browser
 let NERDTreeShowLineNumbers = 1          " Make nerdtree honor numbers
 let NERDTreeShowHidden = 1               " Show dotfiles
-"autocmd FileType nerdtree setlocal number relativenumber
+" Plug 'mattn/gist-vim'                    " Create gists
 Plug 'tpope/vim-fugitive'                " Git integration, TODO adjust habits
 Plug '907th/vim-auto-save'               " Autosave in vim <3
 let g:auto_save = 1                      " enable AutoSave on Vim startup
 let g:auto_save_silent = 1               " do not display the auto-save notification
-" Plug 'mattn/gist-vim'                    " Create gists
 Plug 'tpope/vim-surround'                " Delete, or insert around text objects
-Plug 'altercation/vim-colors-solarized'  " n.b. you need to change terminal colours too
-"Plug 'liuchengxu/space-vim-theme'         " true colorscheme derived from spacemacs dark theme
-" Plug 'rakr/vim-one'                      " Like Atom
-" Plug 'sickirl/vim-monokai'               " Like Sublime
-" Plug 't9md/vim-textmanip'                " Move highlighted text around with arrow keys
-"let g:textmanip_startup_mode = "insert"
-"xmap <up>    <Plug>(textmanip-move-up)
-"xmap <down>  <Plug>(textmanip-move-down)
-"xmap <left>  <Plug>(textmanip-move-left)
-"xmap <right> <Plug>(textmanip-move-right)
-" Plug 'elzr/vim-json'                     " JSON
-" Plug 'kchmck/vim-coffee-script'          " Syntax for coffeescript
-" Plug 'keith/swift.vim'                   " Syntax for swift
-"let g:vim_json_syntax_conceal = 0        " Don't hide quotes in JSON files
 Plug 'junegunn/fzf', { 'dir': '~/code/fzf', 'do': 'yes \| ./install' }
-Plug 'nazo/pt.vim'
+Plug 'nazo/pt.vim'                       " Text search using pt - the platinum searcher
+augroup ctrl_f_serch
+  " Search word or highlight window in new tab, split and search
+  vmap <C-f> y:silent Pt "<C-r>0"<CR>zz
+  nmap <C-f> yiw:silent Pt "<C-r>0"<CR>
+augroup END
+
+Plug 'altercation/vim-colors-solarized'  " n.b. you need to change terminal colours too
+" Plug 'liuchengxu/space-vim-theme'         " Spacemacs dark theme (true colour)
+" Plug 'rakr/vim-one'                      " Atom theme
+" Plug 'sickirl/vim-monokai'               " Sublime theme
+
 Plug 'ctrlpvim/ctrlp.vim'                " Fuzzy search files, recent files, and buffers
 " Plug 'reedes/vim-lexical'                " Spell-check and thesaurus/dictionary completion
 " Plug 'reedes/vim-wordy'                  " Identify phrases for history of misuse, abuse, and overuse
-" Plug 'reedes/vim-textobj-sentence'       " Sophisticated sentence text object
+Plug 'reedes/vim-textobj-sentence'       " Sophisticated sentence text object
+augroup textobj_sentence
+  autocmd!
+  autocmd FileType markdown call textobj#sentence#init()
+  autocmd FileType textile call textobj#sentence#init()
+augroup END
+
 Plug 'tpope/vim-commentary'              " Toggle comments on lines
 Plug 'tpope/vim-unimpaired'              " <3 pairings that marry ] and ['s REALLY GOOD, 5 stars
-" Plug 'reedes/vim-pencil'
-" Plug 'haya14busa/incsearch.vim'          " incremental search tool
+Plug 'haya14busa/incsearch.vim'          " incremental search tool
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
 "let g:incsearch#auto_nohlsearch = 1
 Plug 'bronson/vim-visual-star-search'    " Vim multiline search
-" Plug 'hashivim/vim-terraform'            " Terraform integration and support
-"let g:terraform_align=1
-"let g:terraform_fmt_on_save=1
-" Plug 'othree/eregex.vim'                 " PCRE engine for VIM
-" Plug 'vim-scripts/buffet.vim'            " Interacive buffer navigation
+Plug 'hashivim/vim-terraform'            " Terraform integration and support
+let g:terraform_align=1
+let g:terraform_fmt_on_save=1
+" Plug 'othree/eregex.vim'        " PCRE engine for VIM
+
+" Plug 'godlygeek/tabular'        " Align stuff
+Plug 'dhruvasagar/vim-table-mode' " Markdown table auto formatting
+Plug 'Asheq/close-buffers.vim'    " :CloseHiddenBuffers clears things you're not using
+Plug 'junegunn/goyo.vim'          " Distraction free writing in vim
+
+" Programming and configuration languages
+Plug 'cespare/vim-toml'
+Plug 'jalvesaq/Nvim-R'
+Plug 'vim-ruby/vim-ruby' " makes ruby files FAST
+Plug 'posva/vim-vue'
+Plug 'elzr/vim-json'
+let g:vim_json_syntax_conceal = 0 " dont' hide quotes
+
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+let g:go_def_mode='gopls'  " Based on https://github.com/golang/tools/blob/master/gopls/doc/vim.md
+let g:go_info_mode='gopls'
+
 Plug 'plasticboy/vim-markdown'           " Better markdown support
 let g:vim_markdown_folding_disabled = 1
-" Plug 'rhysd/clever-f.vim'                " Jump to a character on the current line-- with highlights
-Plug 'rhysd/devdocs.vim'                 " Online documentation for most languages
-Plug 'dhruvasagar/vim-table-mode'        " Markdown table auto formatting
-autocmd Filetype markdown execute 'TableModeEnable'
-
-augroup plugin-devdocs
-  autocmd!
-  autocmd FileType c,cpp,rust,haskell,python,ruby,html,vue nmap <buffer>K <Plug>(devdocs-under-cursor)
-augroup END
-"nnoremap / :M/
-"nnoremap <leader>/ /
-"let g:pencil#textwidth = 120
-""autocmd FileType markdown,mkd call pencil#init()
-""                          \ | call lexical#init()
-""                          \ | call textobj#sentence#init()
-
-Plug 'junegunn/goyo.vim'         " Distraction free writing in vim
-Plug 'cespare/vim-toml'          " TOML configuration langauge
 
 nnoremap <C-d> <C-d>zz
 nnoremap <leader>w :call WritingMode()<CR>
@@ -142,20 +126,6 @@ function! WritingMode()
   exec("Goyo")
 endfunction
 
-
-" Plug 'Asheq/close-buffers.vim'           " :CloseHiddenBuffers clears things you're not using
-
-" " From https://about.sourcegraph.com/blog/code-intelligence-in-vim
-" Plug 'autozimu/LanguageClient-neovim', {
-"     \ 'branch': 'next',
-"     \ 'do': 'bash install.sh',
-"     \ }
-" let g:LanguageClient_serverCommands = {
-"     \ 'go': ['go-langserver']
-"     \ }
-"
-Plug 'katonori/binedit.vim'          " for editing binary files
-
 call plug#end()
 
 " Look and Feel
@@ -166,7 +136,7 @@ try
   set background=light
   " from system_profiler SPFontsDataType
   " set guifont=mplus-1m-regular:h12
-  set colorcolumn=120    " Show 120th char visually (looks ugly without colours)
+  set colorcolumn=100    " Show 100th char visually (looks ugly without colours)
 
   if filereadable($HOME . "/.config/iterm_theme")
       let iterm_theme = readfile($HOME . "/.config/iterm_theme")
@@ -216,9 +186,12 @@ set number                " give line number that you're on
 set scrolloff=5           " when scrolling, keep cursor 5 lines away from border
 set foldmethod=manual     " Fold by indent level
 set autoread              " When someone modifies a file externally, autoread it back in
-" set textwidth=120         " Line length should be ~120 chars #modern
+set textwidth=100         " Line length should be ~100 chars #modern
 set ruler                 " Show cursor x,y and % of document viewed
 set mouse=a               " Lets you scroll and interact with the mouse
+
+" highlight tabs and spaces
+" set listchars=tab:»·,trail:·
 
 """"""""""""""""""""""""""""""""""""""""
 " Searching and cursor position
@@ -296,10 +269,9 @@ nnoremap <C-k> <C-w>k
 "   e.g. :Ggrep FIXME
 "   see https://github.com/tpope/vim-fugitive
 " autocmd QuickFixCmdPost *grep* cwindow
-"
 " Also http://stackoverflow.com/a/39010855/81271
 " automatically open the location/quickfix window after :make, :grep, :lvimgrep and friends if there are valid locations/errors
-augroup myvimrc
+augroup quickfix_cwindow
     autocmd!
     autocmd QuickFixCmdPost [^l]* cwindow
     autocmd QuickFixCmdPost l*    lwindow
@@ -358,14 +330,6 @@ function! Find()
   " exe("GoldenRatioResize")
 endfunction
 
-" Open window in new tab, split and search
-" TODO Detect :Ggrep, fall back on :grep
-" vmap <C-f> y:silent Ggrep -I "<C-r>0"<CR>zz
-" nmap <C-f> :call Find()<CR>
-vmap <C-f> y:silent Pt "<C-r>0"<CR>zz
-nmap <C-f> yiw:silent Pt "<C-r>0"<CR>
-
-
 " Shared data across nvim sessions
 " '500  : save last 500 files local marks [a-z]
 " f1    : also store global marks [A-Z0-9]
@@ -381,7 +345,6 @@ nmap <C-f> yiw:silent Pt "<C-r>0"<CR>
 " :20  :  up to 20 lines of command-line history will be remembered
 " %    :  saves and restores the buffer list
 " n... :  where to save the viminfo files
-"set viminfo='10,\"100,:20,%,n~/.vim/info
 set viminfo='10,\"100,:20,n~/.vim/info
 
 " EXCEPTION, cursor placement at top on git commit
@@ -407,7 +370,6 @@ nnoremap <leader>t :set filetype=
 ":map Q <Nop>
 " More usefully, reformat paragraphs with vim rules
 " - http://alols.github.io/2012/11/07/writing-prose-with-vim
-" - https://github.com/reedes/vim-pencil
 map Q gqap
 nnoremap <silent> <C-q> :CloseBuffersMenu<CR>
 
@@ -497,14 +459,3 @@ auto BufEnter * :set title | let &titlestring = 'v:' . expand('%')
 
 " w!! saves as sudo
 cmap w!! w !sudo tee > /dev/null %
-
-" " Modfiy licence copyright to be author based
-" let git_user = systemlist("git config user.name")
-
-" if $EMPLOYER != ""
-"   let g:licenses_copyright_holders_name = $EMPLOYER
-" elseif len(git_user) > 0
-"   let g:licenses_copyright_holders_name = git_user[0]
-" else
-"   let g:licenses_copyright_holders_name = "Matthew B. Gray"
-" endif
