@@ -82,17 +82,12 @@ augroup END
 
 Plug 'tpope/vim-commentary'              " Toggle comments on lines
 Plug 'tpope/vim-unimpaired'              " <3 pairings that marry ] and ['s REALLY GOOD, 5 stars
-Plug 'haya14busa/incsearch.vim'          " incremental search tool
-map /  <Plug>(incsearch-forward)
-map ?  <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
-"let g:incsearch#auto_nohlsearch = 1
 Plug 'bronson/vim-visual-star-search'    " Vim multiline search
 Plug 'hashivim/vim-terraform'            " Terraform integration and support
 let g:terraform_align=1
 let g:terraform_fmt_on_save=1
-" Plug 'othree/eregex.vim'        " PCRE engine for VIM
 
+" Plug 'othree/eregex.vim'        " PCRE engine for VIM
 " Plug 'godlygeek/tabular'        " Align stuff
 Plug 'dhruvasagar/vim-table-mode' " Markdown table auto formatting
 Plug 'Asheq/close-buffers.vim'    " :CloseHiddenBuffers clears things you're not using
