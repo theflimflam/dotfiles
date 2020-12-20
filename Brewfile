@@ -28,6 +28,7 @@ brew "syncthing"
 cask "keepingyouawake"       # like caffine, but maintained upstream
 cask "gimp"
 cask "iterm2"                # terminal emulator
+cask "macvim"                # gui version of vim
 
 # Standard browser suite
 cask "google-chrome"
