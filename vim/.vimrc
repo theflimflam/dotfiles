@@ -53,9 +53,6 @@ let NERDTreeShowLineNumbers = 1          " Make nerdtree honor numbers
 let NERDTreeShowHidden = 1               " Show dotfiles
 " Plug 'mattn/gist-vim'                    " Create gists
 Plug 'tpope/vim-fugitive'                " Git integration, TODO adjust habits
-Plug '907th/vim-auto-save'               " Autosave in vim <3
-let g:auto_save = 1                      " enable AutoSave on Vim startup
-let g:auto_save_silent = 1               " do not display the auto-save notification
 Plug 'tpope/vim-surround'                " Delete, or insert around text objects
 Plug 'junegunn/fzf', { 'dir': '~/code/fzf', 'do': 'yes \| ./install' }
 Plug 'nazo/pt.vim'                       " Text search using pt - the platinum searcher
