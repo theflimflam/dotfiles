@@ -56,7 +56,7 @@ Plug 'tpope/vim-fugitive'                " Git integration, TODO adjust habits
 Plug 'tpope/vim-surround'                " Delete, or insert around text objects
 Plug 'junegunn/fzf', { 'dir': '~/code/fzf', 'do': 'yes \| ./install' }
 Plug 'nazo/pt.vim'                       " Text search using pt - the platinum searcher
-augroup ctrl_f_serch
+augroup ctrl_f_search
   " Search word or highlight window in new tab, split and search
   vmap <C-f> y:silent Pt "<C-r>0"<CR>zz
   nmap <C-f> yiw:silent Pt "<C-r>0"<CR>
