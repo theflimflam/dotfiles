@@ -24,6 +24,7 @@ brew "watch"
 brew "rename"
 
 brew "syncthing"
+# cask "background-music"      # control the volume of apps independently
 
 cask "keepingyouawake"       # like caffine, but maintained upstream
 cask "gimp"
