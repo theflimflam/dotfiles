@@ -224,7 +224,6 @@ set smartindent        " recognise syntax of files
 set noshowmatch
 let g:loaded_matchparen=1
 
-
 " Whitespace management
 set                                expandtab   tabstop=2 softtabstop=2 shiftwidth=2
 autocmd Filetype go       setlocal noexpandtab tabstop=4 softtabstop=4 shiftwidth=4
