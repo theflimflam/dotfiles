@@ -232,8 +232,8 @@ autocmd Filetype perl     setlocal expandtab   tabstop=4 softtabstop=4 shiftwidt
 highlight TrailingWhitespace ctermbg=grey guibg=grey
 match TrailingWhitespace /\s\+$/
 
-" Strip whitespace when saving files
-autocmd BufWritePre * :%s/\s\+$//e
+"" Strip whitespace when saving files
+"autocmd BufWritePre * :%s/\s\+$//e
 
 " Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
 " if exists(":Tabularize") > 0
