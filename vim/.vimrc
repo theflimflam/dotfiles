@@ -71,12 +71,12 @@ Plug 'altercation/vim-colors-solarized'  " n.b. you need to change terminal colo
 Plug 'ctrlpvim/ctrlp.vim'                " Fuzzy search files, recent files, and buffers
 " Plug 'reedes/vim-lexical'                " Spell-check and thesaurus/dictionary completion
 " Plug 'reedes/vim-wordy'                  " Identify phrases for history of misuse, abuse, and overuse
-Plug 'reedes/vim-textobj-sentence'       " Sophisticated sentence text object
-augroup textobj_sentence
-  autocmd!
-  autocmd FileType markdown call textobj#sentence#init()
-  autocmd FileType textile call textobj#sentence#init()
-augroup END
+" Plug 'reedes/vim-textobj-sentence'       " Sophisticated sentence text object
+" augroup textobj_sentence
+"   autocmd!
+"   autocmd FileType markdown call textobj#sentence#init()
+"   autocmd FileType textile call textobj#sentence#init()
+" augroup END
 
 Plug 'tpope/vim-commentary'              " Toggle comments on lines
 Plug 'tpope/vim-unimpaired'              " <3 pairings that marry ] and ['s REALLY GOOD, 5 stars
