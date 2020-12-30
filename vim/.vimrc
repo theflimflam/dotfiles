@@ -48,6 +48,7 @@ let g:ale_set_highlights = 0             " remove highlights
 let g:ale_set_loclist = 0                " prefer quickfix list to location list
 let g:ale_set_quickfix = 0
 Plug 'vim-scripts/LargeFile'             " turn off slow stuff in files > 20mb
+Plug 'roman/golden-ratio'                " golden ratio resize your splits
 Plug 'scrooloose/nerdtree'               " File browser
 let NERDTreeShowLineNumbers = 1          " Make nerdtree honor numbers
 let NERDTreeShowHidden = 1               " Show dotfiles
