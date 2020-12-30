@@ -217,7 +217,6 @@ nnoremap <leader>s :setlocal spell!<cr>
 
 """"""""""""""""""""""""""""""""""""""""
 " Code
-set expandtab          " Pressing tab inserts spaces
 set autoindent         " indent on newlines
 set smartindent        " recognise syntax of files
 
