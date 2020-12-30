@@ -229,8 +229,7 @@ set                                expandtab   tabstop=2 softtabstop=2 shiftwidt
 autocmd Filetype go       setlocal noexpandtab tabstop=4 softtabstop=4 shiftwidth=4
 autocmd Filetype markdown setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
 autocmd Filetype perl     setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
-
-highlight TrailingWhitespace ctermbg=red guibg=red
+highlight TrailingWhitespace ctermbg=grey guibg=grey
 match TrailingWhitespace /\s\+$/
 
 " Strip whitespace when saving files
