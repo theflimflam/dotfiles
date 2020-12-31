@@ -162,6 +162,7 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="/Applications/Xcode.app/Contents/Developer/usr/bin/:$PATH"
 
 export GOPATH="$HOME/code/go"
+export GO111MODULE="on"
 
 # Make ^Z toggle between ^Z and fg
 # https://github.com/Julian/dotfiles/blob/master/.config/zsh/keybindings.zsh
