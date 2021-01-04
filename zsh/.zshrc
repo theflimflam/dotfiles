@@ -151,7 +151,7 @@ fi
 [ -e ~/.zshrc.local ]      && source ~/.zshrc.local
 [ -f ~/.fzf.zsh ]          && source ~/.fzf.zsh
 
-function rehash() {
+function reload() {
   source ~/.zshrc && stty sane
 }
 
@@ -221,7 +221,7 @@ if which nvim > /dev/null; then
   [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 fi
 
-function friday() {
+function upgrade() {
   cd ~/dotfiles
   make updates
 }
