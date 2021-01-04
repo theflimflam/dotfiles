@@ -312,4 +312,8 @@ if which gcloud > /dev/null; then
   source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
 fi
 
-alias tcr="git diff origin/master... --name-only | entr $@ && git add . || git checkout ."
+# Test && Commit || Revert, pioneered by Kent Beck
+# https://youtu.be/FFzHOyFeovE
+function tcr() {
+  git diff origin/master... --name-only | entr -c sh -c "$*" && git add . || git checkout .
+}
