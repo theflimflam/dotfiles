@@ -41,12 +41,12 @@ setopt hist_no_store        # don't store the command history in history
 setopt hist_verify          # when using history expansion, reload history
 setopt hist_reduce_blanks   # blanks from each command line added to the history list
 
-setopt extended_history     # save timestamp and runtime information
+setopt extended_history     # save time stamp and runtime information
 setopt inc_append_history   # write after exec rather than waiting till shell exit
 setopt no_hist_beep         # no terminal bell please
 # setopt share_history      # all open shells see history
 
-setopt interactivecomments # Dont execute comments in interactive shell
+setopt interactivecomments # Don't execute comments in interactive shell
 
 ## Completion
 setopt NO_BEEP AUTO_LIST AUTO_MENU
@@ -121,7 +121,7 @@ export LS_COLORS="exfxcxdxbxegedabagacad"
 ZLS_COLORS=$LS_COLORS
 
 # Aliases
-alias ls='ls -G'                            # technicolour list
+alias ls='ls -G'                            # technicolor list
 alias cdg='cd $(git rev-parse --show-cdup)' # cd to root of repo
 
 export LESS='-R'
