@@ -29,7 +29,7 @@ cdpath=(~ ~/Desktop ~/code/centrapay ~/code ~/code/go/src ~/.config/nvim)
 setopt CORRECT MULTIOS NO_HUP NO_CHECK_JOBS EXTENDED_GLOB
 
 # History
-export HISTSIZE=100000
+export HISTSIZE=1000000
 export HISTFILE=~/.zsh_history
 export SAVEHIST=$HISTSIZE
 
