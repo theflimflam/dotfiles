@@ -315,5 +315,22 @@ fi
 # Test && Commit || Revert, pioneered by Kent Beck
 # https://youtu.be/FFzHOyFeovE
 function tcr() {
-  git diff origin/master... --name-only | entr -c sh -c "$*" && git add . || git checkout .
+  which which > /dev/null || {
+    echo "brew install entr"
+    return 1
+  }
+  commitedFiles=$(git diff origin/master... --name-only)
+  changedFiles=$(git status --porcelain | awk '{print $2}')
+  echo $commitedFiles $changedFiles | xargs ls | entr -c sh -c "echo && $* && git add . || git checkout ."
+}
+
+# Like tcr, but without the git integration
+function t() {
+  which which > /dev/null || {
+    echo "brew install entr"
+    return 1
+  }
+  commitedFiles=$(git diff origin/master... --name-only)
+  changedFiles=$(git status --porcelain | awk '{print $2}')
+  echo $commitedFiles $changedFiles | xargs ls | entr -c sh -c "echo && $*"
 }
