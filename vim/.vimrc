@@ -181,7 +181,7 @@ set number                " give line number that you're on
 set scrolloff=5           " when scrolling, keep cursor 5 lines away from border
 set foldmethod=manual     " Fold by indent level
 set autoread              " When someone modifies a file externally, autoread it back in
-au CursorHold * checktime " autoread on OSX, https://superuser.com/a/1090762
+au FocusGained,BufEnter,CursorHold * checktime " autoread on OSX, https://superuser.com/a/1090762
 set textwidth=100         " Line length should be ~100 chars #modern
 set ruler                 " Show cursor x,y and % of document viewed
 set mouse=a               " Lets you scroll and interact with the mouse
