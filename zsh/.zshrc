@@ -221,7 +221,7 @@ if which nvim > /dev/null; then
   [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 fi
 
-function upgrade() {
+function update() {
   cd ~/dotfiles
   make updates
 }
