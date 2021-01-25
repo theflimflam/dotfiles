@@ -46,6 +46,7 @@ cask "transmission"          # good for linux ISOs
 brew "vim"
 brew "neovim"
 brew "wget"
+brew "shellcheck"            # ncjones uses this for linting shell stuff
 
 # Media
 brew "mplayer"
