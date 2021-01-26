@@ -35,14 +35,38 @@ endif
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'roman/golden-ratio'                " golden ratio splits
-" let g:golden_ratio_autocommand = 0     " not by default
-nnoremap <silent> <C-w>- :GoldenRatioResize<CR>
+augroup golden_ratio
+  " let g:golden_ratio_autocommand = 0     " not by default
+  nnoremap <silent> <C-w>- :GoldenRatioResize<CR>
+augroup END
 
-" Tpope, just love his stuff
-Plug 'tpope/vim-fugitive'     " Git integration, TODO adjust habits
 Plug 'tpope/vim-surround'     " Delete, or insert around text objects
 Plug 'tpope/vim-commentary'   " Toggle comments on lines
 Plug 'tpope/vim-unimpaired'   " <3 pairings that marry ] and ['s REALLY GOOD, 5 stars
+
+Plug 'tpope/vim-fugitive'     " Git integration, TODO adjust habits
+augroup quickfix_cwindow
+  " Quickfix window when shelling out to grep
+  " Also works for git grep
+  "   e.g. :Ggrep FIXME
+  "   see https://github.com/tpope/vim-fugitive
+  " autocmd QuickFixCmdPost *grep* cwindow
+  " Also http://stackoverflow.com/a/39010855/81271
+  " automatically open the location/quickfix window after :make, :grep, :lvimgrep and friends if there are valid locations/errors
+    autocmd!
+    autocmd QuickFixCmdPost [^l]* cwindow
+    autocmd QuickFixCmdPost l*    lwindow
+augroup END
+
+Plug 'scrooloose/nerdtree'
+augroup file_browser
+  let NERDTreeShowLineNumbers = 1          " Make nerdtree honor numbers
+  let NERDTreeShowHidden = 1               " Show dotfiles
+augroup END
+
+Plug 'michaeljsmith/vim-indent-object' " Select indents as an object
+
+Plug 'vim-scripts/LargeFile'           " turn off slow stuff in files > 20mb
 
 " fzf fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/code/fzf', 'do': 'yes \| ./install' }
@@ -51,6 +75,19 @@ augroup fuzzy_finder
   " let g:fzf_command_prefix = 'Fzf'
   nnoremap <leader>f :FZF<CR>
   nnoremap <silent> <leader>m :History<CR>
+augroup END
+
+Plug 'w0rp/ale'
+augroup linting
+  let g:ale_set_highlights = 0             " remove highlights
+  let g:ale_set_loclist = 0                " prefer quickfix list to location list
+  let g:ale_set_quickfix = 0
+augroup END
+
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+augroup golang
+  let g:go_def_mode='gopls'  " Based on https://github.com/golang/tools/blob/master/gopls/doc/vim.md
+  let g:go_info_mode='gopls'
 augroup END
 
 " Text search using pt - the platinum searcher
@@ -90,7 +127,7 @@ iabbrev hte the
 iabbrev functino function
 iabbrev iamge image
 iabbrev wehn when
- 
+
 " Search and page mappings: center cursor when jumping in search
 nnoremap N Nzz
 nnoremap n nzz
@@ -104,10 +141,17 @@ autocmd Filetype markdown setlocal expandtab   tabstop=4 softtabstop=4 shiftwidt
 autocmd Filetype perl     setlocal expandtab   tabstop=4 softtabstop=4 shiftwidth=4
 highlight TrailingWhitespace ctermbg=grey guibg=grey
 match TrailingWhitespace /\s\+$/
- 
+
+" Navigatoin
 nnoremap H <C-o> " Browse code like you're using vimium back button
 nnoremap L <C-i> " Browse code like you're using vimium forward button
- 
+
+" Navigate splits more naturally with Ctrl + hjkl
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+
 vmap <C-f> y:lclose<CR>:silent Glgrep -I "<C-r>0"<CR>zz
 nmap <C-f> :call Find()<CR>
 
@@ -118,7 +162,7 @@ nmap <C-f> :call Find()<CR>
 set shada='500,f1
 " SHADA EXCEPTION, cursor placement at top on git commit
 autocmd BufReadPost COMMIT_EDITMSG exe "normal! gg"
- 
+
 " " Quickly open, reload and edit rc files
 nnoremap <leader>vv :e $MYVIMRC<CR>
 nnoremap <leader>vr :source $MYVIMRC<CR>:PlugUpdate<CR>:source $MYVIMRC<CR>:GoInstallBinaries<CR>
@@ -133,14 +177,14 @@ endfunction
 
 " Syntax highlighting is often not quite right.
 nnoremap <leader>t :set filetype=
- 
+
 " turn off EX mode (it annoys me, I don't use it)
 ":map Q <Nop>
 " More usefully, reformat paragraphs with vim rules
 " - http://alols.github.io/2012/11/07/writing-prose-with-vim
 " - https://github.com/reedes/vim-pencil
 map Q gqap
- 
+
 " Display line numbers in help
 autocmd FileType help setlocal number relativenumber
 
@@ -153,7 +197,7 @@ nnoremap <leader>cf :let @*=expand("%")<CR>
 " Triage stuff: Quickly cycle between contexts
 nnoremap <leader><leader> :tab split<cr>
 nnoremap <backspace><backspace> :tabclose<cr>
- 
+
 " Quickly split current view
 nmap <leader>y 0:lclose<CR>:cclose<CR>:split<CR>
 nmap <leader>x 0:lclose<CR>:cclose<CR>:vsplit<CR>
@@ -163,7 +207,7 @@ set splitright
 " Open current focused file in new tab
 nnoremap <leader><leader> :tab split<CR>
 nnoremap <leader>q <C-w>q
- 
+
 " Set title on terminal to focused buffer filename
 auto BufEnter * :set title | let &titlestring = 'v:' . expand('%')
 "
@@ -179,7 +223,7 @@ nnoremap <leader>g :Gstatus<CR>
 
 " " jj is like escape
 " inoremap jj <ESC>
-" 
+"
 " " Non chorded window commands, e.g. leader w v -> vsplit
 " nmap <leader>w <C-w>
 "
