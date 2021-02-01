@@ -64,6 +64,14 @@ augroup file_browser
   let NERDTreeShowHidden = 1               " Show dotfiles
 augroup END
 
+Plug 'bronson/vim-visual-star-search' " Vim multiline search
+
+Plug 'hashivim/vim-terraform'
+augroup terraform
+  let g:terraform_align=1
+  let g:terraform_fmt_on_save=0
+augroup END
+
 Plug 'michaeljsmith/vim-indent-object' " Select indents as an object
 
 Plug 'vim-scripts/LargeFile'           " turn off slow stuff in files > 20mb
@@ -97,6 +105,41 @@ augroup text_search
   vmap <C-f> y:silent Pt "<C-r>0"<CR>zz
   nmap <C-f> yiw:silent Pt "<C-r>0"<CR>
 augroup END
+
+Plug 'junegunn/goyo.vim'          " Distraction free writing in vim
+augroup writing
+  nnoremap <leader>w :call WritingMode()<CR>
+  function! WritingMode()
+    set spell
+    " word wrap visually rather than in buffer
+    set wrap linebreak
+    " distraction free writing plugin
+    exec("Goyo")
+  endfunction
+augroup END
+
+" Plug 'liuchengxu/space-vim-theme' " Spacemacs dark true colour
+" Plug 'rakr/vim-one' " Atom
+" Plug 'sickirl/vim-monokai' " Sublime
+Plug 'altercation/vim-colors-solarized'
+try
+  " don't explode if colour scheme doesn't exist
+  syntax on
+  colorscheme solarized
+  set background=light
+  " from system_profiler SPFontsDataType
+  set guifont=mplus-1m-regular:h12
+
+  if filereadable($HOME . "/.config/iterm_theme")
+      let iterm_theme = readfile($HOME . "/.config/iterm_theme")
+      if len(iterm_theme) > 0
+        " 'dark' or 'light'
+        exe "set background=" . iterm_theme[0]
+      endif
+  endif
+catch
+  " If colors and fonts fail, this isn't a big deal
+endtry
 
 call plug#end()
 
@@ -163,7 +206,7 @@ set shada='500,f1
 " SHADA EXCEPTION, cursor placement at top on git commit
 autocmd BufReadPost COMMIT_EDITMSG exe "normal! gg"
 
-" " Quickly open, reload and edit rc files
+" Quickly open, reload and edit rc files
 nnoremap <leader>vv :e $MYVIMRC<CR>
 nnoremap <leader>vr :source $MYVIMRC<CR>:PlugUpdate<CR>:source $MYVIMRC<CR>:GoInstallBinaries<CR>
 nnoremap <leader>zz :e $HOME/.zshrc<CR>
