@@ -55,7 +55,8 @@ env:
 	vim ~/.config/local/env
 
 updates: preflight
-	vim -c 'call UpdateEverything() | qa'
+	vim -c 'call UpdateEverything() | qa' || true
+	nvim -c 'call UpdateEverything() | qa' || true
 	brew upgrade
 	brew upgrade --cask
 	brew cleanup || true
