@@ -190,10 +190,10 @@ nnoremap H <C-o> " Browse code like you're using vimium back button
 nnoremap L <C-i> " Browse code like you're using vimium forward button
 
 " Navigate splits more naturally with Ctrl + hjkl
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
+nnoremap <C-h> 0<C-w>h
+nnoremap <C-l> 0<C-w>l
+nnoremap <C-j> 0<C-w>j
+nnoremap <C-k> 0<C-w>k
 
 vmap <C-f> y:lclose<CR>:silent Glgrep -I "<C-r>0"<CR>zz
 nmap <C-f> :call Find()<CR>
