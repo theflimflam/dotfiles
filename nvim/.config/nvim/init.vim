@@ -60,8 +60,8 @@ augroup END
 
 Plug 'scrooloose/nerdtree'
 augroup file_browser
-  let NERDTreeShowLineNumbers = 1          " Make nerdtree honor numbers
-  let NERDTreeShowHidden = 1               " Show dotfiles
+  let NERDTreeShowLineNumbers = 1  " Make nerdtree honor numbers
+  let NERDTreeShowHidden = 1       " Show dotfiles
 augroup END
 
 Plug 'bronson/vim-visual-star-search' " Vim multiline search
@@ -74,7 +74,7 @@ augroup END
 
 Plug 'michaeljsmith/vim-indent-object' " Select indents as an object
 
-Plug 'vim-scripts/LargeFile'           " turn off slow stuff in files > 20mb
+Plug 'vim-scripts/LargeFile' " turn off slow stuff in files > 20mb
 
 " fzf fuzzy finder
 Plug 'junegunn/fzf', { 'dir': '~/code/fzf', 'do': 'yes \| ./install' }
@@ -87,8 +87,8 @@ augroup END
 
 Plug 'w0rp/ale'
 augroup linting
-  let g:ale_set_highlights = 0             " remove highlights
-  let g:ale_set_loclist = 0                " prefer quickfix list to location list
+  let g:ale_set_highlights = 0  " remove highlights
+  let g:ale_set_loclist = 0     " prefer quickfix list to location list
   let g:ale_set_quickfix = 0
 augroup END
 
@@ -106,7 +106,7 @@ augroup text_search
   nmap <C-f> yiw:silent Pt "<C-r>0"<CR>
 augroup END
 
-Plug 'junegunn/goyo.vim'          " Distraction free writing in vim
+Plug 'junegunn/goyo.vim'  " Distraction free writing in vim
 augroup writing
   nnoremap <leader>w :call WritingMode()<CR>
   function! WritingMode()
@@ -122,6 +122,8 @@ augroup END
 " Plug 'rakr/vim-one' " Atom
 " Plug 'sickirl/vim-monokai' " Sublime
 Plug 'altercation/vim-colors-solarized'
+call plug#end()
+
 try
   " don't explode if colour scheme doesn't exist
   syntax on
@@ -140,8 +142,6 @@ try
 catch
   " If colors and fonts fail, this isn't a big deal
 endtry
-
-call plug#end()
 
 set relativenumber        " better navigation
 set number                " give line number that you're on
