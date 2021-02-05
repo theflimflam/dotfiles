@@ -318,9 +318,10 @@ function tcr() {
     echo "brew install entr"
     return 1
   }
+  projectRoot=$(git rev-parse --show-toplevel) # for monorepo
   commitedFiles=$(git diff origin/master... --name-only)
   changedFiles=$(git status --porcelain | awk '{print $2}')
-  echo $commitedFiles $changedFiles | xargs ls | entr -c sh -c "echo && $* && git add . || git checkout ."
+  echo "$projectRoot/$commitedFiles" "$projectRoot/$changedFiles" | xargs ls | entr -c sh -c "echo && $* && git add . || git checkout ."
 }
 
 # Like tcr, but without the git integration
@@ -329,7 +330,8 @@ function t() {
     echo "brew install entr"
     return 1
   }
+  projectRoot=$(git rev-parse --show-toplevel) # for monorepo
   commitedFiles=$(git diff origin/master... --name-only)
   changedFiles=$(git status --porcelain | awk '{print $2}')
-  echo $commitedFiles $changedFiles | xargs ls | entr -c sh -c "echo && $*"
+  echo "$projectRoot/$commitedFiles" "$projectRoot/$changedFiles" | xargs ls | entr -c sh -c "echo && $*"
 }
