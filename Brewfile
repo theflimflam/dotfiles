@@ -57,3 +57,5 @@ cask "font-hack"             # nice looking fixed width font
 cask "font-mplus"            # narrow fixed width for retina
 
 # cask "skype"
+
+cask "unclack"               # for people with mech keebs, https://unclack.app
