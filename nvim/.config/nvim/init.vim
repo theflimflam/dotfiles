@@ -150,7 +150,7 @@ set foldmethod=manual     " Fold by indent level
 set autoread              " When someone modifies a file externally, autoread it back in
 set textwidth=100         " Line length should be ~100 chars #modern
 set colorcolumn=100       " Show 100th char visually
-set clipboard=unnamedplus " yank and put straight to system clipboard
+" set clipboard=unnamedplus " yank and put straight to system clipboard
 set nojoinspaces          " Single space after period when using J
 set hlsearch              " Highlight my searches :)
 set ignorecase            " Do case insensitive matching.
