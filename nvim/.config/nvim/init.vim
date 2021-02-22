@@ -122,23 +122,29 @@ augroup END
 " Plug 'rakr/vim-one' " Atom
 " Plug 'sickirl/vim-monokai' " Sublime
 Plug 'altercation/vim-colors-solarized'
+Plug 'ayu-theme/ayu-vim'
 call plug#end()
 
 try
   " don't explode if colour scheme doesn't exist
   syntax on
-  colorscheme solarized
+  set termguicolors     " enable true colors support
+  let ayucolor="light"  " for light version of theme
+  " let ayucolor="mirage" " for mirage version of theme
+  " let ayucolor="dark"   " for dark version of theme
+  colorscheme ayu
+
   set background=light
   " from system_profiler SPFontsDataType
   set guifont=mplus-1m-regular:h12
 
-  if filereadable($HOME . "/.config/iterm_theme")
-      let iterm_theme = readfile($HOME . "/.config/iterm_theme")
-      if len(iterm_theme) > 0
-        " 'dark' or 'light'
-        exe "set background=" . iterm_theme[0]
-      endif
-  endif
+  " if filereadable($HOME . "/.config/iterm_theme")
+  "   let iterm_theme = readfile($HOME . "/.config/iterm_theme")
+  "   if len(iterm_theme) > 0
+  "     " 'dark' or 'light'
+  "     exe "set background=" . iterm_theme[0]
+  "   endif
+  " endif
 catch
   " If colors and fonts fail, this isn't a big deal
 endtry
