@@ -121,7 +121,8 @@ augroup END
 " Plug 'liuchengxu/space-vim-theme' " Spacemacs dark true colour
 " Plug 'rakr/vim-one' " Atom
 " Plug 'sickirl/vim-monokai' " Sublime
-Plug 'altercation/vim-colors-solarized'
+" Plug 'altercation/vim-colors-solarized'
+Plug 'lifepillar/vim-solarized8' " True colour solarized palette
 Plug 'ayu-theme/ayu-vim'
 call plug#end()
 
@@ -129,10 +130,11 @@ try
   " don't explode if colour scheme doesn't exist
   syntax on
   set termguicolors     " enable true colors support
-  let ayucolor="light"  " for light version of theme
+  " let ayucolor="light"  " for light version of theme
   " let ayucolor="mirage" " for mirage version of theme
   " let ayucolor="dark"   " for dark version of theme
-  colorscheme ayu
+  " colorscheme solarized
+  colorscheme solarized8
 
   set background=light
   " from system_profiler SPFontsDataType
