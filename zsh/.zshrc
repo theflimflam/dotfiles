@@ -288,9 +288,9 @@ if which rbenv > /dev/null; then
   export PATH="~/.rbenv/bin:$PATH"
 fi
 
-if which asdf > /dev/null; then
-  $(brew --prefix asdf)/asdf.sh
-fi
+# if which asdf > /dev/null; then
+#   $(brew --prefix asdf)/asdf.sh
+# fi
 
 # If chruby exists, init shims and hook cd
 if [ -f /usr/local/share/chruby/chruby.sh ]; then
