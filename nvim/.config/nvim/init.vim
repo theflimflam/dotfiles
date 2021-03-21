@@ -154,7 +154,8 @@ endtry
 set relativenumber        " better navigation
 set number                " give line number that you're on
 set scrolloff=5           " when scrolling, keep cursor 5 lines away from border
-set foldmethod=manual     " Fold by indent level
+set foldmethod=manual     " fold by paragraph or whatever you feel is appropriate
+" set foldminlines=10       " Smaller than thi will always show like it was open
 set autoread              " When someone modifies a file externally, autoread it back in
 set textwidth=100         " Line length should be ~100 chars #modern
 set colorcolumn=100       " Show 100th char visually
