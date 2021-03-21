@@ -194,6 +194,10 @@ autocmd Filetype perl     setlocal expandtab   tabstop=4 softtabstop=4 shiftwidt
 highlight TrailingWhitespace ctermbg=grey guibg=grey
 match TrailingWhitespace /\s\+$/
 
+" JS require doesn't always include extension, auto add this for gf
+" https://medium.com/usevim/vim-101-jumping-between-files-f9e16f79f63a
+autocmd Filetype javascript setlocal suffixesadd+=.js
+
 " Navigatoin
 nnoremap H <C-o> " Browse code like you're using vimium back button
 nnoremap L <C-i> " Browse code like you're using vimium forward button
