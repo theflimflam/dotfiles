@@ -204,8 +204,8 @@ nnoremap <C-l> 0<C-w>l
 nnoremap <C-j> 0<C-w>j
 nnoremap <C-k> 0<C-w>k
 
-vmap <C-f> y:lclose<CR>:silent Glgrep -I "<C-r>0"<CR>zz
-nmap <C-f> :call Find()<CR>
+vmap <C-f> y:lclose<CR>:silent G grep -I "<C-r>0"<CR>zz
+nmap <C-f> yiW:silent G grep -I "<C-r>0"<CR>zz<CR>
 
 " Shared data across nvim sessions
 " '500  : save last 500 files local marks [a-z]
