@@ -274,9 +274,6 @@ alias light='echo light > ~/.config/iterm_theme && echo -e "\033]50;SetProfile=l
 alias lightsm='echo light-sm > ~/.config/iterm_theme && echo -e "\033]50;SetProfile=light-sm\a"'
 [ -e ~/.config/iterm_theme ] && echo -e "\033]50;SetProfile=$(cat ~/.config/iterm_theme)\a"
 
-# Quickly put your work on top of master
-alias rebase="git rebase origin/master --interactive"
-
 # .envrc files contain secrets, if direnv exists export them on directory traversal
 if which direnv > /dev/null; then
   eval "$(direnv hook zsh)"
