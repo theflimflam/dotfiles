@@ -140,13 +140,13 @@ try
   " from system_profiler SPFontsDataType
   set guifont=mplus-1m-regular:h12
 
-  " if filereadable($HOME . "/.config/iterm_theme")
-  "   let iterm_theme = readfile($HOME . "/.config/iterm_theme")
-  "   if len(iterm_theme) > 0
-  "     " 'dark' or 'light'
-  "     exe "set background=" . iterm_theme[0]
-  "   endif
-  " endif
+  if filereadable($HOME . "/.config/iterm_theme")
+    let iterm_theme = readfile($HOME . "/.config/iterm_theme")
+    if len(iterm_theme) > 0
+      " 'dark' or 'light'
+      exe "set background=" . iterm_theme[0]
+    endif
+  endif
 catch
   " If colors and fonts fail, this isn't a big deal
 endtry
