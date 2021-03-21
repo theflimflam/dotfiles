@@ -55,7 +55,7 @@ augroup quickfix_cwindow
   " automatically open the location/quickfix window after :make, :grep, :lvimgrep and friends if there are valid locations/errors
     autocmd!
     autocmd QuickFixCmdPost [^l]* cwindow
-    autocmd QuickFixCmdPost l*    lwindow
+    autocmd QuickFixCmdPost l*    cwindow
 augroup END
 
 Plug 'scrooloose/nerdtree'
