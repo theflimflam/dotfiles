@@ -249,8 +249,8 @@ autocmd FileType help setlocal number relativenumber
 " Vertical split for help files
 autocmd FileType help wincmd L
 
-" Copy current file to clipboard
-nnoremap <leader>cf :let @*=expand("%")<CR>
+" Copy current file to clipboard and yank buffers
+nnoremap <leader>cf :let @*=expand("%")<CR>:let @0=expand("%")<CR>
 
 " Triage stuff: Quickly cycle between contexts
 nnoremap <leader><leader> :tab split<cr>
