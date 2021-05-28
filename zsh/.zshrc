@@ -334,3 +334,17 @@ function t() {
   changedFiles=$(git status --porcelain | awk '{print $2}')
   echo "$projectRoot/$commitedFiles" "$projectRoot/$changedFiles" | xargs ls | entr -c sh -c "echo && $*"
 }
+
+# https://coderwall.com/p/s-2_nw/change-iterm2-color-profile-from-the-cli
+it2prof() { echo -e "\033]50;SetProfile=$1\a" }
+
+# Set and remember iterm colours
+# [ -e ~/.config/iterm_theme ] && echo -e "\033]50;SetProfile=$(cat ~/.config/iterm_theme)\a"
+alias dark='echo "dark mode..." && echo dark > ~/.config/iterm_theme && echo -e "\033]50;SetProfile=dark\a"'
+alias light='echo "light mode..." && echo light > ~/.config/iterm_theme && echo -e "\033]50;SetProfile=light\a"'
+appearance=$(defaults read -g AppleInterfaceStyle 2> /dev/null || echo "Light")
+if [ $appearance = 'Dark' ]; then
+  dark
+else
+  light
+fi
