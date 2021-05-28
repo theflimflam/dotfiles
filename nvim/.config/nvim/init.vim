@@ -102,8 +102,10 @@ augroup END
 Plug 'nazo/pt.vim'
 augroup text_search
   " Search word or highlight window in new tab, split and search
-  vmap <C-f> y:silent Pt "<C-r>0"<CR>zz
-  nmap <C-f> yiw:silent Pt "<C-r>0"<CR>
+  " vmap <C-f> y:silent Pt "<C-r>0"<CR>zz
+  " nmap <C-f> yiW:silent Pt "<C-r>0"<CR>
+  vmap <C-f> y:silent Ggrep "<C-r>0"<CR>zz
+  nmap <C-f> yiw:silent Ggrep "<C-r>0"<CR>
 augroup END
 
 Plug 'junegunn/goyo.vim'  " Distraction free writing in vim
