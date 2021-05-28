@@ -206,9 +206,12 @@ export PATH="/usr/local/opt/*/bin:$PATH"
 
 # Setting default editor
 if which nvim > /dev/null; then
+  echo "nvim..."
   export EDITOR=nvim
   alias vim=nvim
+  alias vi=nvim
 elif which vim > /dev/null; then
+  echo "vim..."
   export EDITOR=vim
 else
   export EDITOR=vi
@@ -233,6 +236,7 @@ function first() {
 
 # Cludges follow
 if [[ `uname` == "Darwin" ]]; then # OSX
+  echo "OSX cludges..."
   # Fix GPG agent detection
   # see https://github.com/pstadler/keybase-gpg-github/issues/11
   GPG_TTY=$(tty)
@@ -261,42 +265,38 @@ function backup() {
   restic backup . -r sftp:matthew.nz:restic-backup
 }
 
-# https://coderwall.com/p/s-2_nw/change-iterm2-color-profile-from-the-cli
-it2prof() { echo -e "\033]50;SetProfile=$1\a" }
-
 # hose things that match string
 # e.g. fuck ruby
 alias fuck='pkill -if'
 
-# Set and remember iterm profile
-alias dark='echo dark > ~/.config/iterm_theme && echo -e "\033]50;SetProfile=dark\a"'
-alias light='echo light > ~/.config/iterm_theme && echo -e "\033]50;SetProfile=light\a"'
-alias lightsm='echo light-sm > ~/.config/iterm_theme && echo -e "\033]50;SetProfile=light-sm\a"'
-[ -e ~/.config/iterm_theme ] && echo -e "\033]50;SetProfile=$(cat ~/.config/iterm_theme)\a"
-
 # .envrc files contain secrets, if direnv exists export them on directory traversal
 if which direnv > /dev/null; then
+  echo "direnv..."
   eval "$(direnv hook zsh)"
 fi
 
 # If rbenv exists, init shims autocompletion
 if which rbenv > /dev/null; then
+  echo "rbenv..."
   eval "$(rbenv init -)";
   export PATH="~/.rbenv/bin:$PATH"
 fi
 
 # if which asdf > /dev/null; then
+#   echo "asdf..."
 #   $(brew --prefix asdf)/asdf.sh
 # fi
 
 # If chruby exists, init shims and hook cd
 if [ -f /usr/local/share/chruby/chruby.sh ]; then
+  echo "chruby..."
   source /usr/local/share/chruby/chruby.sh
   source /usr/local/share/chruby/auto.sh
 fi
 
 # If pyenv exists, init shims autocompletion
 if which pyenv > /dev/null; then
+  echo "pyenv..."
   eval "$(pyenv init -)"
   pyenv rehash
 fi
@@ -304,6 +304,7 @@ fi
 # Advice from
 # brew cask install google-cloud-sdk
 if which gcloud > /dev/null; then
+  echo "gcloud..."
   source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
   source '/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
 fi
