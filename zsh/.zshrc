@@ -313,7 +313,7 @@ fi
 # Test && Commit || Revert, pioneered by Kent Beck
 # https://youtu.be/FFzHOyFeovE
 function tcr() {
-  which which > /dev/null || {
+  which entr > /dev/null || {
     echo "brew install entr"
     return 1
   }
@@ -325,7 +325,7 @@ function tcr() {
 
 # Like tcr, but without the git integration
 function t() {
-  which which > /dev/null || {
+  which entr > /dev/null || {
     echo "brew install entr"
     return 1
   }
