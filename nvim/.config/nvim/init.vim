@@ -158,7 +158,6 @@ set number                " give line number that you're on
 set scrolloff=5           " when scrolling, keep cursor 5 lines away from border
 set foldmethod=manual     " fold by paragraph or whatever you feel is appropriate
 " set foldminlines=10       " Smaller than thi will always show like it was open
-set autoread              " When someone modifies a file externally, autoread it back in
 set textwidth=100         " Line length should be ~100 chars #modern
 set colorcolumn=100       " Show 100th char visually
 " set clipboard=unnamedplus " yank and put straight to system clipboard
@@ -173,6 +172,22 @@ set nospell               " Spellcheck is off initially
 set autoindent            " indent on newlines
 set smartindent           " recognise syntax of files
 set mouse=a " Let vim use the mouse, grab and pull splits around etc.
+
+" See https://unix.stackexchange.com/a/383044
+" When someone modifies a file externally, autoread it back in
+set autoread
+au CursorHold,CursorHoldI * checktime
+
+" Triger `autoread` when files changes on disk
+" https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
+" https://vi.stackexchange.com/questions/13692/prevent-focusgained-autocmd-running-in-command-line-editing-mode
+autocmd FocusGained,BufEnter,CursorHold,CursorHoldI *
+  \ if mode() !~ '\v(c|r.?|!|t)' && getcmdwintype() == '' | checktime | endif
+
+" Notification after file change
+" https://vi.stackexchange.com/questions/13091/autocmd-event-for-autoread
+autocmd FileChangedShellPost *
+  \ echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None
 
 iabbrev waht what
 iabbrev tehn then
