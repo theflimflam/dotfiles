@@ -21,7 +21,7 @@ DOTFILES="$(HOME)/dotfiles/etc"
 
 default: updates
 
-install: preflight env brew zsh-workaround softlinks updates
+install: preflight env brew npm-globals zsh-workaround softlinks updates
 	# Remember to..."
 	#
 	# Colours git@github.com:deepsweet/Monokai-Soda-iTerm.git"
@@ -68,6 +68,9 @@ updates: preflight
 preflight:
 	sudo echo "pre-prompting so you don't get bugged later"
 	ssh-add -l && echo "reusing unlocked key" || ssh-add
+
+npm-globals:
+	npm install -g write-good # hemmingway app via ale in your vim
 
 brew:
 	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
