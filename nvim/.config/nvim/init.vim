@@ -294,19 +294,19 @@ nnoremap <space><space> :edit %:p:h<CR>
 " Open git status
 nnoremap <leader>g :Gstatus<CR>
 
-" " jj is like escape
-" inoremap jj <ESC>
-"
-" " Non chorded window commands, e.g. leader w v -> vsplit
-" nmap <leader>w <C-w>
-"
-" " Double Escape and jj leave insert mode in terminal
-" tnoremap <ESC><ESC> <C-\><C-N>
-"
-" " Ctrl + w actions in terminal windows
-" tnoremap <C-w> <C-\><C-N><C-w>
-"
-" " Terminal enters insert mode automatically
-" autocmd TermOpen,BufWinEnter,WinEnter term://* startinsert
-" autocmd BufLeave                      term://* stopinsert
-" autocmd TermOpen * setlocal statusline=%{b:term_title}
+" jj is like escape
+inoremap jj <ESC>
+
+" Non chorded window commands, e.g. leader w v -> vsplit
+nmap <leader>w <C-w>
+
+" Double Escape and jj leave insert mode in terminal
+tnoremap <ESC><ESC> <C-\><C-N>
+
+" Ctrl + w actions in terminal windows
+tnoremap <C-w> <C-\><C-N><C-w>
+
+" Terminal enters insert mode automatically
+autocmd TermOpen,BufWinEnter,WinEnter term://* startinsert
+autocmd BufLeave                      term://* stopinsert
+autocmd TermOpen * setlocal statusline=%{b:term_title}
