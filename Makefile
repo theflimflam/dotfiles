@@ -48,6 +48,10 @@ softlinks:
 	stow i3
 	stow home
 
+git-alias:
+	git config --global alias.feature '!git fetch && git checkout -b $1 origin/master && git push -u origin'
+	git config --global alias.share '!git push -u origin $(git rev-parse --abbrev-ref HEAD)'
+
 env:
 	rm -rf ~/.config/local
 	cp -rv templates/.config/local ~/.config/local
